@@ -1,0 +1,926 @@
+body {
+	background-color: #180352;
+	font-size: 14px;
+	color:#FDFDFD;
+	font-family: Lato;
+	max-width:1024px;
+	margin: 10px auto 0 auto;
+}
+
+a {
+	color:#FFFFFF;
+	text-decoration: none;
+}
+
+a:hover {
+	color:#d5b58b;
+	text-decoration: none;
+}
+
+.header {
+	width:100%;
+	background-color:#EFEFEF;
+}
+
+.header img {
+	max-width: 100%
+}
+
+.headerImageMobile {
+	display:none;
+}
+.navigation {
+	width: 100%;
+	height: 36px;
+	background-color: #000000;
+}
+
+.navigation a {
+	color:#FDFDFD;
+	text-decoration: none
+}
+
+.navigation a:hover {
+	color:#d5b58b;
+}
+
+.navigation ul {
+	list-style-type: none;
+	padding:0;
+	margin:0 22px 0 0;
+}
+
+.navigation li {
+	float:right;
+	padding: 9px 10px;
+}
+
+div.smallNav {
+	display:none;
+	background-color:black;
+}
+
+.smallNavItem {
+	width:100%;
+	text-align:right;
+	border-bottom:1px solid #150C32;
+	height:36px;
+	padding:8px 0px 0 0;
+	font-size:20px;
+}
+
+.smallNavItem a, .userName {
+	margin-right: 20px
+}
+
+.infoBar {
+	width: 100%;
+	background-color:rgba(20,17,38,0.7);
+	font-size: 16px;
+	text-align: center;
+	padding:10px 0;
+}
+
+.infoBar ul {
+	padding:0;
+	margin:0;
+	list-style-type: none
+}
+
+.infobar li.sess {
+	float:left;
+	width:75%;
+	padding-top: 14px;
+	padding-left:12px;
+}
+
+.infobar li.num {
+	float:left;
+	width:20%;
+	padding-top: 14px;
+}
+
+.barMargin {
+	margin-bottom:3px;
+}
+
+.confirmation {
+	padding:15px 20px;
+	font-size: 16px
+}
+
+.pageTitle {
+	font-size: 20px;
+	color: #FFFFFF;
+	padding:5px 50px;
+}
+
+.gold {
+	color: #d5b58b;
+}
+
+.gold a {
+	color: #d5b58b;
+	text-decoration: underline;
+}
+
+.coachText {
+	color: #b8a8e9;
+	/*color: #00A0DB;*/
+}
+
+.green {
+	color:#00b33c;
+}
+
+#logSessionList .gold {
+	font-size: 18px;
+}
+
+input[type=checkbox] {
+	width:25px;
+	height:25px;
+}
+
+h2 {
+	margin:5px 0;
+	font-size: 18px;
+}
+
+.main {
+	margin-top:2px;
+}
+
+.headerBar {
+	width:100%;
+	height:32px;
+	background-color:rgba(20,17,38,0.7);
+}
+
+.skaterContentArea {
+	display: flex;
+	align-items: stretch;
+}
+
+.skaterContentAreaPrevious {
+	padding:0;
+	position: relative;
+}
+
+.skaters {
+	float:left;
+	width:814px;
+	margin-top: 1px;
+	width:100%;
+}
+
+.skatersSinglePrevious {
+	float:left;
+	width:100%;
+}
+
+.skatersSingle table td, #skaterSingleHeaderTable td {
+	font-size:16px;
+}
+
+.sidebar {
+	flex:none;
+	width:209px;
+	background-color: rgba(20,17,38,0.7);
+}
+
+.schedule, .infoTable {
+	width:100%;
+	background-color:rgba(20,17,38,0.7);
+	margin-bottom:2px;
+	padding-bottom:15px;
+}
+
+.actionArea {
+	margin:0 5px 5px 0;
+	width:100%;
+	background-color:rgba(20,17,38,0.7);
+	height:400px;
+}
+
+.schedule h3, .notes h3, .headerBar h3 {
+	text-align:center;
+	margin:0 0 5px 5px;
+	padding:10px 0 0 0;
+}
+
+.schedule ul, .infoTable ul {
+	list-style-type: none;
+	padding:0;
+	margin:0;
+}
+
+.schedule li, .infoTable li {
+	margin:3px 0 0 20px;
+}
+
+.notes {
+	width:90%;
+	padding:10px 5%;
+	margin-top:2px;
+}
+
+#skaterTableLeft tr, #skaterTableRight tr, #skaterHeaderTable tr, #skaterSingleTable tr, #classesTable tr {
+	background-color:rgba(20,17,38,0.7);
+	height:12px;
+
+}
+
+#skaterTableLeft, #skaterTableRight {
+	display:none;
+	width:406px;
+	float:left;
+	margin-bottom:2px;
+}
+
+#skaterTableLeft td, #skaterTableRight td, #skaterSingleTable td, #classesTable td {
+	height:30px;
+}
+
+#skaterHeaderTable .skater, #skaterHeaderTable .time, #skaterSingleHeaderTable .skater, #skaterSingleHeaderTable .time {
+	padding-top:5px;
+}
+
+#skaterHeaderTable {
+	display:none;
+}
+
+.skater {
+	padding:0 12px;
+	color:#d5b58b;
+}
+
+.skatersSingle, #skaterSingleHeaderTable {
+	width:100%;
+}
+
+.time {
+	padding:0 12px;
+}
+
+#classesTable .time, #classesTable .skater {
+	padding: 8px 15px;
+}
+
+input.deleteReg {
+	width:15px;
+	height:15px;
+}
+
+.selectedDate {
+	margin-top:0;
+}
+
+#login_area, #register_area, #purchase_form, #adjust_form, #schedule_form, .historyDiv {
+	margin: 30px 50px 30px 50px;
+}
+
+#add_class_form, #cancel_class_form, #delete_class_form {
+	display:none;
+}
+
+#add_class_form select, #cancel_class_form select, #delete_class_form select {
+	height: 36px;
+}
+
+#add_class_form input, #cancel_class_form input, #delete_class_form input {
+	height: 36px;
+	width: 300px;
+}
+
+#add_class_form input[type=submit], #cancel_class_form input[type=submit], #delete_class_form input[type=submit] {
+	height: 36px;
+	width: 100px;
+}
+
+.historyDiv {
+	position: relative;
+}
+
+.goback {
+	margin:10px 0;
+}
+
+.goback a {
+	color: #d5b58b;
+	font-size: 14px;
+	text-decoration: underline;
+}
+
+#usertable {
+	margin: 0px 50px 30px 50px;
+	border-spacing: 2px;
+	border: 0;
+	width:1200px;
+}
+
+#usertable td {
+	padding: 2px;
+}
+
+.userNotes {
+	width: 385px;
+}
+
+.currentNotes {
+	font-size:14px;
+}
+
+#addNote {
+	margin-top: 15px;
+	display:none;
+}
+
+#addNote input {
+	height:36px;
+}
+
+.historyNotes {
+	margin: 15px 0;
+	width: 100%;
+	max-width: 480px;
+}
+
+.historyNotes h4 {
+	margin:0;
+}
+
+table td.smallCell {
+	width:50px;
+}
+
+table td.medCell {
+	width:150px;
+}
+
+table td.largeCell {
+	width:250px;
+}
+
+.loadingDiv {
+	width:100%;
+	height:400px;
+	margin:30px auto;
+	display:none;
+	text-align:center;
+}
+.loader {
+	width: 48px;
+	height: 48px;
+	border: 5px solid #FFF;
+	border-bottom-color: transparent;
+	border-radius: 50%;
+	display: inline-block;
+	box-sizing: border-box;
+	animation: rotation 1s linear infinite;
+}
+
+.emailString {
+	display:none;
+	margin:20px 50px;
+}
+
+@keyframes rotation {
+	0% {
+		transform: rotate(0deg);
+	}
+	100% {
+		transform: rotate(360deg);
+	}
+}
+
+#points_form, #class_form {
+	margin: 10px 50px 0 50px;
+}
+
+#class_form {
+	margin: 0 50px;
+}
+
+input[type='text'], input[type='password'] {
+	width: 250px;
+}
+
+#pinInput, #adminPass, #nameInput {
+	width: 90px;
+	height: 48px;
+	font-size: 28px;
+	margin-bottom:5px;
+}
+
+#nameInput {
+	width:250px;
+}
+
+input.pinInput {
+	 width:75px;
+}
+#adminPass {
+	width:220px;
+}
+
+.adminWrapper {
+	display: none;
+}
+
+#pinSubmit, .pointButton {
+	width: 70px;
+	height: 48px;
+	margin: 5px 0 0 0;
+	padding:0;
+	background: #000000;
+	color:#ffffff;
+	float:left;
+}
+
+.registerSubmit {
+	width: 70px;
+	height: 48px;
+	margin: 5px 0 0 0;
+	padding:0;
+	background: #000000;
+	color:#ffffff;
+}
+
+input.registerInput {
+	height:38px;
+	font-size:16px;
+	width: 265px;
+}
+
+input.registerPin {
+	width: 75px;
+}
+
+.pointButton {
+	margin:10px 10px 0 0;
+}
+
+.signupLink {
+	margin-top:25px;
+	font-size:18px;
+}
+
+.signupLink a {
+	text-decoration: underline;
+}
+
+.errorText {
+	color: red;
+}
+
+p.message {
+	margin-left: 55px
+}
+
+.dateDiv {
+	float:left;
+	width: 393px;
+}
+
+.timesDiv {
+	float:left;
+	width: 500px;
+}
+
+.timesDiv select {
+	width:100px;
+}
+
+.timesDiv select:disabled {
+	width: 100px;
+	background-color: #DDD;
+	opacity: 0.95;
+	color:#111;
+}
+
+.timesDiv p {
+	margin: 0 0 8px 0;
+}
+
+.scheduleTable {
+	background-color: #FFFFFF;
+	text-align: center;
+	margin: 20px 0;
+}
+
+.scheduleTable td {
+	background-color: #CCCCCC;
+}
+
+.notesInput {
+	margin-left: 50px;
+}
+
+.singleNote {
+	margin:3px 0;
+}
+
+.historyTemplate {
+	display:none;
+	width: 820px;
+	color: #011526;
+	font-family: Lato
+}
+
+#pointBalance {
+	font-weight: bold;
+}
+
+#pointBalance.red {
+	color: #F50000;
+}
+
+.pointsDiv, .purchaseDiv, .classesDiv {
+	margin-top:15px;
+	float:left;
+	width: 400px;
+}
+
+.summary {
+	margin: 15px 0;
+}
+
+#footer {
+	color: #FDFDFD;
+	background-color: #000000;
+	height: 40px;
+	padding:10px 15px;
+	text-align: right;
+}
+
+#logSessionList {
+	color: #FFFFFF;
+	width:96%;
+	margin:0;
+	padding:0;
+	list-style-type: none;
+}
+
+.sessionCheck {
+	font-size:20px;
+	color:#FFFFFF !important;
+	width:25px;
+	margin:6px 0 8px 13px;
+}
+
+.sessionFull {
+	font-size:20px;
+	width:25px;
+	margin:3px 0 8px 13px;
+}
+
+.numreg {
+	font-size: 15px;
+}
+
+#logSessionList li {
+	float:left;
+	width:75px;
+	height:82px;
+	color:#FFFFFF;
+}
+
+table thead {
+	font-weight: bold;
+}
+
+.scheduleTable {
+	color: #011526;
+}
+
+table#currentSkaters, table#currentSkaters tr {
+	color: #DDDDDD;
+	font-weight: normal;
+}
+
+table tr.evenRow {
+	background-color: #CCCCCC;
+	color:#011526;
+}
+
+table tr.evenRow2 {
+	background-color: #000000
+}
+
+.singleNote.evenRow2 {
+	background-color:#000000;
+}
+
+table tr.showHideRow {
+	display:none;
+}
+
+#historyTemplate table.pointsTable, #historyTemplate table.paymentTable {
+	color: #d9d9d9;
+}
+
+.pointsTable td, .paymentTable td {
+	font-size:14px;
+
+}
+.userLink, .showSkaters a {
+	color:#d5b58b;
+}
+
+.userLink:hover, .showSkaters a:hover {
+	color:#FFFFFF;
+}
+
+.showSkaters {
+	margin:25px 54px 0 54px;
+	font-size:16px;
+}
+
+.pointsDiv h4, .purchaseDiv h4, .classesDiv h4 {
+	margin:15px 0 5px 0;
+}
+
+.editLeft {
+	float:left;
+	width: 285px;
+}
+
+.editRight {
+	float:right;
+	width:400px;
+}
+
+.profile {
+	width:300px;
+	margin:10px 50px;
+}
+
+.profile img {
+	float:left;
+}
+
+.profile p {
+	margin:0;
+	float:left;
+	width:200px;
+	font-size:18px
+}
+
+.profile span {
+	font-size: 20px;
+}
+
+.mainContent {
+	background-color:rgba(20,17,38,0.7);
+	margin:2px 0;
+	width:100%;
+	padding:20px 0;
+}
+
+.redtext {
+	color: #FF0000;
+}
+
+.skaterOddRow {
+	background-color: rgba(20, 17, 38, 0.7);
+}
+
+.reminderPage {
+	display: none;
+	text-align: center;
+    margin-top: 75px;
+    font-size: 48px;
+    line-height: 300%;
+}
+
+#copySchedule {
+	margin:30px 50px;
+}
+
+.headline, .scheduleInfo, .skaterInfo, .news {
+	margin-top:3px;
+	background-color:rgba(20,17,38,0.7);
+	height:auto;
+}
+
+.headline {
+	width:100%;
+	margin-top:3px;
+}
+
+.headlineText {
+	padding: 10px 50px;
+}
+
+.leftContent {
+	width:36%;
+	margin-right: 0.5%;
+	margin-bottom: 3px;
+	float:left;
+}
+
+.scheduleInfo {
+	width:100%;
+	float:left;
+}
+
+.scheduleInfo li, .skaterInfo li {
+	margin:3px 0 0 50px;
+}
+
+.skaterInfo {
+	width:100%;
+	float:left;
+}
+
+.news {
+	width:63.5%;
+	float:left;
+	padding-bottom:20px;
+}
+
+.news p {
+	margin:10px 50px 10px 50px;
+}
+
+.largeGold {
+	display:block;
+	color:#d5b58b;
+	font-size:18px;
+	margin:12px 50px;
+}
+
+.classDiv {
+	margin:2px 0;
+	padding: 0 0 20px 0;
+	background-color: rgba(20, 17, 38, 0.7);
+}
+
+.classDiv ul {
+	padding:20px 0 0 0;
+	margin:0;
+	list-style-type: none;
+}
+
+.classDiv li {
+	clear:both;
+	margin:5px 0;
+}
+
+.classDiv li input {
+	float:left;
+}
+
+.classDiv .sessionFull {
+	float:left;
+	margin: 1px -3px 2px 9px;
+}
+
+.classDiv .sessionCheck {
+	float:left;
+	margin: 1px -4px 2px 10px;
+}
+
+.classDiv .classTitle {
+	float:left;
+	margin-top:7px;
+	margin-left:3px;
+	font-size:16px;
+}
+
+.activeClass, .addClass {
+	margin:10px 20px
+}
+
+.activeClass p {
+	margin:3px 0;
+}
+
+.addClass p {
+	margin:10px 0;
+}
+.headerBar .typeHeader {
+    font-size:16px;
+    color: #d5b58b;
+    padding:7px 10px;
+	text-align:center;
+}
+
+@media (max-width: 1023px)  {
+
+	body {
+		margin-left:10px;
+		margin-right: 10px;
+	}
+
+	#skaterHeaderTable {
+		display:none;
+	}
+
+	#skaterSingleHeaderTable {
+		display:block;
+	}
+
+	.skaters {
+		display:none;
+	}
+
+	.skatersSingle {
+		display:block;
+
+	}
+
+	.wrapper {
+		width:100%;
+	}
+
+	.navigation {
+		height:48px;
+	}
+
+	.navigation li {
+		font-size:18px;
+		padding-top:15px;
+	}
+
+	input[type=checkbox] {
+		width:40px;
+		height:40px;
+	}
+
+	.reminderPage {
+		display:none;
+	}
+
+	.infoBar {
+		font-size:16px;
+	}
+
+}
+
+@media (max-width: 767px) {
+
+	.sidebar {
+		display:none;
+	}
+
+	.skaterContentArea {
+		padding-right:0;
+	}
+
+	.navigation {
+		height:60px;
+	}
+
+	.navigation li {
+		font-size: 20px;
+		padding-top:16px;
+	}
+
+	.mainNav {
+		display:none;
+	}
+
+	.navigation {
+		height: auto;
+	}
+
+	div.smallNav {
+		display:block;
+	}
+
+	.pageTitle {
+		font-size:16px;
+	}
+
+	.historyDiv {
+		margin:30px 0;
+	}
+
+	.purchaseDiv {
+		margin-top: 15px
+	}
+
+	.classesDiv {
+		margin-top: 15px
+	}
+
+}
+
+@media (max-width: 535px) {
+
+	.profile p {
+		clear:both;
+		height:66px;
+	}
+
+	.headerImageFull {
+		display:none;
+	}
+
+	.headerImageMobile {
+		display:block;
+	}
+
+}
