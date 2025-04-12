@@ -47,6 +47,7 @@
 		</div>
 
         <div class="main">
+    <div class="ltsTable">
 
         <?php for ($i = 0; $i < count($classes); $i++) {
             $tmpSession = $classes[$i]['session'];
@@ -72,6 +73,8 @@
             </div>
 
         <?php }} ?>
+
+    </div>
 
 
 

@@ -820,32 +820,38 @@ table tr.showHideRow {
 	font-weight: 700;
 }
 
+.ltsTable {
+	display: table;
+	border-collapse:separate;
+	border-spacing: 2px;
+}
+
 .ltsRow {
 	width: 1024px;
 	max-width: 100%;
-	clear:both;
-	margin:0 0 2px 0;
-	height: 60px;
+	margin-bottom:2px;
+	display:table-row;
 }
 
 .ltsName {
 	float:left;
 	width:175px;
-	height:55px;
-	padding:5px 5px 0 5px;
+	padding:5px;
 	color: #d5b58b;
 	text-align:right;
 	margin: 0 2px 0 0;
 	background-color: rgba(20, 17, 38, 0.7);
+	display:table-cell;
+
 }
 
 .ltsSkaters {
 	float:left;
-	height:55px;
 	width: calc(100% - 197px);
-	padding:5px 5px 0 5px;
+	padding:5px;
 	color: #FFFFFF;
 	background-color: rgba(20, 17, 38, 0.7);
+	display:table-cell;
 }
 
 @media (max-width: 1023px)  {
