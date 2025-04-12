@@ -32,7 +32,6 @@
             <span class="gold" id="totalSkaters">0</span> <span id="skaterText">skaters</span>
             <span class="gold"><?php echo date('g:ia', strtotime("+30 seconds")) ?></span>
         </div>
-        <div class="main">
 
     <?php
 
@@ -45,21 +44,21 @@
             <h3 class="gold lato-bold ltsHeader"><?php echo date("l, F j, Y") ?></h3>
             <span><?php echo date('g:ia', strtotime("+30 seconds")) ?></span>
 		</div>
+    <div class="main">
 
-        <div class="main">
+<?php for ($i = 0; $i < count($classes); $i++) {
+    $tmpSession = $classes[$i]['session'];
+
+    $strstart = date("Y-m-d") . " " . $tmpSession['start'];
+    $strend = date("Y-m-d"). " " . $tmpSession['end'];
+    $currentSessionTitle = date("g:ia", strtotime($strstart)) . " to " . date("g:ia", strtotime($strend)) . " (" . $numSkaters . ")";
+
+    ?>
+    <div class="ltsHeaderBar">
+        <div class="typeHeader"><?php echo $currentSessionTitle; ?></div>
+    </div>
+
     <div class="ltsTable">
-
-        <?php for ($i = 0; $i < count($classes); $i++) {
-            $tmpSession = $classes[$i]['session'];
-
-            $strstart = date("Y-m-d") . " " . $tmpSession['start'];
-            $strend = date("Y-m-d"). " " . $tmpSession['end'];
-            $currentSessionTitle = date("g:ia", strtotime($strstart)) . " to " . date("g:ia", strtotime($strend)) . " (" . $numSkaters . ")";
-
-        ?>
-        <div class="ltsHeaderBar">
-            <div class="typeHeader"><?php echo $currentSessionTitle; ?></div>
-        </div>
 
         <?php for ($j = 0; $j < count($classes[$i]['classes']); $j++) {
             $tmpClass = $classes[$i]['classes'][$j]; ?>
@@ -67,14 +66,16 @@
             <div class="ltsRow">
                 <div class="ltsName"><?php echo $tmpClass['title'] ?></div>
                 <div class="ltsSkaters"><?php //echo $oLTS->getSkatersInClass($tmpClass['id']) ?>
-                    <?php echo $j % 3 != 0 ? "King,Jo., <span class=\"green\">Murdock,La.</span>" : "King,Jo., <span class=\"green\">Murdock,La.</span>, King,Jo., <span class=\"green\">Murdock,La.</span>, King,Jo., <span class=\"green\">Murdock,La.</span>, King,Jo., <span class=\"green\">Murdock,La.</span>, King,Jo., <span class=\"green\">Murdock,La.</span>, King,Jo., <span class=\"green\">Murdock,La.</span>, King,Jo., <span class=\"green\">Murdock,La.</span>, King,Jo., <span class=\"green\">Murdock,La.</span>, King,Jo., <span class=\"green\">Murdock,La.</span>, King,Jo., <span class=\"green\">Murdock,La.</span>, King,Jo., <span class=\"green\">Murdock,La.</span>,King,Jo., <span class=\"green\">Murdock,La.</span>,King,Jo., <span class=\"green\">Murdock,La.</span>,King,Jo., <span class=\"green\">Murdock,La.</span>" ?>
+                    <?php echo $j % 3 != 0 ? "<p>King,Jo., <span class=\"green\">Murdock,La.</span></p>" : "<p>King,Jo., <span class=\"green\">Murdock,La.</span>, King,Jo., <span class=\"green\">Murdock,La.</span>, King,Jo., <span class=\"green\">Murdock,La.</span>, King,Jo., <span class=\"green\">Murdock,La.</span>, King,Jo., <span class=\"green\">Murdock,La.</span>, King,Jo., <span class=\"green\">Murdock,La.</span>, King,Jo., <span class=\"green\">Murdock,La.</span>, King,Jo., <span class=\"green\">Murdock,La.</span>, King,Jo., <span class=\"green\">Murdock,La.</span>, King,Jo., <span class=\"green\">Murdock,La.</span>, King,Jo., <span class=\"green\">Murdock,La.</span>,King,Jo., <span class=\"green\">Murdock,La.</span>,King,Jo., <span class=\"green\">Murdock,La.</span>,King,Jo., <span class=\"green\">Murdock,La.</span></p>" ?>
 
                 </div>
             </div>
 
-        <?php }} ?>
+        <?php } ?>
 
     </div>
+
+    <?php } ?>
 
 
 

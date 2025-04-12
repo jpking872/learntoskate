@@ -816,7 +816,6 @@ table tr.showHideRow {
 	width:100%;
 	height:32px;
 	background-color:rgba(20,17,38,0.7);
-	margin-bottom:2px;
 	font-weight: 700;
 }
 
@@ -824,6 +823,7 @@ table tr.showHideRow {
 	display: table;
 	border-collapse:separate;
 	border-spacing: 2px;
+
 }
 
 .ltsRow {
@@ -831,10 +831,10 @@ table tr.showHideRow {
 	max-width: 100%;
 	margin-bottom:2px;
 	display:table-row;
+
 }
 
 .ltsName {
-	float:left;
 	width:175px;
 	padding:5px;
 	color: #d5b58b;
@@ -842,16 +842,17 @@ table tr.showHideRow {
 	margin: 0 2px 0 0;
 	background-color: rgba(20, 17, 38, 0.7);
 	display:table-cell;
+	height:100%;
 
 }
 
 .ltsSkaters {
-	float:left;
 	width: calc(100% - 197px);
 	padding:5px;
 	color: #FFFFFF;
 	background-color: rgba(20, 17, 38, 0.7);
 	display:table-cell;
+	height:100%;
 }
 
 @media (max-width: 1023px)  {
@@ -951,6 +952,10 @@ table tr.showHideRow {
 
 	.classesDiv {
 		margin-top: 15px
+	}
+
+	.ltsName {
+		width:105px;
 	}
 
 }
