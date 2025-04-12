@@ -11,6 +11,7 @@
 		//header("Location: /login.php");
 	}
 
+    $numSkaters = 0;
 	include_once("header.php");
 
     $oLTS = new LTS($dbconnection);
@@ -41,9 +42,8 @@
     ?>
 
 		<div class="infoBar">
-            <span class="gold"><?php echo date("l, F j, Y") ?></span> <?php echo $currentSession ?>
-            <span class="gold" id="totalSkaters">0</span> <span id="skaterText">skaters</span>
-            <span class="gold"><?php echo date('g:ia', strtotime("+30 seconds")) ?></span>
+            <h3 class="gold lato-bold ltsHeader"><?php echo date("l, F j, Y") ?></h3>
+            <span><?php echo date('g:ia', strtotime("+30 seconds")) ?></span>
 		</div>
 
         <div class="main">
@@ -53,11 +53,11 @@
 
             $strstart = date("Y-m-d") . " " . $tmpSession['start'];
             $strend = date("Y-m-d"). " " . $tmpSession['end'];
-            $currentSessionTitle = date("l, F j, g:ia", strtotime($strstart)) . " to " . date("g:ia", strtotime($strend));
+            $currentSessionTitle = date("g:ia", strtotime($strstart)) . " to " . date("g:ia", strtotime($strend)) . " (" . $numSkaters . ")";
 
         ?>
-        <div class="headerBar">
-            <h3 class="typeHeader lato-bold"><?php echo $currentSessionTitle; ?>
+        <div class="ltsHeaderBar">
+            <div class="typeHeader"><?php echo $currentSessionTitle; ?></div>
         </div>
 
         <?php for ($j = 0; $j < count($classes[$i]['classes']); $j++) {
@@ -65,7 +65,10 @@
 
             <div class="ltsRow">
                 <div class="ltsName"><?php echo $tmpClass['title'] ?></div>
-                <div class="ltsSkaters"><?php echo $oLTS->getSkatersInClass($tmpClass['id']) ?></div>
+                <div class="ltsSkaters"><?php //echo $oLTS->getSkatersInClass($tmpClass['id']) ?>
+                    <?php echo $j % 3 != 0 ? "King,Jo., <span class=\"green\">Murdock,La.</span>" : "King,Jo., <span class=\"green\">Murdock,La.</span>, King,Jo., <span class=\"green\">Murdock,La.</span>, King,Jo., <span class=\"green\">Murdock,La.</span>, King,Jo., <span class=\"green\">Murdock,La.</span>, King,Jo., <span class=\"green\">Murdock,La.</span>, King,Jo., <span class=\"green\">Murdock,La.</span>, King,Jo., <span class=\"green\">Murdock,La.</span>, King,Jo., <span class=\"green\">Murdock,La.</span>, King,Jo., <span class=\"green\">Murdock,La.</span>, King,Jo., <span class=\"green\">Murdock,La.</span>, King,Jo., <span class=\"green\">Murdock,La.</span>,King,Jo., <span class=\"green\">Murdock,La.</span>,King,Jo., <span class=\"green\">Murdock,La.</span>,King,Jo., <span class=\"green\">Murdock,La.</span>" ?>
+
+                </div>
             </div>
 
         <?php }} ?>

@@ -800,11 +800,52 @@ table tr.showHideRow {
 .addClass p {
 	margin:10px 0;
 }
-.headerBar .typeHeader {
+
+.headerBar .typeHeader, .ltsHeaderBar .typeHeader {
     font-size:16px;
     color: #d5b58b;
     padding:7px 10px;
 	text-align:center;
+}
+
+.ltsHeader {
+	margin:5px 0;
+}
+
+.ltsHeaderBar {
+	width:100%;
+	height:32px;
+	background-color:rgba(20,17,38,0.7);
+	margin-bottom:2px;
+	font-weight: 700;
+}
+
+.ltsRow {
+	width: 1024px;
+	max-width: 100%;
+	clear:both;
+	margin:0 0 2px 0;
+	height: 60px;
+}
+
+.ltsName {
+	float:left;
+	width:175px;
+	height:55px;
+	padding:5px 5px 0 5px;
+	color: #d5b58b;
+	text-align:right;
+	margin: 0 2px 0 0;
+	background-color: rgba(20, 17, 38, 0.7);
+}
+
+.ltsSkaters {
+	float:left;
+	height:55px;
+	width: calc(100% - 197px);
+	padding:5px 5px 0 5px;
+	color: #FFFFFF;
+	background-color: rgba(20, 17, 38, 0.7);
 }
 
 @media (max-width: 1023px)  {
