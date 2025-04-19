@@ -189,47 +189,12 @@
 
       function GetUserBalance() {
 
-         $totalPoints = $this->GetRecentPointsForUser(0);
          $totalPurchases = $this->GetTotalPurchasesForUser(0);
          $totalClasses = $this->GetNumberOfClasses() - $this->GetNumberOfClassesWithPass();
 
-         $deduct = $this->GetNumberOnePointClasses();
-
-         return $totalPurchases - $totalPoints - $totalClasses * 2 + $deduct;
+         return $totalPurchases - $totalClasses;
 
       }
-
-      function GetNumberOnePointClasses()
-      {
-          $sql = "select cu.`uid`, count(*) as numone from `class_user` cu left join `classes` c on cu.`classid` = c.`id`
-                    where cu.`pass` = 0 and cu.`uid` = '" . mysqli_real_escape_string($this->con, $this->userid) . "' and c.`start` < '2025-02-01 00:00:00'";
-
-          $result = mysqli_query($this->con, $sql);
-
-          if ($row = mysqli_fetch_array($result)) {
-              $numone = $row['numone'];
-          } else {
-              $numone = 0;
-          }
-
-          return $numone;
-      }
-
-        function GetNumberOnePointClassesWithPass()
-        {
-            $sql = "select cu.`uid`, count(*) as numone from `class_user` cu left join `classes` c on cu.`classid` = c.`id`
-                    where cu.`pass` = 1 and cu.`uid` = '" . mysqli_real_escape_string($this->con, $this->userid) . "' and c.`start` < '2025-02-01 00:00:00'";
-
-            $result = mysqli_query($this->con, $sql);
-
-            if ($row = mysqli_fetch_array($result)) {
-                $numone = $row['numone'];
-            } else {
-                $numone = 0;
-            }
-
-            return $numone;
-        }
 
       function TodaysAdjustedPoints() {
 
@@ -469,15 +434,7 @@
 
           // filter users who haven't skated in a year
           while ($row = mysqli_fetch_array($result)) {
-              if (isset($filter['active']) && $filter['active']) {
-                  $getMax = "SELECT MAX(`session`) as lastsession FROM points WHERE uid = '" . $row['userid'] . "'";
-                  $result2 = mysqli_query($this->con, $getMax);
-                  if ($row2 = mysqli_fetch_array($result2)) {
-                      if (time() - 24*365*3600 < strtotime($row2['lastsession'])) {
-                          $returnUsers[] = $row;
-                      }
-                  }
-              } elseif (isset($filter['pin'])) {
+              if (isset($filter['pin'])) {
 
                   if ($row['pin'] == $filter['pin']) {
                       $returnUsers[] = $row;

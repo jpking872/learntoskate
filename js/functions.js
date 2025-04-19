@@ -341,10 +341,13 @@ $(document).ready( function () {
 		$("input[name='pin']").val(user.pin);
 		$("input[name='oldpin']").val(user.pin);
 		$("input[name='email']").val(user.email);
-		$("input[name='phone']").val(user.phone);
 
-		//imageString = (user.profile) ? user.profile : "defaultImage.jpg";
-		//$(".profileImage").attr("src", "upload/" + imageString);
+		$("select[name='level']").val(user.level);
+		isRegChecked = user.registration == 1;
+		$("input[name='registration']").prop('checked', isRegChecked )
+		isWaiverChecked = user.waiver == 1;
+		$("input[name='waiver']").prop('checked', isWaiverChecked )
+
 
 	}
 

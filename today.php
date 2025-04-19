@@ -5,7 +5,8 @@
 	include_once("incl/library.php");
 	include_once("incl/config.php");
 	include_once("classes/loginC.php");
-	include_once("classes/LTS.php");	include_once("classes/ClassesC.php");
+	include_once("classes/LTS.php");
+    include_once("classes/ClassesC.php");
 
 	if (!$sessionUser || $sessionRole < 1) {
 		//header("Location: /login.php");
@@ -66,7 +67,7 @@
             <div class="ltsRow">
                 <div class="ltsName"><?php echo $tmpClass['title'] ?></div>
                 <div class="ltsSkaters"><?php //echo $oLTS->getSkatersInClass($tmpClass['id']) ?>
-                    <?php echo $j % 3 != 0 ? "<p>King,Jo., <span class=\"green\">Murdock,La.</span></p>" : "<p>King,Jo., <span class=\"green\">Murdock,La.</span>, King,Jo., <span class=\"green\">Murdock,La.</span>, King,Jo., <span class=\"green\">Murdock,La.</span>, King,Jo., <span class=\"green\">Murdock,La.</span>, King,Jo., <span class=\"green\">Murdock,La.</span>, King,Jo., <span class=\"green\">Murdock,La.</span>, King,Jo., <span class=\"green\">Murdock,La.</span>, King,Jo., <span class=\"green\">Murdock,La.</span>, King,Jo., <span class=\"green\">Murdock,La.</span>, King,Jo., <span class=\"green\">Murdock,La.</span>, King,Jo., <span class=\"green\">Murdock,La.</span>,King,Jo., <span class=\"green\">Murdock,La.</span>,King,Jo., <span class=\"green\">Murdock,La.</span>,King,Jo., <span class=\"green\">Murdock,La.</span></p>" ?>
+                    <?php echo $j % 3 != 0 ? "<p>King,Jo., <span class=\"green\">Reynolds,Br.</span></p>" : "<p>King,Jo., <span class=\"green\">Reynolds,Br.</span>, King,Jo., <span class=\"green\">Reynolds,Br.</span>, King,Jo., <span class=\"green\">Reynolds,Br.</span>, King,Jo., <span class=\"green\">Reynolds,Br.</span>, King,Jo., <span class=\"green\">Reynolds,Br.</span>, King,Jo., <span class=\"green\">Reynolds,Br.</span>, King,Jo., <span class=\"green\">Reynolds,Br.</span>, King,Jo., <span class=\"green\">Reynolds,Br.</span>, King,Jo., <span class=\"green\">Reynolds,Br.</span>, King,Jo., <span class=\"green\">Reynolds,Br.</span>, King,Jo., <span class=\"green\">Reynolds,Br.</span>,King,Jo., <span class=\"green\">Reynolds,Br.</span>,King,Jo., <span class=\"green\">Reynolds,Br.</span>,King,Jo., <span class=\"green\">Reynolds,Br.</span></p>" ?>
 
                 </div>
             </div>
