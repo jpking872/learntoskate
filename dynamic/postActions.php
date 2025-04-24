@@ -5,7 +5,6 @@ include_once("../incl/database.php");
 include_once("../incl/library.php");
 include_once("../incl/config.php");
 include_once("../classes/DataModelC.php");
-require_once '../mandrill-api-php/Mandrill.php';
 
 if (!$sessionUser || $sessionRole != 3) {
 	header("Location: /login.php");
@@ -36,7 +35,7 @@ if ($_POST['actiontype'] == "adjust") {
 		$message = "?result=" . urlencode("Error adding points.");
 	}
 
-	header("Location: /user.php" . $message);
+	header("Location: /skaters.php" . $message);
 	exit();
 
 } 

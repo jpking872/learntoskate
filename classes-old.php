@@ -6,14 +6,13 @@ include_once("incl/library.php");
 include_once("incl/config.php");
 include_once("classes/DataModelC.php");
 include_once("classes/ClassesC.php");
-include_once("classes/LTS.php");
 
 if (!$sessionUser || $sessionRole != 3) {
     header("Location: /login.php");
 }
 
 global $dbconnection;
-$oClasses = new LTS($dbconnection);
+$oClasses = new Classes($dbconnection);
 
 $aPostVars = $_POST;
 
@@ -23,10 +22,9 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
         $day = $aPostVars['classDate'];
         $title = $aPostVars['title'];
-        $levels = implode("|", $aPostVars['level']);
         $start = date("Y-m-d H:i:s", strtotime($day . " " . $aPostVars['classStart']));
         $end = date("Y-m-d H:i:s", strtotime($day . " " . $aPostVars['classEnd']));
-        $result = $oClasses->AddLTSClass($title, $start, $end, $levels);
+        $result = $oClasses->AddClass($title, $start, $end);
 
     } else if (isset($aPostVars['cancelClassSubmit'])) {
 
@@ -45,7 +43,6 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 }
 
 $aActiveClasses = $oClasses->getClasses();
-$aLevels = $oClasses->GetLevels();
 
 include_once("header.php");
 
@@ -112,12 +109,6 @@ include_once("header.php");
                         <option value="-1">N/A</option>
                         <?php for ($j = 0; $j < count($times); $j++) { ?>
                             <option value="<?php echo $times[$j] ?>"><?php echo $times[$j] ?></option>
-                        <?php } ?>
-                    </select>
-                </p>
-                <p>Level(s):<br/><select name="level[]" class="levelSelect" multiple="multiple">
-                        <?php for ($j = 0; $j < count($aLevels); $j++) { ?>
-                            <option value="<?php echo $aLevels[$j]['id'] ?>"><?php echo $aLevels[$j]['level'] ?></option>
                         <?php } ?>
                     </select>
                 </p>

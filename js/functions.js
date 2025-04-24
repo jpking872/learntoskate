@@ -50,6 +50,12 @@ $(document).ready( function () {
 
 	}});
 
+	$( "#LTSDate" ).datepicker({ dateFormat: "yy-mm-dd", onClose : function (dateText) {
+
+			window.location.href = "/today.php?date=" + dateText;
+
+		}});
+
 	$("#purchaseDate").datepicker();
 	$("#classDate").datepicker({ dateFormat: "yy-mm-dd"});
 	$(".addClassToggle").click(function () { $("#add_class_form").toggle() });

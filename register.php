@@ -56,7 +56,7 @@
 				'" . mysqli_real_escape_string($dbconnection, $lname) . "',
 				'" . mysqli_real_escape_string($dbconnection, $pin) . "', 
 				'" . mysqli_real_escape_string($dbconnection, $email) . "',  
-				'0',
+				'1',
 				NOW())";
 
 			$result = mysqli_query($dbconnection, $sql);

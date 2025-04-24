@@ -34,11 +34,10 @@
 		$pin = mysqli_real_escape_string($dbconnection, $_POST['pin']);
 		$oldpin = mysqli_real_escape_string($dbconnection, $_POST['oldpin']);
 		$email = mysqli_real_escape_string($dbconnection, $_POST['email']);
-        $notes = mysqli_real_escape_string($dbconnection, $_POST['notes']);
 
         $ilevel = $_POST['level'];
-        $iReg = $_POST['registration'] ? 1 : 0;
-        $iWaiver = $_POST['waiver'] ? 1 : 0;
+        $iReg = $_POST['registration'] ?? 0;
+        $iWaiver = $_POST['waiver'] ?? 0;
 
 		$oData = new DataModel(0, $dbconnection);
 

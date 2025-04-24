@@ -15,23 +15,31 @@
     $numSkaters = 0;
 	include_once("header.php");
 
+    if (isset($_GET['date']) && $sessionRole == 3) {
+        $LTSDate = $_GET['date'];
+    } else {
+        $LTSDate = date("Y-m-d");
+    }
+
     $oLTS = new LTS($dbconnection);
-    $classes = $oLTS->GetTodaysClasses();
+    $classes = $oLTS->GetTodaysClasses($LTSDate);
 
     if(count($classes) > 0) {
     $currentSession = "";
     for ($i = 0; $i < count($classes); $i++) {
-        $strstart = date("Y-m-d") . " " . $classes[$i]['session']['start'];
-        $strend = date("Y-m-d"). " " . $classes[$i]['session']['end'];
+        $strstart = date("Y-m-d", strtotime($LTSDate)) . " " . $classes[$i]['session']['start'];
+        $strend = date("Y-m-d", strtotime($LTSDate)). " " . $classes[$i]['session']['end'];
         $currentSession .= date("g:ia", strtotime($strstart)) . "-" . date("g:ia", strtotime($strend)) . " ";
     }
 
     } else { ?>
 
         <div class="infoBar">
-            <span class="gold"><?php echo date("l, F j, Y") ?></span> <?php echo "No classes today" ?>
+            <span class="gold"><?php echo date("l, F j, Y", strtotime($LTSDate)) ?></span>             <?php if ($sessionRole == 3) { ?>
+                <input type="text" name="date" id="LTSDate" style="width:100px" value="<?php echo $LTSDate ?>">
+            <?php } ?><p><?php echo "No classes today" ?>
             <span class="gold" id="totalSkaters">0</span> <span id="skaterText">skaters</span>
-            <span class="gold"><?php echo date('g:ia', strtotime("+30 seconds")) ?></span>
+                <span class="gold"><?php echo date('g:ia', strtotime("+30 seconds")) ?></span></p>
         </div>
 
     <?php
@@ -42,16 +50,19 @@
     ?>
 
 		<div class="infoBar">
-            <h3 class="gold lato-bold ltsHeader"><?php echo date("l, F j, Y") ?></h3>
+            <h3 class="gold lato-bold ltsHeader"><?php echo date("l, F j, Y", strtotime($LTSDate)) ?></h3>
             <span><?php echo date('g:ia', strtotime("+30 seconds")) ?></span>
+            <?php if ($sessionRole == 3) { ?>
+                <input type="text" name="date" id="LTSDate" style="width:100px" value="<?php echo $LTSDate ?>">
+            <?php } ?>
 		</div>
     <div class="main">
 
 <?php for ($i = 0; $i < count($classes); $i++) {
     $tmpSession = $classes[$i]['session'];
 
-    $strstart = date("Y-m-d") . " " . $tmpSession['start'];
-    $strend = date("Y-m-d"). " " . $tmpSession['end'];
+    $strstart = date("Y-m-d", strtotime($LTSDate)) . " " . $tmpSession['start'];
+    $strend = date("Y-m-d", strtotime($LTSDate)). " " . $tmpSession['end'];
     $currentSessionTitle = date("g:ia", strtotime($strstart)) . " to " . date("g:ia", strtotime($strend)) . " (" . $numSkaters . ")";
 
     ?>
@@ -66,10 +77,8 @@
 
             <div class="ltsRow">
                 <div class="ltsName"><?php echo $tmpClass['title'] ?></div>
-                <div class="ltsSkaters"><?php //echo $oLTS->getSkatersInClass($tmpClass['id']) ?>
-                    <?php echo $j % 3 != 0 ? "<p>King,Jo., <span class=\"green\">Reynolds,Br.</span></p>" : "<p>King,Jo., <span class=\"green\">Reynolds,Br.</span>, King,Jo., <span class=\"green\">Reynolds,Br.</span>, King,Jo., <span class=\"green\">Reynolds,Br.</span>, King,Jo., <span class=\"green\">Reynolds,Br.</span>, King,Jo., <span class=\"green\">Reynolds,Br.</span>, King,Jo., <span class=\"green\">Reynolds,Br.</span>, King,Jo., <span class=\"green\">Reynolds,Br.</span>, King,Jo., <span class=\"green\">Reynolds,Br.</span>, King,Jo., <span class=\"green\">Reynolds,Br.</span>, King,Jo., <span class=\"green\">Reynolds,Br.</span>, King,Jo., <span class=\"green\">Reynolds,Br.</span>,King,Jo., <span class=\"green\">Reynolds,Br.</span>,King,Jo., <span class=\"green\">Reynolds,Br.</span>,King,Jo., <span class=\"green\">Reynolds,Br.</span></p>" ?>
-
-                </div>
+                <div class="ltsSkaters"><?php echo $oLTS->getSkatersInClass($tmpClass['id']) ?></div>
+                    <?php //echo $j % 3 != 0 ? "<p>King,Jo., <span class=\"green\">Reynolds,Br.</span></p>" : "<p>King,Jo., <span class=\"green\">Reynolds,Br.</span>, King,Jo., <span class=\"green\">Reynolds,Br.</span>, King,Jo., <span class=\"green\">Reynolds,Br.</span>, King,Jo., <span class=\"green\">Reynolds,Br.</span>, King,Jo., <span class=\"green\">Reynolds,Br.</span>, King,Jo., <span class=\"green\">Reynolds,Br.</span>, King,Jo., <span class=\"green\">Reynolds,Br.</span>, King,Jo., <span class=\"green\">Reynolds,Br.</span>, King,Jo., <span class=\"green\">Reynolds,Br.</span>, King,Jo., <span class=\"green\">Reynolds,Br.</span>, King,Jo., <span class=\"green\">Reynolds,Br.</span>,King,Jo., <span class=\"green\">Reynolds,Br.</span>,King,Jo., <span class=\"green\">Reynolds,Br.</span>,King,Jo., <span class=\"green\">Reynolds,Br.</span></p>" ?>
             </div>
 
         <?php } ?>

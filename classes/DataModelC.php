@@ -592,12 +592,9 @@
         $dbDate1 = date("Y-m-d G:i:s", strtotime($year . "-" . $month . "-01 00:00:00"));
         $dbDate2 = date("Y-m-d G:i:s", strtotime($year2 . "-" . ($month2) . "-01 00:00:00"));
 
-        $sql = "UPDATE `points` SET `pass` = '1' WHERE `uid` = '" . mysqli_real_escape_string($this->con, $uid) . "' AND DATE(`session`) >= '" . $dbDate1 . "' AND DATE(`session`) < '" . $dbDate2 . "'";
-        $result = mysqli_query($this->con, $sql);
-
          $sql2 = "UPDATE `class_user` cu LEFT JOIN `classes` c ON cu.`classid` = c.`id` SET cu.`pass` = '1'  
             WHERE `uid` = '" . mysqli_real_escape_string($this->con, $uid) . "' AND DATE(c.`start`) >= '" . $dbDate1 . "' AND DATE(c.`end`) < '" . $dbDate2 . "'";
-         $result2 = mysqli_query($this->con, $sql2);
+         $result = mysqli_query($this->con, $sql2);
 
         return $result;
 

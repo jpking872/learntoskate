@@ -280,6 +280,11 @@ input.deleteReg {
 	margin: 30px 50px 30px 50px;
 }
 
+#login_area p.loginMessage {
+	font-size: 20px;
+	color:#ffff00;
+}
+
 #add_class_form, #cancel_class_form, #delete_class_form {
 	display:none;
 }
@@ -540,6 +545,10 @@ p.message {
 	margin-top:15px;
 	float:left;
 	width: 400px;
+}
+
+#add_class_form .levelSelect {
+	height: 275px;
 }
 
 .summary {
@@ -847,12 +856,17 @@ table tr.showHideRow {
 }
 
 .ltsSkaters {
-	width: calc(100% - 197px);
+	width: 827px;
+	max-width: 100%;
 	padding:5px;
 	color: #FFFFFF;
 	background-color: rgba(20, 17, 38, 0.7);
 	display:table-cell;
 	height:100%;
+}
+
+#LTSDate {
+	margin-left:5px;
 }
 
 @media (max-width: 1023px)  {

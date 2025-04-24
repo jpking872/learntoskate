@@ -13,7 +13,7 @@
 
 		if (isset($loginResponse) && $loginResponse['status'] === true) {
 
-            header("Location: points.php");
+            header("Location: today.php");
 			exit();
 	
 		} else {
@@ -32,8 +32,8 @@
 		</div>
 
 		<div id="login_area">
+            <?php if (isset($errorMessage)) echo "<p class=\"loginMessage\">" . $errorMessage . "</p>" ?>
             <div class="signupLink">Enter your PIN and last name:</div>
-			<?php if (isset($errorMessage)) echo "<p>" . $errorMessage . "</p>" ?>
 			<form id="login_form" method="post" action="">
 				<p>
 					PIN:<br/><input type="password" id="pinInput" name="pin" size="6" maxlength="5"><br/>

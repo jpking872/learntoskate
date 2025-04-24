@@ -33,10 +33,8 @@ function Login($aPostVars) {
 			$_SESSION['id'] = $aRow['id'];
 			$_SESSION['name'] = $aRow['fname'] . " " . $aRow['lname'];
 			$_SESSION['role'] = $aRow['role'];
-			if ($aRow['role'] == 0 && strtotime($aRow['created']) > time() - 3600 * 24 * 7) {
-                return array('status' => false, 'data' => 'Account is not approved.');
-            } else if ($aRow['role'] == 0) {
-                return array('status' => false, 'data' => 'Inactive account.');
+			if ($aRow['level'] == 0) {
+                return array('status' => false, 'data' => 'In order to sign up for classes on Learn to Skate, you must have paid the registration fee and submitted the waiver.');
             }
 
 			return array('status' => true, 'data' => $aRow);
