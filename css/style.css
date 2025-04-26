@@ -625,11 +625,11 @@ table tr.showHideRow {
 	display:none;
 }
 
-#historyTemplate table.pointsTable, #historyTemplate table.paymentTable {
+#historyTemplate table.pointsTable, #historyTemplate table.paymentTable, .ltsProfileTable {
 	color: #d9d9d9;
 }
 
-.pointsTable td, .paymentTable td {
+.pointsTable td, .paymentTable td, .ltsProfileTable td {
 	font-size:14px;
 
 }
@@ -867,6 +867,16 @@ table tr.showHideRow {
 
 #LTSDate {
 	margin-left:5px;
+}
+
+.ltsProfileTable {
+	width:325px;
+	border-spacing: 1px;
+	border-collapse: separate;
+}
+
+.ltsProfileTable tr, .ltsProfileTable td {
+	padding:2px;
 }
 
 @media (max-width: 1023px)  {

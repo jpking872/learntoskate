@@ -13,7 +13,6 @@ $isLogin = $_SERVER['REQUEST_URI'] == '/login.php';
 
 	<?php if ($sessionRole == 3) { ?>
 		<li><a href="/skaters.php">SKATERS</a></li>
-		<li><a href="/previous.php">PREVIOUS</a></li>
         <li><a href="/classes.php">CLASSES</a></li>
 		<li><a href="/orders.php">ORDERS</a></li>
 	<?php } ?>
@@ -43,7 +42,6 @@ $isLogin = $_SERVER['REQUEST_URI'] == '/login.php';
 
 	<?php if ($sessionRole == 3) { ?>
 	<div class="smallNavItem"><a href="/skaters.php">SKATERS</a></div>
-	<div class="smallNavItem"><a href="/previous.php">PREVIOUS</a></div>
     <div class="smallNavItem"><a href="/classes.php">CLASSES</a></div>
 	<div class="smallNavItem"><a href="/orders.php">ORDERS</a></div>
 	<?php } ?>

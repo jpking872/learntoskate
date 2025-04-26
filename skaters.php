@@ -160,7 +160,7 @@
 
 				$rowClass = $user['balance'] >= 0 ? "" : " class=\"redtext\"";
 
-				echo "<tr" . $fullRowClass . "><td class=\"medCell\"><a href=\"/history.php?userid=" . $user['userid'] . "\" class=\"userLink\" data-uid=\"" . $user['userid'] . "\">" . $user['lname'] . ", " . $user['fname'] . $starCoach . "</a></td><td class=\"largeCell\">" . $emailLink . "</td>
+				echo "<tr" . $fullRowClass . "><td class=\"medCell\"><a href=\"/profile.php?userid=" . $user['userid'] . "\" class=\"userLink\" data-uid=\"" . $user['userid'] . "\">" . $user['lname'] . ", " . $user['fname'] . $starCoach . "</a></td><td class=\"largeCell\">" . $emailLink . "</td>
 						<td class=\"smallCell\">" . $levelName . "</td>
 						<td class=\"smallCell\">" . $regName . "</td>
 						<td class=\"smallCell\">" . $waiverName . "</td>
