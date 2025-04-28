@@ -162,11 +162,10 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && $sessionRole == 3) {
         <div class="summary">
             Points used: <span id="totalClasses"><?php echo($totalClasses - $totalPassClasses) ?></span><span
                     class="green">(<?php echo $totalPassClasses ?>)</span> |
-            Total points purchased: <span id="totalPurchases"><?php echo $aResult['totalpurchases'] ?></span> |
+            Total purchased: <span id="totalPurchases"><?php echo $aResult['totalpurchases'] ?></span> |
 
             <?php
 
-            //$pointsBal = $aResult['totalpurchases'] - $aResult['totalpoints'];
             $pointsBal = $balance;
             if ($pointsBal < 0) {
                 $pointsBalClass = " class=\"red\"";

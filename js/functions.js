@@ -56,6 +56,10 @@ $(document).ready( function () {
 
 		}});
 
+	$(".calendarIcon").click(function () {
+		$("#LTSDate").datepicker("show");
+	})
+
 	$("#purchaseDate").datepicker();
 	$("#classDate").datepicker({ dateFormat: "yy-mm-dd"});
 	$(".addClassToggle").click(function () { $("#add_class_form").toggle() });

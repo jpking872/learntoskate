@@ -24,53 +24,42 @@
     $oLTS = new LTS($dbconnection);
     $classes = $oLTS->GetDayOfClasses($LTSDate);
 
-    if(count($classes) == 0) { ?>
-
-        <div class="infoBar">
-            <span class="gold"><?php echo date("l, F j, Y", strtotime($LTSDate)) ?></span>
-            <?php if ($sessionRole == 3) { ?>
-                <input type="text" name="date" id="LTSDate" style="width:100px" value="<?php echo $LTSDate ?>">
-            <?php } ?><p><?php echo "No classes today" ?>
-            <span class="gold" id="totalSkaters">0</span> <span id="skaterText">skaters</span>
-                <span class="gold"><?php echo date('g:ia', strtotime("+30 seconds")) ?></span></p>
-        </div>
-
-    <?php
-
-    	include_once("footer.php");
-        return;
-    }
     ?>
 
 		<div class="infoBar">
             <h3 class="gold lato-bold ltsHeader"><?php echo date("l, F j, Y", strtotime($LTSDate)) ?></h3>
             <span><?php echo date('g:ia', strtotime("+30 seconds")) ?></span>
             <?php if ($sessionRole == 3) { ?>
-                <input type="text" name="date" id="LTSDate" style="width:100px" value="<?php echo $LTSDate ?>">
+                <input type="hidden" name="date" id="LTSDate" style="width:100px" value="<?php echo $LTSDate ?>"><span class="calendarIcon">&#128466;</span>
+            <?php } ?>
+            <?php if (count($classes) == 0) { ?>
+                <p>No classes today</p>
             <?php } ?>
 		</div>
     <div class="main">
 
 <?php for ($i = 0; $i < count($classes); $i++) {
     $tmpSession = $classes[$i]['session'];
-
     $strstart = date("g:ia", strtotime($tmpSession['start']));
     $strend = date("g:ia", strtotime($tmpSession['start']) + 30 * 60);
-    $currentSessionTitle = $strstart . " to " . $strend . " (" . $numSkaters . ")";
+    $currentSessionTitle = $strstart . " to " . $strend;
+    $classCount = 0;
 
     ?>
     <div class="ltsHeaderBar">
-        <div class="typeHeader"><?php echo $currentSessionTitle; ?></div>
+        <div class="typeHeader"><?php echo $currentSessionTitle ?></div>
     </div>
 
     <div class="ltsTable">
 
         <?php for ($j = 0; $j < count($classes[$i]['classes']); $j++) {
-            $tmpClass = $classes[$i]['classes'][$j]; ?>
+            $tmpClass = $classes[$i]['classes'][$j];
+            $tmpNum = $oLTS->getClassSize($tmpClass['id']);
+            ?>
 
             <div class="ltsRow">
                 <div class="ltsName"><?php echo $tmpClass['title'] ?></div>
-                <div class="ltsSkaters"><?php echo $oLTS->getSkatersInClass($tmpClass['id']) ?></div>
+                <div class="ltsSkaters"><?php echo $oLTS->getSkatersInClass($tmpClass['id']) ?><?php echo $tmpNum > 0 ? " <span class=\"gold\">(" . $tmpNum . ")</span>" : "" ?></div>
                     <?php //echo $j % 3 != 0 ? "<p>King,Jo., <span class=\"green\">Reynolds,Br.</span></p>" : "<p>King,Jo., <span class=\"green\">Reynolds,Br.</span>, King,Jo., <span class=\"green\">Reynolds,Br.</span>, King,Jo., <span class=\"green\">Reynolds,Br.</span>, King,Jo., <span class=\"green\">Reynolds,Br.</span>, King,Jo., <span class=\"green\">Reynolds,Br.</span>, King,Jo., <span class=\"green\">Reynolds,Br.</span>, King,Jo., <span class=\"green\">Reynolds,Br.</span>, King,Jo., <span class=\"green\">Reynolds,Br.</span>, King,Jo., <span class=\"green\">Reynolds,Br.</span>, King,Jo., <span class=\"green\">Reynolds,Br.</span>, King,Jo., <span class=\"green\">Reynolds,Br.</span>,King,Jo., <span class=\"green\">Reynolds,Br.</span>,King,Jo., <span class=\"green\">Reynolds,Br.</span>,King,Jo., <span class=\"green\">Reynolds,Br.</span></p>" ?>
             </div>
 

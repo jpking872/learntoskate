@@ -103,8 +103,8 @@ include_once("header.php");
 
                     Points used: <span id="totalClasses"><?php echo($totalClasses - $totalPassClasses) ?></span><span
                             class="green">(<?php echo $totalPassClasses ?>)</span> |
-                    Total points purchased: <span id="totalPurchases"><?php echo $aResult['totalpurchases'] ?></span> |
-                    Point Balance:
+                    Total purchased: <span id="totalPurchases"><?php echo $aResult['totalpurchases'] ?></span> |
+                    Point balance:
 
                     <?php
 
