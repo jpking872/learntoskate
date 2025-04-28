@@ -544,7 +544,7 @@ p.message {
 .pointsDiv, .purchaseDiv, .classesDiv {
 	margin-top:15px;
 	float:left;
-	width: 400px;
+	width: 340px;
 }
 
 #add_class_form .levelSelect {
@@ -877,6 +877,15 @@ table tr.showHideRow {
 
 .ltsProfileTable tr, .ltsProfileTable td {
 	padding:2px;
+}
+
+.classesPaginate {
+	display:none;
+}
+
+.pageLeft, .pageRight {
+	font-size:28px;
+	margin:0 5px 0 0;
 }
 
 @media (max-width: 1023px)  {

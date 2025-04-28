@@ -117,8 +117,8 @@
 		<table id="usertable">
 			<tr>
 				<td class="medCell">Name</td>
-				<td class="largeCell">Email</td>
-				<td class="smallCell">Level</td>
+				<td class="medCell">Email</td>
+				<td class="medCell">Level</td>
 				<td class="smallCell">Fee</td>
 				<td class="smallCell">Waiver</td>
 				<td class="smallCell">Points Balance</td>
@@ -215,7 +215,6 @@
                             } ?>
                         </select>
                     </p>
-
                     <p>Registration Fee: <input type="checkbox" name="registration" value="1"></p>
                     <p>Waiver Submitted: <input type="checkbox" name="waiver" value="1"></p>
 				</div>

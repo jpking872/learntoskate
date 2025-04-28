@@ -14,7 +14,7 @@ if (!$sessionUser) {
 
 $oDataModel = new DataModel($sessionUser, $dbconnection);
 $oDataModel->SetUser($sessionUser);
-$userData = $oDataModel->getUserData();
+$userData = $oDataModel->GetUserData();
 $oLTS = new LTS($dbconnection);
 
 $sError = "";
@@ -34,16 +34,6 @@ if ($_POST) {
 
 }
 
-//$aTimes = $oDataModel->GetSchedule($dbdate);
-//$aSession = $oDataModel->GetSession($dbdate);
-//$aUser = $oDataModel->GetUserData();
-//$balance = $oDataModel->GetUserBalance();
-//$numClasses = $oDataModel->GetNumberOfClasses();
-//$numPassClasses = $oDataModel->GetNumberOfClassesWithPass();
-//$deduct = $oDataModel->GetNumberOnePointClasses();
-//$deductPass = $oDataModel->GetNumberOnePointClassesWithPass();
-
-
 include_once("header.php");
 
 ?>
@@ -60,7 +50,16 @@ include_once("header.php");
                 <input type="hidden" name="skater" id="skater" value="<?php echo $sessionUser ?>">
                 <ul>
                     <?php
-                    $balance = 10;
+
+                    $oData = new DataModel($sessionUser, $dbconnection);
+                    $aResult = array();
+                    $aResult['purchases'] = $oData->GetPurchasesForUser();
+                    $aResult['totalpurchases'] = $oData->GetTotalPurchasesForUser();
+                    $aResult['totalpayments'] = $oData->GetTotalPaymentsForUser();
+                    $totalClasses = $oData->GetNumberOfClasses();
+                    $totalPassClasses = $oData->GetNumberOfClassesWithPass();
+                    $balance = $oData->GetUserBalance();
+
                     $classList = $oLTS->GetLTSClasses($userData['level']);
                     $signupClasses = $oLTS->getClassesByUid($sessionUser);
                     $registeredClasses = array();
@@ -81,7 +80,7 @@ include_once("header.php");
                         $classDate = $tmp['start'];
                         $passClassDay = $oDataModel->HasUserPass($sessionUser, date("n", strtotime($classDate)), date("Y", strtotime($classDate)));
 
-                        if (($classSize >= $tmp['size'] && !$isRegisteredThisClass) || ($balance <= 0 && !$passClassDay) || (!$isRegisteredThisClass && (time() > strtotime($tmp['end']))) ) {
+                        if (($classSize >= $tmp['size'] && !$isRegisteredThisClass) || ($balance <= 0 && !$passClassDay && !$isRegisteredThisClass) || (!$isRegisteredThisClass && (time() > strtotime($tmp['end']))) ) {
                             echo "<li><div class=\"sessionFull\"><span style=\"color:#FFFFFF\">&#10006</span></div>";
                             echo "<div class=\"classTitle" . $isBoxGold . "\">" . $tmp['title'] . ": " .
                                 date('l F j g:ia', strtotime($tmp['start'])) . " - " . date('g:ia', strtotime($tmp['end'])) . " (" . $classSize . ")</div></li>";
@@ -100,16 +99,64 @@ include_once("header.php");
                     ?>
                 </ul>
                 <div style="clear:both"></div>
-                <input class="pointButton" type="submit" name="class_submit" value="Sign Up">
-            </form>
+                <div class="summary">
+
+                    Points used: <span id="totalClasses"><?php echo($totalClasses - $totalPassClasses) ?></span><span
+                            class="green">(<?php echo $totalPassClasses ?>)</span> |
+                    Total points purchased: <span id="totalPurchases"><?php echo $aResult['totalpurchases'] ?></span> |
+                    Point Balance:
+
+                    <?php
+
+                    $pointsBal = $balance;
+                    if ($pointsBal < 0) {
+                        $pointsBalClass = " class=\"red\"";
+                    } else {
+                        $pointsBalClass = "";
+                    }
+
+                    ?>
+
+                    <span id="pointBalance"<?php echo $pointsBalClass ?>><?php echo $pointsBal ?></span>
+
+                </div>
+                <div style="clear:both"></div>
+                <input class="pointButton" type="submit" name="class_submit" value="Sign Up"></form>
+                <a href="/profile.php?userid=<?php echo $sessionUser ?>"><button class="pointButton">Profile</button></a>
             <div style="clear:both"></div>
 
-
-
         </div>
+
         <div style="clear:both"></div>
 
+
     </div>
+
+<script type="text/javascript">
+    $(document).ready(function () {
+        let totalChecked, balance;
+        let startPoints = <?php echo $balance; ?>;
+        let startChecked = $("input[name='classToAdd[]']:checked").length;
+        let hasPass = <?php echo $passClassDay ? 1 : 0 ?>;
+
+        $("input[name='classToAdd[]']").click(function(e) {
+            if (!hasPass) {
+                totalChecked = $("input[name='classToAdd[]']:checked").length;
+                balance = startPoints - totalChecked + startChecked;
+                $("#pointBalance").text(balance);
+                if (parseInt($("#pointBalance").text()) <= 0) {
+                    $("span#pointBalance").addClass("red");
+                    $("input[name='classToAdd[]']:not(:checked)").attr("disabled", true);
+                } else {
+                    $("span#pointBalance").removeClass("red");
+                    $("input[name='classToAdd[]']:not(:checked)").attr("disabled", false);
+                }
+            }
+        })
+
+
+    })
+</script>
 
 <?php
 

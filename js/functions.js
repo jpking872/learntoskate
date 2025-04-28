@@ -148,8 +148,8 @@ $(document).ready( function () {
 		}
 	})
 
-	CallAjax("/dynamic/ajax.php", {type : "getSchedule", date : "0"}, ShowSchedule);
-	CallAjax("/dynamic/ajax.php", {type : "getScheduleList", date : "0"}, ShowScheduleList);
+	//CallAjax("/dynamic/ajax.php", {type : "getSchedule", date : "0"}, ShowSchedule);
+	//CallAjax("/dynamic/ajax.php", {type : "getScheduleList", date : "0"}, ShowScheduleList);
 
 	//GetCurrentSkaters();
 

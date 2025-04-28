@@ -1,6 +1,12 @@
 <?php
 
 include_once("incl/session.php");
+
+if ($sessionUser < 1) {
+    header("Location:login.php");
+} else {
+    header("Location:today.php");
+}
 include_once("incl/database.php");
 include_once("incl/library.php");
 include_once("incl/config.php");

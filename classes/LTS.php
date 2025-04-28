@@ -14,16 +14,13 @@ class LTS extends Classes
         $this->dataModel = new DataModel(0, $db);
     }
 
-    public function GetTodaysClasses($sDate)
+    public function GetDayOfClasses($sDate)
     {
-        $dayOfWeek = date("l", strtotime($sDate));
-        $sql = "SELECT * FROM `sessions` WHERE `active` = 1 AND `day` = '" . $dayOfWeek . "'";
+        $sql = "SELECT DISTINCT `start` from `classes` WHERE DATE(`start`) = '" . $sDate . "'";
         $result = mysqli_query($this->db, $sql);
         $sessionClasses = [];
         while ($row = mysqli_fetch_assoc($result)) {
-            $sqlStart = date("Y-m-d H:i:s", strtotime($sDate . " " . $row['start']));
-            $sqlEnd = date("Y-m-d H:i:s", strtotime($sDate . " " . $row['end']));
-            $sql2 = "SELECT * FROM `classes` WHERE `active` = 1 AND `start` >= '" . $sqlStart . "' AND `end` <= '" . $sqlEnd . "' ORDER BY `id`";
+            $sql2 = "SELECT * FROM `classes` WHERE `start` = '" . $row['start'] . "' ORDER BY `id`";
             $result2 = mysqli_query($this->db, $sql2);
             $tmpClasses = [];
             while ($row2 = mysqli_fetch_assoc($result2)) {

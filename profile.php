@@ -24,6 +24,7 @@ global $dbconnection;
 
 $oData = new DataModel($uid, $dbconnection);
 $oClasses = new Classes($dbconnection);
+$oLTS = new LTS($dbconnection);
 
 $aResult = array();
 $aResult['purchases'] = $oData->GetPurchasesForUser();
@@ -34,6 +35,14 @@ $aResult['classes'] = $oClasses->getClassesByUid($uid);
 $totalClasses = $oData->GetNumberOfClasses();
 $totalPassClasses = $oData->GetNumberOfClassesWithPass();
 $balance = $oData->GetUserBalance();
+$aLevels = $oLTS->GetLevels();
+
+$level = "Not Approved";
+for($i = 0; $i < count($aLevels); $i++) {
+    if ($aLevels[$i]['id'] == $aResult['userinfo']['level']) {
+        $level = $aLevels[$i]['level'];
+    }
+}
 
 
 if ($_SERVER['REQUEST_METHOD'] === 'POST' && $sessionRole == 3) {
@@ -55,15 +64,16 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && $sessionRole == 3) {
     <div class="main">
     <div class="historyDiv">
         <h2>
-            <span class="skaterName"><?php echo $aResult['userinfo']['fname'] . " " . $aResult['userinfo']['lname'] ?></span>
+            <span class="skaterName"><?php echo $aResult['userinfo']['fname'] . " " . $aResult['userinfo']['lname'] ?></span><br/>
+            <span class="skaterName"><?php echo $level ?></span>
         </h2>
         <div class="classesDiv">
             <h4>Summary of Classes</h4>
-            <table class="ltsProfileTable" width="325" cellspacing="2" cellpadding="1">
+            <table class="ltsProfileTable">
                 <thead>
                 <tr>
-                    <td width="125">Date</td>
-                    <td width="200">Class</td>
+                    <td>Date</td>
+                    <td>Class</td>
                 </tr>
                 </thead>
                 <tbody>
@@ -103,16 +113,19 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && $sessionRole == 3) {
 
                 </tbody>
             </table>
+            <div class="classesPaginate"><a href="javascript:void(0)" class="pageLeft">&laquo;</a>
+                <a href="javascript:void(0)" class="pageRight">&raquo;</a>
+            </div>
         </div>
         <div class="purchaseDiv">
             <h4>Summary of Purchases</h4>
-            <table class="ltsProfileTable" width="325" cellspacing="2" cellpadding="1">
+            <table class="ltsProfileTable">
                 <thead>
                 <tr>
-                    <td width="125">Date</td>
-                    <td width="75">Points</td>
-                    <td width="75">Pass</td>
-                    <td width="100">Price</td>
+                    <td>Date</td>
+                    <td>Points</td>
+                    <td>Pass</td>
+                    <td>Price</td>
                 </tr>
                 </thead>
                 <tbody>
@@ -145,14 +158,11 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && $sessionRole == 3) {
                 </tbody>
             </table>
         </div>
-
         <div style="clear:both"></div>
-
         <div class="summary">
             Points used: <span id="totalClasses"><?php echo($totalClasses - $totalPassClasses) ?></span><span
                     class="green">(<?php echo $totalPassClasses ?>)</span> |
             Total points purchased: <span id="totalPurchases"><?php echo $aResult['totalpurchases'] ?></span> |
-            Point Balance:
 
             <?php
 
@@ -166,9 +176,14 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && $sessionRole == 3) {
 
             ?>
 
-            <span id="pointBalance"<?php echo $pointsBalClass ?>><?php echo $pointsBal ?></span>
+            Point balance: <span id="pointBalance"<?php echo $pointsBalClass ?>><?php echo $pointsBal ?></span>
 
         </div>
+        <?php if(isset($_SERVER['HTTP_REFERER'])) {
+                $goBackUrl = strstr($_SERVER['HTTP_REFERER'], 'skaters') ? "/skaters.php" : "/signup.php" ?>
+                <div style="clear:both"></div>
+                <a href="<?php echo $goBackUrl ?>"><button class="pointButton">Return</button></a>
+        <?php } ?>
         <div style="clear:both"></div>
         <?php if (isset($sessionUser) && $sessionRole == 3) { ?>
             <div class="historyNotes">
@@ -204,10 +219,41 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && $sessionRole == 3) {
     </div>
 
     <script type="text/javascript">
+        $(document).ready(function () {
+            let currentItem = 0;
+            let numPerPage = 15;
+            let currentPage = 1;
+            const $items = $(".classesDiv .ltsProfileTable tbody tr");
+            let numItems = $items.length;
+
+            if (numItems > numPerPage) {
+                $(".classesPaginate").show();
+            }
+
+            $items.hide();
+            $items.slice(0, numPerPage).show();
+
+            $(".classesPaginate .pageLeft").click(function() {
+                if (currentPage > 1) {
+                    currentPage--;
+                    currentItem = (currentPage - 1) * numPerPage;
+                    $items.hide();
+                    $items.slice(currentItem, currentItem + numPerPage).show();
+                }
+            });
+
+            $(".classesPaginate .pageRight").click(function () {
+                if (currentPage < Math.ceil(numItems / numPerPage)) {
+                    currentPage++;
+                    currentItem = (currentPage - 1) * numPerPage;
+                    $items.hide();
+                    $items.slice(currentItem, currentItem + numPerPage).show();
+                }
+            })
+
+        })
 
     </script>
-
-
 
 <?php
 

@@ -22,20 +22,13 @@
     }
 
     $oLTS = new LTS($dbconnection);
-    $classes = $oLTS->GetTodaysClasses($LTSDate);
+    $classes = $oLTS->GetDayOfClasses($LTSDate);
 
-    if(count($classes) > 0) {
-    $currentSession = "";
-    for ($i = 0; $i < count($classes); $i++) {
-        $strstart = date("Y-m-d", strtotime($LTSDate)) . " " . $classes[$i]['session']['start'];
-        $strend = date("Y-m-d", strtotime($LTSDate)). " " . $classes[$i]['session']['end'];
-        $currentSession .= date("g:ia", strtotime($strstart)) . "-" . date("g:ia", strtotime($strend)) . " ";
-    }
-
-    } else { ?>
+    if(count($classes) == 0) { ?>
 
         <div class="infoBar">
-            <span class="gold"><?php echo date("l, F j, Y", strtotime($LTSDate)) ?></span>             <?php if ($sessionRole == 3) { ?>
+            <span class="gold"><?php echo date("l, F j, Y", strtotime($LTSDate)) ?></span>
+            <?php if ($sessionRole == 3) { ?>
                 <input type="text" name="date" id="LTSDate" style="width:100px" value="<?php echo $LTSDate ?>">
             <?php } ?><p><?php echo "No classes today" ?>
             <span class="gold" id="totalSkaters">0</span> <span id="skaterText">skaters</span>
@@ -61,9 +54,9 @@
 <?php for ($i = 0; $i < count($classes); $i++) {
     $tmpSession = $classes[$i]['session'];
 
-    $strstart = date("Y-m-d", strtotime($LTSDate)) . " " . $tmpSession['start'];
-    $strend = date("Y-m-d", strtotime($LTSDate)). " " . $tmpSession['end'];
-    $currentSessionTitle = date("g:ia", strtotime($strstart)) . " to " . date("g:ia", strtotime($strend)) . " (" . $numSkaters . ")";
+    $strstart = date("g:ia", strtotime($tmpSession['start']));
+    $strend = date("g:ia", strtotime($tmpSession['start']) + 30 * 60);
+    $currentSessionTitle = $strstart . " to " . $strend . " (" . $numSkaters . ")";
 
     ?>
     <div class="ltsHeaderBar">
