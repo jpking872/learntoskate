@@ -34,10 +34,10 @@
 		$pin = mysqli_real_escape_string($dbconnection, $_POST['pin']);
 		$oldpin = mysqli_real_escape_string($dbconnection, $_POST['oldpin']);
 		$email = mysqli_real_escape_string($dbconnection, $_POST['email']);
+		$iReg = strlen($_POST['registration']) < 3 ? "NULL" : "'" . mysqli_real_escape_string($dbconnection, $_POST['registration']) . "'";
+		$iWaiver = strlen($_POST['waiver']) < 3 ? "NULL" : "'" . mysqli_real_escape_string($dbconnection, $_POST['waiver']) . "'";
 
         $ilevel = $_POST['level'];
-        $iReg = $_POST['registration'] ?? 0;
-        $iWaiver = $_POST['waiver'] ?? 0;
 
 		$oData = new DataModel(0, $dbconnection);
 
@@ -50,7 +50,7 @@
 		if ($pinAvailable) {
 
 		 	$sql = "UPDATE `users` SET `fname` = '$fname', `lname` = '$lname', `pin` = '$pin', `email` = '$email',
-               `level` = '$ilevel', `registration` = '$iReg', `waiver` = '$iWaiver' WHERE `id` = '$uid' LIMIT 1";
+               `level` = '$ilevel', `registration` = $iReg, `waiver` = $iWaiver WHERE `id` = '$uid' LIMIT 1";
 
 			$result = mysqli_query($dbconnection, $sql);
 
@@ -118,7 +118,7 @@
 			<tr>
 				<td class="medCell">Name</td>
 				<td class="medCell">Email</td>
-				<td class="medCell">Level</td>
+				<td class="smallCell">Level</td>
 				<td class="smallCell">Fee</td>
 				<td class="smallCell">Waiver</td>
 				<td class="smallCell">Points Balance</td>
@@ -148,19 +148,18 @@
 				$emailLink = $user['email'];
 
 
-                $levelName = "none";
+                $levelName = "Not approved";
                 foreach ($levels as $level) {
                     if ($user['level'] == $level['id']) {
                         $levelName = $level['level'];
                     }
                 }
 
-                $regName = $user['registration'] == 1 ? "yes" : "no";
-                $waiverName = $user['waiver'] == 1 ? "yes" : "no";
-
 				$rowClass = $user['balance'] >= 0 ? "" : " class=\"redtext\"";
+                $regName = $user['registration'] ? date("m/d/Y", strtotime($user['registration'])) : "-";
+                $waiverName = $user['waiver'] ? date("m/d/Y", strtotime($user['waiver'])) : "-";
 
-				echo "<tr" . $fullRowClass . "><td class=\"medCell\"><a href=\"/profile.php?userid=" . $user['userid'] . "\" class=\"userLink\" data-uid=\"" . $user['userid'] . "\">" . $user['lname'] . ", " . $user['fname'] . $starCoach . "</a></td><td class=\"largeCell\">" . $emailLink . "</td>
+				echo "<tr" . $fullRowClass . "><td class=\"medCell\"><a href=\"/profile.php?userid=" . $user['userid'] . "\" class=\"userLink\" data-uid=\"" . $user['userid'] . "\">" . $user['lname'] . ", " . $user['fname'] . $starCoach . "</a></td><td class=\"medCell\">" . $emailLink . "</td>
 						<td class=\"smallCell\">" . $levelName . "</td>
 						<td class=\"smallCell\">" . $regName . "</td>
 						<td class=\"smallCell\">" . $waiverName . "</td>
@@ -208,15 +207,15 @@
                     <p>Level:<br/>
                         <select name="level">
                             <?php
-                            echo "<option value=\"0\">None selected</option>";
+                            echo "<option value=\"0\">Not approved</option>";
                             foreach ($levels as $level) {
                                 $isSkaterLevel = $user['level'] == $level['id'] ? " assigned" : "";
                                 echo "<option value=\"" . $level['id'] . "\"" .$isSkaterLevel . ">" . $level['level'] . "</option>";
                             } ?>
                         </select>
                     </p>
-                    <p>Registration Fee: <input type="checkbox" name="registration" value="1"></p>
-                    <p>Waiver Submitted: <input type="checkbox" name="waiver" value="1"></p>
+                    <p>Registration Fee:<br/><input type="text" class="registrationDate" name="registration"></p>
+                    <p>Waiver Submitted:<br/><input type="text" class="waiverDate" name="waiver"></p>
 				</div>
 				<div style="clear:both"></div>
 				<p><input type="submit" value="edit"></p>

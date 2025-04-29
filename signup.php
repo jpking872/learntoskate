@@ -60,7 +60,7 @@ include_once("header.php");
                     $totalPassClasses = $oData->GetNumberOfClassesWithPass();
                     $balance = $oData->GetUserBalance();
 
-                    $classList = $oLTS->GetLTSClasses($userData['level']);
+                    $classList = $oLTS->GetLTSClasses($userData);
                     $signupClasses = $oLTS->getClassesByUid($sessionUser);
                     $registeredClasses = array();
                     for($i = 0; $i < count($signupClasses); $i++) {
@@ -70,10 +70,11 @@ include_once("header.php");
                     for ($i = 0; $i < count($classList); $i++) {
                         $tmp = $classList[$i];
 
-                        if (strtotime($tmp['start']) < strtotime("last Sunday") - 86400 * 7) continue;
+                        if (strtotime($tmp['start']) < time() + 60 * 15) continue;
                         $classSize = $oLTS->getClassSize($tmp['id']);
 
                         $isRegisteredThisClass = in_array($tmp['id'], $registeredClasses);
+
                         $isBoxChecked = $isRegisteredThisClass ? " checked" : "";
                         $isBoxGold = $isRegisteredThisClass ? " gold" : "";
 

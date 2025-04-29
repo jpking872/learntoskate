@@ -322,6 +322,7 @@ input.deleteReg {
 	border-spacing: 2px;
 	border: 0;
 	width:1200px;
+	font-size:14px;
 }
 
 #usertable td {
@@ -625,7 +626,7 @@ table tr.showHideRow {
 	display:none;
 }
 
-#historyTemplate table.pointsTable, #historyTemplate table.paymentTable, .ltsProfileTable {
+#historyTemplate table.pointsTable, #historyTemplate table.paymentTable {
 	color: #d9d9d9;
 }
 
@@ -890,6 +891,7 @@ table tr.showHideRow {
 
 .calendarIcon {
 	cursor:pointer;
+	margin-top: -2px;
 }
 
 @media (max-width: 1023px)  {

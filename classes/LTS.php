@@ -33,20 +33,48 @@ class LTS extends Classes
 
     }
 
-    public function GetLTSClasses($userLevel)
+    public function GetLTSClasses($userData)
     {
         $sql = "SELECT * FROM `classes` WHERE `active` = 1 AND `start` > NOW() ORDER BY `start` ASC";
         $result = mysqli_query($this->db, $sql);
+
+        $futureClasses = $this->GetClassesInFuture($userData['id']);
         $sessionClasses = [];
+        $currentClasses = [];
         while ($row = mysqli_fetch_assoc($result)) {
 
             $classLevels = explode("|", $row['level']);
-            if (in_array($userLevel, $classLevels)) {
+            if (in_array($userData['level'], $classLevels)) {
                 $sessionClasses[] = $row;
+                $currentClasses[] = $row['id'];
             }
 
         }
+
+        for($i = 0; $i < count($futureClasses); $i++) {
+            $tmp = $futureClasses[$i];
+            if (in_array($tmp['id'], $currentClasses)) {
+                continue;
+            } else {
+                $sessionClasses[] = $tmp;
+            }
+        }
+
         return $sessionClasses;
+
+    }
+
+    private function GetClassesInFuture($uid)
+    {
+        $sql = "SELECT c.* FROM `classes` c INNER JOIN `class_user` cu ON c.`id` = cu.`classid` 
+                      WHERE cu.`uid` = '" . mysqli_real_escape_string($this->db, $uid) . "' AND c.`start` > NOW() ORDER BY `start` ASC";
+        $result = mysqli_query($this->db, $sql);
+        $futureClasses = [];
+        while ($row = mysqli_fetch_assoc($result)) {
+            $futureClasses[] = $row;
+        }
+
+        return $futureClasses;
 
     }
 

@@ -15,7 +15,7 @@
     $numSkaters = 0;
 	include_once("header.php");
 
-    if (isset($_GET['date']) && $sessionRole == 3) {
+    if (isset($_GET['date'])) {
         $LTSDate = $_GET['date'];
     } else {
         $LTSDate = date("Y-m-d");
@@ -29,9 +29,7 @@
 		<div class="infoBar">
             <h3 class="gold lato-bold ltsHeader"><?php echo date("l, F j, Y", strtotime($LTSDate)) ?></h3>
             <span><?php echo date('g:ia', strtotime("+30 seconds")) ?></span>
-            <?php if ($sessionRole == 3) { ?>
                 <input type="hidden" name="date" id="LTSDate" style="width:100px" value="<?php echo $LTSDate ?>"><span class="calendarIcon">&#128466;</span>
-            <?php } ?>
             <?php if (count($classes) == 0) { ?>
                 <p>No classes today</p>
             <?php } ?>
@@ -60,7 +58,6 @@
             <div class="ltsRow">
                 <div class="ltsName"><?php echo $tmpClass['title'] ?></div>
                 <div class="ltsSkaters"><?php echo $oLTS->getSkatersInClass($tmpClass['id']) ?><?php echo $tmpNum > 0 ? " <span class=\"gold\">(" . $tmpNum . ")</span>" : "" ?></div>
-                    <?php //echo $j % 3 != 0 ? "<p>King,Jo., <span class=\"green\">Reynolds,Br.</span></p>" : "<p>King,Jo., <span class=\"green\">Reynolds,Br.</span>, King,Jo., <span class=\"green\">Reynolds,Br.</span>, King,Jo., <span class=\"green\">Reynolds,Br.</span>, King,Jo., <span class=\"green\">Reynolds,Br.</span>, King,Jo., <span class=\"green\">Reynolds,Br.</span>, King,Jo., <span class=\"green\">Reynolds,Br.</span>, King,Jo., <span class=\"green\">Reynolds,Br.</span>, King,Jo., <span class=\"green\">Reynolds,Br.</span>, King,Jo., <span class=\"green\">Reynolds,Br.</span>, King,Jo., <span class=\"green\">Reynolds,Br.</span>, King,Jo., <span class=\"green\">Reynolds,Br.</span>,King,Jo., <span class=\"green\">Reynolds,Br.</span>,King,Jo., <span class=\"green\">Reynolds,Br.</span>,King,Jo., <span class=\"green\">Reynolds,Br.</span></p>" ?>
             </div>
 
         <?php } ?>

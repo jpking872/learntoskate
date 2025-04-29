@@ -56,6 +56,9 @@ $(document).ready( function () {
 
 		}});
 
+	$( ".registrationDate" ).datepicker({ dateFormat: "yy-mm-dd"});
+	$( ".waiverDate" ).datepicker({ dateFormat: "yy-mm-dd"});
+
 	$(".calendarIcon").click(function () {
 		$("#LTSDate").datepicker("show");
 	})
@@ -353,10 +356,8 @@ $(document).ready( function () {
 		$("input[name='email']").val(user.email);
 
 		$("select[name='level']").val(user.level);
-		isRegChecked = user.registration == 1;
-		$("input[name='registration']").prop('checked', isRegChecked )
-		isWaiverChecked = user.waiver == 1;
-		$("input[name='waiver']").prop('checked', isWaiverChecked )
+		$("input[name='registration']").val(user.registration)
+		$("input[name='waiver']").val(user.waiver)
 
 
 	}

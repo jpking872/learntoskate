@@ -96,13 +96,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && $sessionRole == 3) {
                         }
                     }
 
-                    if (strtotime($tmp['start']) < strtotime("2025-02-01 00:00:00")) {
-                        $onePointClass = "(1pt)";
-                    } else {
-                        $onePointClass = "";
-                    }
-
-                    $titleText = $tmp['pass'] == 1 ? "<span class=\"green\">" . $tmp['title'] . $onePointClass . "</span>" : $tmp['title'] . $onePointClass;
+                    $titleText = $tmp['pass'] == 1 ? "<span class=\"green\">" . $tmp['title'] . "</span>" : $tmp['title'];
 
                     echo "<tr$rowClass><td>" . date("M j, Y", strtotime($tmp['start'])) . "</td>
                             <td>" . $titleText . "</td></tr>\n";
@@ -212,6 +206,9 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && $sessionRole == 3) {
                     <input type="text" maxlength="500" name="note"> <input type="submit" name="submitNote"
                                                                            class="noteButton" value="Add Note">
                 </form>
+                <p>Registration Date: <?php echo $aResult['userinfo']['registration'] ? date("m/d/Y", strtotime($aResult['userinfo']['registration'])) : "-" ?><br/>
+                    Waiver Date: <?php echo $aResult['userinfo']['waiver'] ? date("m/d/Y", strtotime($aResult['userinfo']['waiver'])) : "-" ?>
+                </p>
 
             </div>
         <?php } ?>
