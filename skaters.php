@@ -106,12 +106,12 @@
         <form id="searchForm" method="get" action="">
             <?php $adds = count($aUserArray) == 1 ? "" : "s"; ?>
         <?php if (isset($filter['active']) && $filter['active'] == true) { ?>
-            <p class="showSkaters"><?php echo count($aUserArray) ?> active skater<?php echo $adds ?> | <a href="/user.php?all=1">&raquo;Show all skaters</a> | <a class="emailStringLink" href="javascript:void(0)">&raquo;Copy emails to clipboard</a> | <input type="text" name="query" class="searchSkater" placeholder="search"></p>
+            <p class="showSkaters"><?php echo count($aUserArray) ?> active skater<?php echo $adds ?> | <a href="/skaters.php?all=1">&raquo;Show all skaters</a> | <a class="emailStringLink" href="javascript:void(0)">&raquo;Copy emails to clipboard</a> | <input type="text" name="query" class="searchSkater" placeholder="search"></p>
             <div class="emailString"><?php echo $emailString ?></div>
         <?php } elseif (isset($filter['pin']) || isset($filter['user'])) { ?>
-            <p class="showSkaters"><?php echo count($aUserArray) ?> skater<?php echo $adds ?> | <?php echo "search: <span class=\"gold\">" . $query . "</span>"?> | <a href="/user.php">&raquo;Show active skaters</a> | <input type="text" name="query" class="searchSkater" placeholder="search"></p>
+            <p class="showSkaters"><?php echo count($aUserArray) ?> skater<?php echo $adds ?> | <?php echo "search: <span class=\"gold\">" . $query . "</span>"?> | <a href="/skaters.php">&raquo;Show active skaters</a> | <input type="text" name="query" class="searchSkater" placeholder="search"></p>
         <?php } else { ?>
-            <p class="showSkaters"><?php echo count($aUserArray) ?> skater<?php echo $adds ?> | <a href="/user.php">&raquo;Show only active skaters</a> | <input type="text" name="query" class="searchSkater" placeholder="search"></p>
+            <p class="showSkaters"><?php echo count($aUserArray) ?> skater<?php echo $adds ?> | <a href="/skaters.php">&raquo;Show only active skaters</a> | <input type="text" name="query" class="searchSkater" placeholder="search"></p>
         <?php } ?>
         </form>
 		<table id="usertable">
