@@ -1,6 +1,6 @@
 <html>
 <head>
-	<title>Ice Skate USA Freestyle Monitor</title>
+	<title>Ice Skate Memorial City : Learn to Skate</title>
 	<link rel="stylesheet" type="text/css" href="css/style.css?r=<?php echo rand(1000,9999) ?>">
 
 	<script src="/jquery-custom/external/jquery/jquery.js"></script>

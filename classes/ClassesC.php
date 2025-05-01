@@ -144,10 +144,12 @@ class Classes
         $result = mysqli_query($this->db, $sql);
         $skatersArray = [];
         while ($row = mysqli_fetch_array($result)) {
+            $skaterName = $row['slname'] . " " . substr($row['sfname'], 0,2);
+
             if ($row['pass'] == 1) {
-                $skatersArray[] = "<span class=\"green\">" . $row['lname'] . " " . substr($row['fname'], 0, 2) . ".</span>";
+                $skatersArray[] = "<span class=\"green\">" . $skaterName . ".</span>";
             } else {
-                $skatersArray[] = $row['lname'] . " " . substr($row['fname'], 0, 2) . ".";
+                $skatersArray[] = $skaterName . ".";
             }
         }
         return implode(", ", $skatersArray);

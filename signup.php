@@ -47,6 +47,22 @@ include_once("header.php");
 
         <div class="classDiv">
             <form action="" method="post" id="class_form">
+                <?php
+
+                $skaterName = $userData['sfname'] == $userData['fname'] && $userData['slname'] == $userData['lname'] ? "" : " (" . $userData['sfname'] . " " . $userData['slname'] . ")";
+                $aLevels = $oLTS->GetLevels();
+                $level = "Not Approved";
+                for($i = 0; $i < count($aLevels); $i++) {
+                    if ($aLevels[$i]['id'] == $userData['level']) {
+                        $level = $aLevels[$i]['level'];
+                    }
+                }
+                ?>
+
+                <h2>
+                    <span class="skaterName"><?php echo $userData['fname'] . " " . $userData['lname'] . $skaterName ?></span><br/>
+                    <span class="skaterName"><?php echo $level ?></span>
+                </h2>
                 <input type="hidden" name="skater" id="skater" value="<?php echo $sessionUser ?>">
                 <ul>
                     <?php

@@ -524,10 +524,10 @@
 
      }
 
-        function CheckName($fname, $lname)
+        function CheckName($sfname, $slname)
         {
 
-            $sql = "SELECT * FROM `users` WHERE `fname` = '" . mysqli_real_escape_string($this->con, $fname) . "' AND `lname` = '" . mysqli_real_escape_string($this->con, $lname) . "'";
+            $sql = "SELECT * FROM `users` WHERE `sfname` = '" . mysqli_real_escape_string($this->con, $sfname) . "' AND `slname` = '" . mysqli_real_escape_string($this->con, $slname) . "'";
 
             $result = mysqli_query($this->con, $sql);
 

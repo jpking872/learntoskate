@@ -25,25 +25,29 @@
 
 		$fname = trim($aPostVars['fname']);
 		$lname = trim($aPostVars['lname']);
+        $sfname = trim($aPostVars['sfname']);
+        $slname = trim($aPostVars['slname']);
 		$pin = trim($aPostVars['pin']);
 		$email = trim($aPostVars['email']);
 
-		if (strlen($pin) != 5) {
-			$error .= "PIN length must be 5 digits. ";
+        $validPin = preg_match("/^[A-Za-z0-9]{5}$/", $pin);
+
+		if (!$validPin) {
+			$error .= "PIN must be 5 letters or numbers. ";
 		}
 
 		$oData = new DataModel(0, $dbconnection);
 		$pinAvailable = $oData->CheckPIN($pin);
-        $emailAvailable = $oData->CheckEmail($email);
-        $nameAvailable = $oData->CheckName($fname, $lname);
+        //$emailAvailable = $oData->CheckEmail($email);
+        $nameAvailable = $oData->CheckName($sfname, $slname);
 
 		if (!$pinAvailable) {
 			$error .= "PIN is not available. ";
 		}
 
-        if (!$emailAvailable) {
+        /*if (!$emailAvailable) {
             $error .= "Email is not available. ";
-        }
+        }*/
 
         if (!$nameAvailable) {
             $error .= "Duplicate name. ";
@@ -51,9 +55,11 @@
 
 		if (!$error) {
 
-			$sql = "INSERT INTO `users` (`fname`, `lname`, `pin`, `email`, `role`, `created`) VALUES ( 
+			$sql = "INSERT INTO `users` (`fname`, `lname`, `sfname`, `slname`, `pin`, `email`, `role`, `created`) VALUES ( 
 				'" . mysqli_real_escape_string($dbconnection, $fname) . "', 
 				'" . mysqli_real_escape_string($dbconnection, $lname) . "',
+				'" . mysqli_real_escape_string($dbconnection, $sfname) . "', 
+				'" . mysqli_real_escape_string($dbconnection, $slname) . "',
 				'" . mysqli_real_escape_string($dbconnection, $pin) . "', 
 				'" . mysqli_real_escape_string($dbconnection, $email) . "',  
 				'1',
@@ -83,13 +89,48 @@
 		<div id="register_area">
             <p><span class="errorText"><?php echo $error ?></span></p>
 			<form id="registerForm" action="" method="post">
-				<p>First name:<br/><input type="text" name="fname" class="registerInput"></p>
-				<p>Last name:<br/><input type="text" name="lname" class="registerInput"></p>
-				<p>PIN: (5 digits)<br/><input type="password" name="pin" maxlength="5" class="registerInput registerPin"></p>
-				<p>Email:<br/><input type="text" name="email" class="registerInput"></p>
+				<p>*Parent First name:<br/><input type="text" name="fname" class="registerInput"></p>
+				<p>*Parent Last name:<br/><input type="text" name="lname" class="registerInput"></p>
+                <p>*Skater First name:<br/><input type="text" name="sfname" class="registerInput"></p>
+                <p>*Skater Last name:<br/><input type="text" name="slname" class="registerInput"></p>
+				<p>*PIN: (5 letters or numbers)<br/><input type="password" name="pin" maxlength="5" class="registerInput registerPin"></p>
+				<p>*Email:<br/><input type="text" name="email" class="registerInput"></p>
 				<p><input type="submit" value="Register" class="registerSubmit"></p>
 			</form>
 		</div>
+
+        <script type="text/javascript">
+            $("#registerForm").submit(function (e) {
+                var errorText = "";
+                if ($("input[name='fname']").val().length < 2 || $("input[name='fname']").val().length > 50) {
+                    errorText += "Parent first name is required.<br/>";
+                }
+                if ($("input[name='lname']").val().length < 2 || $("input[name='lname']").val().length > 50) {
+                    errorText += "Parent last name is required.<br/>";
+                }
+                if ($("input[name='sfname']").val().length < 2 || $("input[name='sfname']").val().length > 50) {
+                    errorText += "Skater first name is required.<br/>";
+                }
+                if ($("input[name='slname']").val().length < 2 || $("input[name='slname']").val().length > 50) {
+                    errorText += "Skater last name is required.<br/> ";
+                }
+                var pin= new RegExp('^[A-Za-z0-9]{5}$');
+                if (!pin.test($("input[name='pin']").val())) {
+                    errorText += "Pin must be 5 letters or numbers.<br/> ";
+                }
+                var email = new RegExp('^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$');
+                if (!email.test($("input[name='email']").val())) {
+                    errorText += "Valid email is required.<br/> ";
+                }
+
+                if (errorText.length > 0) {
+                    $(".errorText").html(errorText);
+                    return false;
+                } else {
+                    return true;
+                }
+            })
+        </script>
 <?php 
 
 	include_once("footer.php");

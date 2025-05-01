@@ -15,7 +15,7 @@
 
     if (isset($_GET['query'])) {
         $query = $_GET['query'];
-        if (preg_match("/[0-9]{4,5}/", $query)) {
+        if (isset($_GET['type']) && $_GET['type'] == 'pin') {
             $filter['pin'] = $query;
         } else {
             $filter['user'] = $query;
@@ -116,7 +116,8 @@
         </form>
 		<table id="usertable">
 			<tr>
-				<td class="medCell">Name</td>
+				<td class="medCell">Parent Name</td>
+				<td class="medCell">Skater Name</td>
 				<td class="medCell">Email</td>
 				<td class="smallCell">Level</td>
 				<td class="smallCell">Fee</td>
@@ -156,10 +157,14 @@
                 }
 
 				$rowClass = $user['balance'] >= 0 ? "" : " class=\"redtext\"";
+                $skaterName = $user['slname'] . ", " . $user['sfname'];
                 $regName = $user['registration'] ? date("m/d/Y", strtotime($user['registration'])) : "-";
                 $waiverName = $user['waiver'] ? date("m/d/Y", strtotime($user['waiver'])) : "-";
 
-				echo "<tr" . $fullRowClass . "><td class=\"medCell\"><a href=\"/profile.php?userid=" . $user['userid'] . "\" class=\"userLink\" data-uid=\"" . $user['userid'] . "\">" . $user['lname'] . ", " . $user['fname'] . $starCoach . "</a></td><td class=\"medCell\">" . $emailLink . "</td>
+				echo "<tr" . $fullRowClass . ">
+                        <td class=\"medCell\"><a href=\"/profile.php?userid=" . $user['userid'] . "\" class=\"userLink\" data-uid=\"" . $user['userid'] . "\">" . $user['lname'] . ", " . $user['fname'] . $starCoach . "</a></td>
+                        <td class=\"medCell\"><a href=\"/profile.php?userid=" . $user['userid'] . "\" class=\"userLink\" data-uid=\"" . $user['userid'] . "\">" . $skaterName . "</a></td>
+                        <td class=\"medCell\">" . $emailLink . "</td>
 						<td class=\"smallCell\">" . $levelName . "</td>
 						<td class=\"smallCell\">" . $regName . "</td>
 						<td class=\"smallCell\">" . $waiverName . "</td>

@@ -6,6 +6,8 @@
 	include_once("incl/session.php");
 	include_once("incl/config.php");
 
+    $errorMessage = "";
+
 	if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
         $aPostVars = $_POST;
@@ -32,7 +34,7 @@
 		</div>
 
 		<div id="login_area">
-            <?php if (isset($errorMessage)) echo "<p class=\"loginMessage\">" . $errorMessage . "</p>" ?>
+            <p class="loginMessage"><?php echo $errorMessage ?></p>
             <div class="signupLink">Enter your PIN and last name:</div>
 			<form id="login_form" method="post" action="">
 				<p>
@@ -55,6 +57,30 @@
                 </p>
 			</form>
 		</div>
+
+    <script type="text/javascript">
+        $("#login_form").submit(function (e) {
+            var errorText = "";
+            if ($("input[name='last']").val().length < 2 || $("input[name='last']").val().length > 50) {
+                errorText += "Skater last name is required.<br/> ";
+            }
+            if ($(".adminWrapper").is(":visible")) {
+                if ($("input[name='adminPass']").val().length < 8 || $("input[name='adminPass']").val().length > 16) {
+                    errorText += "Valid password is required.<br/> ";
+                }
+            }
+            var pin= new RegExp('^[A-Z,a-z,0-9]{4,5}$');
+            if (!pin.test($("input[name='pin']").val())) {
+                errorText += "Pin must be 5 letters or numbers.<br/> ";
+            }
+            if (errorText.length > 0) {
+                $(".loginMessage").html(errorText);
+                return false;
+            } else {
+                return true;
+            }
+        })
+    </script>
 
 <?php 
 

@@ -55,6 +55,8 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && $sessionRole == 3) {
     }
 }
 
+$skaterName = $aResult['userinfo']['sfname'] == $aResult['userinfo']['fname'] && $aResult['userinfo']['slname'] == $aResult['userinfo']['lname'] ? "" : " (" . $aResult['userinfo']['sfname'] . " " . $aResult['userinfo']['slname'] . ")";
+
 ?>
     <div style="clear:both"></div>
     <div class="infoBar">
@@ -64,7 +66,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && $sessionRole == 3) {
     <div class="main">
     <div class="historyDiv">
         <h2>
-            <span class="skaterName"><?php echo $aResult['userinfo']['fname'] . " " . $aResult['userinfo']['lname'] ?></span><br/>
+            <span class="skaterName"><?php echo $aResult['userinfo']['fname'] . " " . $aResult['userinfo']['lname'] . $skaterName ?></span><br/>
             <span class="skaterName"><?php echo $level ?></span>
         </h2>
         <div class="classesDiv">
