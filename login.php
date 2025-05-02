@@ -30,7 +30,7 @@ include_once("header.php");
 
 ?>
     <div class="infoBar">
-        <div class="pageTitle">LOGIN TO POINTS MONITOR</div>
+        <div class="pageTitle">LOGIN TO LEARN TO SKATE</div>
     </div>
 
     <div id="login_area">

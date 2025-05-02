@@ -2,7 +2,7 @@ body {
 	background-color: #180352;
 	font-size: 14px;
 	color:#FDFDFD;
-	font-family: Lato;
+	font-family: Archivo;
 	max-width:1024px;
 	margin: 10px auto 0 auto;
 }
@@ -983,7 +983,7 @@ table tr.showHideRow {
 	}
 
 	.historyDiv {
-		margin:30px 0;
+		margin:30px 5px;
 	}
 
 	.purchaseDiv {
@@ -1013,6 +1013,10 @@ table tr.showHideRow {
 
 	.headerImageMobile {
 		display:block;
+	}
+
+	#class_form {
+		margin: 0 15px;
 	}
 
 }
