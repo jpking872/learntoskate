@@ -31,6 +31,8 @@
 		$uid = mysqli_real_escape_string($dbconnection, $_POST['userid']);
 		$fname = mysqli_real_escape_string($dbconnection, $_POST['fname']);
 		$lname = mysqli_real_escape_string($dbconnection, $_POST['lname']);
+        $sfname = mysqli_real_escape_string($dbconnection, $_POST['sfname']);
+        $slname = mysqli_real_escape_string($dbconnection, $_POST['slname']);
 		$pin = mysqli_real_escape_string($dbconnection, $_POST['pin']);
 		$oldpin = mysqli_real_escape_string($dbconnection, $_POST['oldpin']);
 		$email = mysqli_real_escape_string($dbconnection, $_POST['email']);
@@ -49,7 +51,7 @@
 
 		if ($pinAvailable) {
 
-		 	$sql = "UPDATE `users` SET `fname` = '$fname', `lname` = '$lname', `pin` = '$pin', `email` = '$email',
+		 	$sql = "UPDATE `users` SET `fname` = '$fname', `lname` = '$lname', `sfname` = '$sfname', `slname` = '$slname', `pin` = '$pin', `email` = '$email',
                `level` = '$ilevel', `registration` = $iReg, `waiver` = $iWaiver WHERE `id` = '$uid' LIMIT 1";
 
 			$result = mysqli_query($dbconnection, $sql);
@@ -193,18 +195,21 @@
 				</select></p>
 				<p>Date:<br/><input type="text" name="date" id="purchaseDate" value="<?php echo date("Y-m-d") ?>"></p>
 				<p>Note:<br/><input name="note" type="text" size="125"></p>
-				<p><input type="submit" value="Enter"></p>
+				<p><input type="submit" value="Submit"></p>
 			</form>
 		</div>
 
 		<div id="editUser">
 			<h4>Edit User Form</h4>
 			<form id="editUserForm" method="post" action="">
+                <div class="errorText"></div>
 				<input type="hidden" name="oldpin" value="">
 				<input type="hidden" name="userid" value="0">
 				<div class="editLeft">
-					<p>First Name:<br><input type="text" name="fname"></p>
-					<p>Last Name:<br><input type="text" name="lname"></p>
+					<p>Parent First Name:<br><input type="text" name="fname"></p>
+					<p>Parent Last Name:<br><input type="text" name="lname"></p>
+                    <p>Skater First Name:<br><input type="text" name="sfname"></p>
+                    <p>Skater Last Name:<br><input type="text" name="slname"></p>
 					<p>PIN:<br><input type="text" name="pin"></p>
 					<p>Email:<br><input type="text" name="email"></p>
 				</div>
@@ -223,10 +228,9 @@
                     <p>Waiver Submitted:<br/><input type="text" class="waiverDate" name="waiver"></p>
 				</div>
 				<div style="clear:both"></div>
-				<p><input type="submit" value="edit"></p>
+				<p><input type="submit" value="Submit"></p>
 			</form>
 		</div>
-
 
 <?php 
 

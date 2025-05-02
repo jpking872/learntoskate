@@ -100,35 +100,37 @@
 		</div>
 
         <script type="text/javascript">
-            $("#registerForm").submit(function (e) {
-                var errorText = "";
-                if ($("input[name='fname']").val().length < 2 || $("input[name='fname']").val().length > 50) {
-                    errorText += "Parent first name is required.<br/>";
-                }
-                if ($("input[name='lname']").val().length < 2 || $("input[name='lname']").val().length > 50) {
-                    errorText += "Parent last name is required.<br/>";
-                }
-                if ($("input[name='sfname']").val().length < 2 || $("input[name='sfname']").val().length > 50) {
-                    errorText += "Skater first name is required.<br/>";
-                }
-                if ($("input[name='slname']").val().length < 2 || $("input[name='slname']").val().length > 50) {
-                    errorText += "Skater last name is required.<br/> ";
-                }
-                var pin= new RegExp('^[A-Za-z0-9]{5}$');
-                if (!pin.test($("input[name='pin']").val())) {
-                    errorText += "Pin must be 5 letters or numbers.<br/> ";
-                }
-                var email = new RegExp('^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$');
-                if (!email.test($("input[name='email']").val())) {
-                    errorText += "Valid email is required.<br/> ";
-                }
+            $(document).ready(function () {
+                $("#registerForm").submit(function (e) {
+                    var errorText = "";
+                    if ($("input[name='fname']").val().length < 2 || $("input[name='fname']").val().length > 50) {
+                        errorText += "Parent first name is required.<br/>";
+                    }
+                    if ($("input[name='lname']").val().length < 2 || $("input[name='lname']").val().length > 50) {
+                        errorText += "Parent last name is required.<br/>";
+                    }
+                    if ($("input[name='sfname']").val().length < 2 || $("input[name='sfname']").val().length > 50) {
+                        errorText += "Skater first name is required.<br/>";
+                    }
+                    if ($("input[name='slname']").val().length < 2 || $("input[name='slname']").val().length > 50) {
+                        errorText += "Skater last name is required.<br/> ";
+                    }
+                    var pin= new RegExp('^[A-Za-z0-9]{5}$');
+                    if (!pin.test($("input[name='pin']").val())) {
+                        errorText += "Pin must be 5 letters or numbers.<br/> ";
+                    }
+                    var email = new RegExp('^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$');
+                    if (!email.test($("input[name='email']").val())) {
+                        errorText += "Valid email is required.<br/> ";
+                    }
 
-                if (errorText.length > 0) {
-                    $(".errorText").html(errorText);
-                    return false;
-                } else {
-                    return true;
-                }
+                    if (errorText.length > 0) {
+                        $(".errorText").html(errorText);
+                        return false;
+                    } else {
+                        return true;
+                    }
+                })
             })
         </script>
 <?php 

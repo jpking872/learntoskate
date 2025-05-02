@@ -155,20 +155,11 @@ $(document).ready( function () {
 		}
 	})
 
-	//CallAjax("/dynamic/ajax.php", {type : "getSchedule", date : "0"}, ShowSchedule);
-	//CallAjax("/dynamic/ajax.php", {type : "getScheduleList", date : "0"}, ShowScheduleList);
-
-	//GetCurrentSkaters();
-
-	/*$(".userLink").click( function (e) {
-		e.preventDefault();
-		var uid = $(this).data("uid");
-		GetHistory(uid);
-	})*/
-
 	$("#editUserForm").submit(function () {
 
-		if ($("input[name='fname']").val() == "" || $("input[name='lname']").val() == "" || $("input[name='pin']").val() == "" || $("input[name='email']").val() == "" || 
+		if ($("input[name='fname']").val() == "" || $("input[name='lname']").val() == "" ||
+			$("input[name='sfname']").val() == "" || $("input[name='lname']").sval() == "" ||
+			$("input[name='pin']").val() == "" || $("input[name='email']").val() == "" ||
 			($("input[name='password']").val() != $("input[name='confpassword']").val())) {
 
 			alert("Data error");
@@ -351,6 +342,8 @@ $(document).ready( function () {
 		$("input[name='userid']").val(user.id);
 		$("input[name='fname']").val(user.fname);
 		$("input[name='lname']").val(user.lname);
+		$("input[name='sfname']").val(user.sfname);
+		$("input[name='slname']").val(user.slname);
 		$("input[name='pin']").val(user.pin);
 		$("input[name='oldpin']").val(user.pin);
 		$("input[name='email']").val(user.email);
