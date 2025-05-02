@@ -15,7 +15,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
     if (isset($loginResponse) && $loginResponse['status'] === true) {
 
-        header("Location: today.php");
+        header("Location: signup.php");
         exit();
 
     } else {
