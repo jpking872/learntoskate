@@ -937,6 +937,10 @@ table tr.showHideRow {
 		height:40px;
 	}
 
+	.classDiv .classTitle {
+		margin-top:16px
+	}
+
 	.reminderPage {
 		display:none;
 	}
@@ -1021,10 +1025,11 @@ table tr.showHideRow {
 
 	.classDiv .classTitle {
 		width:275px;
+		margin-top:7px;
 	}
 
 	.classDiv li {
 		margin:5px 0 10px 0;
 	}
-
+	
 }
