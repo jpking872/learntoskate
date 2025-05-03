@@ -1026,10 +1026,11 @@ table tr.showHideRow {
 	.classDiv .classTitle {
 		width:275px;
 		margin-top:7px;
+		margin-bottom:15px;
 	}
 
 	.classDiv li {
 		margin:5px 0 10px 0;
 	}
-	
+
 }
