@@ -953,6 +953,14 @@ table tr.showHideRow {
 
 @media (max-width: 767px) {
 
+	.headerImageFull {
+		display:none;
+	}
+
+	.headerImageMobile {
+		display:block;
+	}
+
 	.sidebar {
 		display:none;
 	}
@@ -987,7 +995,7 @@ table tr.showHideRow {
 	}
 
 	.historyDiv {
-		margin:30px 5px;
+		margin:30px 10px;
 	}
 
 	.purchaseDiv {
@@ -1009,14 +1017,6 @@ table tr.showHideRow {
 	.profile p {
 		clear:both;
 		height:66px;
-	}
-
-	.headerImageFull {
-		display:none;
-	}
-
-	.headerImageMobile {
-		display:block;
 	}
 
 	#class_form {
