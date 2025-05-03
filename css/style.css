@@ -64,9 +64,9 @@ div.smallNav {
 	width:100%;
 	text-align:right;
 	border-bottom:1px solid #150C32;
-	height:34px;
-	padding:10px 0 0 0;
-	font-size:20px;
+	height:30px;
+	padding:12px 0 0 0;
+	font-size:18px;
 }
 
 .smallNavItem a, .userName {
@@ -1017,6 +1017,14 @@ table tr.showHideRow {
 
 	#class_form {
 		margin: 0 15px;
+	}
+
+	.classDiv .classTitle {
+		width:275px;
+	}
+
+	.classDiv li {
+		margin:5px 0 10px 0;
 	}
 
 }
