@@ -52,7 +52,7 @@ a:hover {
 
 .navigation li {
 	float:right;
-	padding: 9px 10px;
+	padding: 11px 10px;
 }
 
 div.smallNav {
@@ -64,8 +64,8 @@ div.smallNav {
 	width:100%;
 	text-align:right;
 	border-bottom:1px solid #150C32;
-	height:36px;
-	padding:8px 0px 0 0;
+	height:34px;
+	padding:10px 0 0 0;
 	font-size:20px;
 }
 

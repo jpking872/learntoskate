@@ -23,7 +23,7 @@
     <div class="header">
         <a href="/">
             <img class="headerImageFull" src="images/ltsLogo.png" alt="Header Image">
-            <img class="headerImageMobile" src="images/ltsLogo.png" alt="Header Image">
+            <img class="headerImageMobile" src="images/ltsLogoMobile.png" alt="Header Image">
         </a>
     </div>
 
