@@ -449,9 +449,14 @@ input.pinInput {
 	height: 48px;
 	margin: 5px 0 0 0;
 	padding:0;
-	background: #000000;
+	background-color: var(--black);
 	color:var(--white);
 	float:left;
+	border-left:1px solid #888888;
+	border-top:1px solid #888888;
+	border-right:1px solid #111111;
+	border-bottom:1px solid #111111;
+	cursor:pointer;
 }
 
 .registerSubmit {
@@ -461,6 +466,11 @@ input.pinInput {
 	padding:0;
 	background-color:var(--black);
 	color:var(--white);
+	border-left:1px solid #CCCCCC;
+	border-top:1px solid #CCCCCC;
+	border-right:1px solid #111111;
+	border-bottom:1px solid #111111;
+	cursor:pointer;
 }
 
 input.registerInput {
