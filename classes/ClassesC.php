@@ -146,7 +146,7 @@ class Classes
         while ($row = mysqli_fetch_array($result)) {
             $skaterName = $row['slname'] . " " . substr($row['sfname'], 0,2);
 
-            if ($row['pass'] == 1) {
+            if ($row['pass'] == 1 && 0) {
                 $skatersArray[] = "<span class=\"green\">" . $skaterName . ".</span>";
             } else {
                 $skatersArray[] = $skaterName . ".";

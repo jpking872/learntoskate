@@ -27,7 +27,7 @@
     ?>
 
 		<div class="infoBar">
-            <h3 class="gold lato-bold ltsHeader"><?php echo date("l, F j, Y", strtotime($LTSDate)) ?></h3>
+            <h3 class="gold ltsHeader"><?php echo date("l, F j, Y", strtotime($LTSDate)) ?></h3>
             <span><?php echo date('g:ia', strtotime("+30 seconds")) ?></span>
                 <input type="hidden" name="date" id="LTSDate" style="width:100px" value="<?php echo $LTSDate ?>"><span class="calendarIcon">&#128466;</span>
             <?php if (count($classes) == 0) { ?>

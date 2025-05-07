@@ -1,25 +1,40 @@
+:root {
+	/*--black:#000000;
+	--white:#FDFDFD;
+	--highlight: #d5b58b;
+	--third:#00B33C;
+	--dark:rgba(20, 17,38, 0.7);
+	--light:#180352;*/
+	--black:#202020;
+	--white:#FDFDFD;
+	--highlight: #d5b58b;
+	--third:#00B33C;
+	--dark:#223F87;
+	--light:#153980;
+}
+
 body {
-	background-color: #180352;
+	background-color: var(--light);
 	font-size: 14px;
-	color:#FDFDFD;
+	color:var(--white);
 	font-family: Archivo;
 	max-width:1024px;
 	margin: 10px auto 0 auto;
 }
 
 a {
-	color:#FFFFFF;
+	color:var(--white);
 	text-decoration: none;
 }
 
 a:hover {
-	color:#d5b58b;
+	color:var(--highlight);
 	text-decoration: none;
 }
 
 .header {
 	width:100%;
-	background-color:#EFEFEF;
+	background-color:var(--white);
 }
 
 .header img {
@@ -32,16 +47,16 @@ a:hover {
 .navigation {
 	width: 100%;
 	height: 36px;
-	background-color: #000000;
+	background-color: var(--black);
 }
 
 .navigation a {
-	color:#FDFDFD;
+	color:var(--white);
 	text-decoration: none
 }
 
 .navigation a:hover {
-	color:#d5b58b;
+	color:var(--highlight);
 }
 
 .navigation ul {
@@ -57,7 +72,7 @@ a:hover {
 
 div.smallNav {
 	display:none;
-	background-color:black;
+	background-color:var(--black);
 }
 
 .smallNavItem {
@@ -75,7 +90,7 @@ div.smallNav {
 
 .infoBar {
 	width: 100%;
-	background-color:rgba(20,17,38,0.7);
+	background-color:var(--dark);
 	font-size: 16px;
 	text-align: center;
 	padding:10px 0;
@@ -111,26 +126,21 @@ div.smallNav {
 
 .pageTitle {
 	font-size: 20px;
-	color: #FFFFFF;
+	color: var(--white);
 	padding:5px 50px;
 }
 
 .gold {
-	color: #d5b58b;
+	color: var(--highlight);
 }
 
 .gold a {
-	color: #d5b58b;
+	color: var(--highlight);
 	text-decoration: underline;
 }
 
-.coachText {
-	color: #b8a8e9;
-	/*color: #00A0DB;*/
-}
-
 .green {
-	color:#00b33c;
+	color:var(--third);
 }
 
 #logSessionList .gold {
@@ -154,7 +164,7 @@ h2 {
 .headerBar {
 	width:100%;
 	height:32px;
-	background-color:rgba(20,17,38,0.7);
+	background-color:var(--dark);
 }
 
 .skaterContentArea {
@@ -186,12 +196,12 @@ h2 {
 .sidebar {
 	flex:none;
 	width:209px;
-	background-color: rgba(20,17,38,0.7);
+	background-color: var(--dark);
 }
 
 .schedule, .infoTable {
 	width:100%;
-	background-color:rgba(20,17,38,0.7);
+	background-color: var(--dark);
 	margin-bottom:2px;
 	padding-bottom:15px;
 }
@@ -199,7 +209,7 @@ h2 {
 .actionArea {
 	margin:0 5px 5px 0;
 	width:100%;
-	background-color:rgba(20,17,38,0.7);
+	background-color: var(--dark);
 	height:400px;
 }
 
@@ -226,7 +236,7 @@ h2 {
 }
 
 #skaterTableLeft tr, #skaterTableRight tr, #skaterHeaderTable tr, #skaterSingleTable tr, #classesTable tr {
-	background-color:rgba(20,17,38,0.7);
+	background-color:var(--dark);
 	height:12px;
 
 }
@@ -252,7 +262,7 @@ h2 {
 
 .skater {
 	padding:0 12px;
-	color:#d5b58b;
+	color:var(--highlight);
 }
 
 .skatersSingle, #skaterSingleHeaderTable {
@@ -282,7 +292,7 @@ input.deleteReg {
 
 #login_area p.loginMessage {
 	font-size: 16px;
-	color:#ffff00;
+	color:var(--highlight);
 }
 
 #add_class_form, #cancel_class_form, #delete_class_form {
@@ -312,7 +322,7 @@ input.deleteReg {
 }
 
 .goback a {
-	color: #d5b58b;
+	color: var(--highlight);
 	font-size: 14px;
 	text-decoration: underline;
 }
@@ -440,7 +450,7 @@ input.pinInput {
 	margin: 5px 0 0 0;
 	padding:0;
 	background: #000000;
-	color:#ffffff;
+	color:var(--white);
 	float:left;
 }
 
@@ -449,8 +459,8 @@ input.pinInput {
 	height: 48px;
 	margin: 5px 0 0 0;
 	padding:0;
-	background: #000000;
-	color:#ffffff;
+	background-color:var(--black);
+	color:var(--white);
 }
 
 input.registerInput {
@@ -478,7 +488,7 @@ input.registerPin {
 
 .errorText {
 	font-size:16px;
-	color: yellow;
+	color: var(--highlight);
 }
 
 p.message {
@@ -532,7 +542,6 @@ p.message {
 	display:none;
 	width: 820px;
 	color: #011526;
-	font-family: Lato
 }
 
 #pointBalance {
@@ -559,14 +568,14 @@ p.message {
 
 #footer {
 	color: #FDFDFD;
-	background-color: #000000;
+	background-color: var(--black);
 	height: 40px;
 	padding:10px 15px;
 	text-align: right;
 }
 
 #logSessionList {
-	color: #FFFFFF;
+	color: var(--white);
 	width:96%;
 	margin:0;
 	padding:0;
@@ -575,7 +584,7 @@ p.message {
 
 .sessionCheck {
 	font-size:20px;
-	color:#FFFFFF !important;
+	color:var(--white) !important;
 	width:25px;
 	margin:6px 0 8px 13px;
 }
@@ -594,7 +603,7 @@ p.message {
 	float:left;
 	width:75px;
 	height:82px;
-	color:#FFFFFF;
+	color:var(--white);
 }
 
 table thead {
@@ -616,11 +625,11 @@ table tr.evenRow {
 }
 
 table tr.evenRow2 {
-	background-color: #000000
+	background-color: var(--black);
 }
 
 .singleNote.evenRow2 {
-	background-color:#000000;
+	background-color: var(--black);
 }
 
 table tr.showHideRow {
@@ -636,11 +645,11 @@ table tr.showHideRow {
 
 }
 .userLink, .showSkaters a {
-	color:#d5b58b;
+	color:var(--highlight);
 }
 
 .userLink:hover, .showSkaters a:hover {
-	color:#FFFFFF;
+	color:var(--white);
 }
 
 .showSkaters {
@@ -683,7 +692,7 @@ table tr.showHideRow {
 }
 
 .mainContent {
-	background-color:rgba(20,17,38,0.7);
+	background-color:var(--dark);
 	margin:2px 0;
 	width:100%;
 	padding:20px 0;
@@ -694,7 +703,7 @@ table tr.showHideRow {
 }
 
 .skaterOddRow {
-	background-color: rgba(20, 17, 38, 0.7);
+	background-color: var(--dark);
 }
 
 .reminderPage {
@@ -711,7 +720,7 @@ table tr.showHideRow {
 
 .headline, .scheduleInfo, .skaterInfo, .news {
 	margin-top:3px;
-	background-color:rgba(20,17,38,0.7);
+	background-color:var(--dark);
 	height:auto;
 }
 
@@ -757,7 +766,7 @@ table tr.showHideRow {
 
 .largeGold {
 	display:block;
-	color:#d5b58b;
+	color:var(--highlight);
 	font-size:18px;
 	margin:12px 50px;
 }
@@ -765,7 +774,7 @@ table tr.showHideRow {
 .classDiv {
 	margin:2px 0;
 	padding: 0 0 20px 0;
-	background-color: rgba(20, 17, 38, 0.7);
+	background-color: var(--dark);
 }
 
 .classDiv ul {
@@ -800,6 +809,10 @@ table tr.showHideRow {
 	font-size:16px;
 }
 
+.classTitle.gold {
+	font-weight:700;
+}
+
 .activeClass, .addClass {
 	margin:10px 20px
 }
@@ -814,7 +827,7 @@ table tr.showHideRow {
 
 .headerBar .typeHeader, .ltsHeaderBar .typeHeader {
     font-size:16px;
-    color: #d5b58b;
+    color: var(--highlight);
     padding:7px 10px;
 	text-align:center;
 }
@@ -826,7 +839,7 @@ table tr.showHideRow {
 .ltsHeaderBar {
 	width:100%;
 	height:32px;
-	background-color:rgba(20,17,38,0.7);
+	background-color:var(--dark);
 	font-weight: 700;
 }
 
@@ -851,9 +864,10 @@ table tr.showHideRow {
 	color: #d5b58b;
 	text-align:right;
 	margin: 0 2px 0 0;
-	background-color: rgba(20, 17, 38, 0.7);
+	background-color: var(--dark);
 	display:table-cell;
 	height:100%;
+	font-weight:700
 
 }
 
@@ -862,7 +876,7 @@ table tr.showHideRow {
 	max-width: 100%;
 	padding:5px;
 	color: #FFFFFF;
-	background-color: rgba(20, 17, 38, 0.7);
+	background-color: var(--dark);
 	display:table-cell;
 	height:100%;
 }
@@ -1024,7 +1038,7 @@ table tr.showHideRow {
 	}
 
 	.classDiv .classTitle {
-		width:275px;
+		width:255px;
 		margin-top:7px;
 		margin-bottom:15px;
 	}
