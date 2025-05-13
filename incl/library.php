@@ -2,7 +2,9 @@
 
 function writeLog($message)
 {
-    $logFile = fopen('./logfile.log', "a+") or die("Unable to open file!");
+    $logFile = dirname(__DIR__, 3) . "/logs/logfile.log";
+
+    $logFile = fopen($logFile, "a+") or die("Unable to open file!");
     $logMessage = gmdate("d-M-Y H:i:s") . " " . $message . "\n";
     fwrite($logFile, $logMessage);
     fclose($logFile);
