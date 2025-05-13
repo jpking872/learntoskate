@@ -18,7 +18,7 @@ if ($_POST['actiontype'] == "adjust") {
 	$oData = new DataModel($aPostVar['uid'], $dbconnection);
 	$todaysPoints = $oData->TodaysAdjustedPoints() + $aPostVar['points'];
 
-	if ($todaysPoints <= MAX_POINTS_DAY) {
+	if ($todaysPoints <= MAX_POINTS_DAY && $todaysPoints >= -1 * MAX_POINTS_DAY) {
 
 		$aPostVar['admin'] = $_SESSION['id'];
 		$aPostVar['ipaddr'] = $_SERVER['REMOTE_ADDR'];

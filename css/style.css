@@ -161,6 +161,10 @@ h2 {
 	margin-top:2px;
 }
 
+.main .pageStatus {
+	margin-bottom:15px;
+}
+
 .headerBar {
 	width:100%;
 	height:32px;
@@ -347,13 +351,34 @@ input.deleteReg {
 	font-size:14px;
 }
 
-#addNote {
+#addNote, #sendEmail {
 	margin-top: 15px;
 	display:none;
 }
 
+textarea[name='message'] {
+	float:left;
+}
+
+#sendEmail {
+	margin-bottom:20px;
+}
+
+.noteButton {
+	background-color:var(--black);
+	color:var(--white);
+	border-width: 1px;
+	height:36px;
+}
+
 #addNote input {
 	height:36px;
+
+}
+
+#sendEmail input {
+	margin-top:60px;
+	margin-left:3px;
 }
 
 .historyNotes {
@@ -563,7 +588,6 @@ p.message {
 }
 
 .pointsDiv, .purchaseDiv, .classesDiv {
-	margin-top:15px;
 	float:left;
 	width: 340px;
 }

@@ -38,6 +38,8 @@ $balance = $oData->GetUserBalance();
 $aLevels = $oLTS->GetLevels();
 
 $level = "Not Approved";
+$pageStatus = "";
+
 for($i = 0; $i < count($aLevels); $i++) {
     if ($aLevels[$i]['id'] == $aResult['userinfo']['level']) {
         $level = $aLevels[$i]['level'];
@@ -52,6 +54,16 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && $sessionRole == 3) {
         $admin = $sessionUser;
         $note = $postVars['note'];
         $result = $oData->AppendNote($note, $uid, $admin);
+        $pageStatus = "Note added.";
+    } elseif(isset($postVars['submitEmail'])) {
+        $uid = $postVars['skaterId'];
+        $userData = $oData->GetUserData();
+        $message = $postVars['message'];
+        $payload = array("fname" => $userData['fname'], "lname" => $userData['lname'], "sfname" => $userData['sfname'], "slname" => $userData['slname'], "message" => $message);
+        $result = $oLTS->SendSingleEmail("kingjon90@gmail.com", $payload, "message");
+        if ($result) {
+            $pageStatus = "Email sent.";
+        }
     }
 }
 
@@ -65,6 +77,7 @@ $skaterName = $aResult['userinfo']['sfname'] == $aResult['userinfo']['fname'] &&
 
     <div class="main">
     <div class="historyDiv">
+        <?php echo strlen($pageStatus > 0) ? "<p class='pageStatus'>" . $pageStatus . "</p>" : "" ?>
         <h2>
             <span class="skaterName"><?php echo $aResult['userinfo']['fname'] . " " . $aResult['userinfo']['lname'] . $skaterName ?></span><br/>
             <span class="skaterName"><?php echo $level ?></span>
@@ -212,6 +225,18 @@ $skaterName = $aResult['userinfo']['sfname'] == $aResult['userinfo']['fname'] &&
                     Waiver Date: <?php echo $aResult['userinfo']['waiver'] ? date("m/d/Y", strtotime($aResult['userinfo']['waiver'])) : "-" ?>
                 </p>
 
+            </div>
+        <?php } ?>
+        <?php if (isset($sessionUser) && $sessionRole == 3) { ?>
+            <div class="historyNotes">
+                <p><a href="javascript:void(0)" class="sendEmailToggle gold">+ Send this skater an email message</a></p>
+                <form id="sendEmail" method="post" action="">
+                    <p><?php echo $aResult['userinfo']['fname'] ?>,</p>
+                    <input type="hidden" name="skaterId" value="<?php echo $uid ?>">
+                    <textarea name="message" rows="6" cols="50"></textarea>
+                    <input type="submit" name="submitEmail" class="noteButton" value="Send Email">
+                    <p>Yours truly,<br/>Ice Skate Memorial City</p>
+                </form>
             </div>
         <?php } ?>
     </div>

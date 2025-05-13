@@ -101,6 +101,49 @@ class LTS extends Classes
 
     }
 
+    public function SendSingleEmail($emailTo, $payload, $template)
+    {
+        $templateModel = [];
+
+        $templateModel['email'] = $emailTo;
+
+        if (is_array($payload) && count($payload) > 0) {
+            foreach ($payload as $key => $value) {
+                $templateModel[$key] = $value;
+            }
+        }
+
+        $message = array(
+            "From" => "admin@skatetothepoint.com",
+            "To" => $emailTo,
+            "TemplateID" => EMAIL_TEMPLATES[$template],
+            "TemplateModel" => $templateModel
+        );
+
+        $curl = curl_init();
+        curl_setopt_array($curl, array(
+            CURLOPT_URL => "https://api.postmarkapp.com/email/withTemplate",
+            CURLOPT_RETURNTRANSFER => true,
+            CURLOPT_CUSTOMREQUEST => "POST",
+            CURLOPT_POSTFIELDS => json_encode($message),
+            CURLOPT_HTTPHEADER => array(
+                "Accept: application/json",
+                "Content-Type: application/json",
+                "X-Postmark-Server-Token: " . POSTMARK_TOKEN
+            ),
+        ));
+
+        $response = curl_exec($curl);
+        $err = curl_error($curl);
+        curl_close($curl);
+        if ($err) {
+            return false;
+        } else {
+            $response = json_decode($response);
+            return $response;
+        }
+
+    }
 
 
 }

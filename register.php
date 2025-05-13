@@ -5,11 +5,14 @@
 	include_once("incl/config.php");
 	include_once("incl/database.php");
 	include_once("classes/DataModelC.php");
+	include_once("classes/LTS.php");
 
 	$bResult = 1;
 
 	$error = "";
     $successRegister = false;
+    $oLTS = new LTS($dbconnection);
+    $oData = new DataModel(0, $dbconnection);
 
 	if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
@@ -36,7 +39,6 @@
 			$error .= "PIN must be 5 letters or numbers. ";
 		}
 
-		$oData = new DataModel(0, $dbconnection);
 		$pinAvailable = $oData->CheckPIN($pin);
         //$emailAvailable = $oData->CheckEmail($email);
         $nameAvailable = $oData->CheckName($sfname, $slname);
@@ -69,6 +71,11 @@
 
 			if ($result) {
 				$successRegister = true;
+                $newId = mysqli_insert_id($dbconnection);
+                $oData->SetUser($newId);
+                $userData = $oData->GetUserData();
+                $payload = array("fname" => $userData['fname'], "lname" => $userData['lname'], "sfname" => $userData['sfname'], "slname" => $userData['slname'], "email" => $userData['email']);
+                $result = $oLTS->SendSingleEmail(DIRECTOR_EMAIL, $payload, 'register');
                 header("Location: login.php");
                 exit();
 			} else {

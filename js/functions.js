@@ -69,6 +69,7 @@ $(document).ready( function () {
 	$(".cancelClassToggle").click(function () { $("#cancel_class_form").toggle() });
 	$(".deleteClassToggle").click(function () { $("#delete_class_form").toggle() });
 	$(".addNoteToggle").click(function () { $("#addNote").toggle() });
+	$(".sendEmailToggle").click(function () { $("#sendEmail").toggle() });
 
     $("#purchase_form").submit(function (e) {
     	
