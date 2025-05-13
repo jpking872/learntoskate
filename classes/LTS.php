@@ -136,6 +136,7 @@ class LTS extends Classes
         $response = curl_exec($curl);
         $err = curl_error($curl);
         curl_close($curl);
+        writeLog($response);
         if ($err) {
             return false;
         } else {
