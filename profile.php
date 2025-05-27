@@ -59,8 +59,9 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && $sessionRole == 3) {
         $uid = $postVars['skaterId'];
         $userData = $oData->GetUserData();
         $message = $postVars['message'];
+        $message = str_replace(array("\r\n", "\r", "\n"), "<br />", $message);
         $payload = array("fname" => $userData['fname'], "lname" => $userData['lname'], "sfname" => $userData['sfname'], "slname" => $userData['slname'], "message" => $message);
-        $result = $oLTS->SendSingleEmail("kingjon90@gmail.com", $payload, "message");
+        //$result = $oLTS->SendSingleEmail("kingjon90@gmail.com", $payload, "message");
         if ($result) {
             $pageStatus = "Email sent.";
         }
@@ -229,15 +230,15 @@ $skaterName = $aResult['userinfo']['sfname'] == $aResult['userinfo']['fname'] &&
 
             </div>
         <?php } ?>
-        <?php if (isset($sessionUser) && $sessionRole == 3) { ?>
+        <?php if (isset($sessionUser) && $sessionRole == 4) { ?>
             <div class="historyNotes">
                 <p><a href="javascript:void(0)" class="sendEmailToggle gold">+ Send this skater an email message</a></p>
                 <form id="sendEmail" method="post" action="">
                     <p><?php echo $aResult['userinfo']['fname'] ?>,</p>
                     <input type="hidden" name="skaterId" value="<?php echo $uid ?>">
-                    <textarea name="message" rows="6" cols="50"></textarea>
+                    <textarea class="emailMessage" wrap="hard" name="message" rows="6" cols="50"></textarea>
                     <input type="submit" name="submitEmail" class="noteButton" value="Send Email">
-                    <p>Yours truly,<br/>Ice Skate Memorial City</p>
+                    <p>Regards,<br/>Skate to the Point</p>
                 </form>
             </div>
         <?php } ?>

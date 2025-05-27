@@ -23,7 +23,7 @@ if ($_POST) {
 
     if (isset($_POST['class_submit'])) {
 
-        $uid = $_POST['skater'];
+        $uid = $sessionUser;
         $oLTS->removeUserFromActiveClasses($uid);
         if (array_key_exists('classToAdd', $_POST) && is_array($_POST['classToAdd'])) {
             foreach ($_POST['classToAdd'] as $key => $value) {
@@ -63,7 +63,6 @@ include_once("header.php");
                     <span class="skaterName"><?php echo $userData['fname'] . " " . $userData['lname'] . $skaterName ?></span><br/>
                     <span class="skaterName"><?php echo $level ?></span>
                 </h2>
-                <input type="hidden" name="skater" id="skater" value="<?php echo $sessionUser ?>">
                 <ul>
                     <?php
 

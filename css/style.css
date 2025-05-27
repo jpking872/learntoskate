@@ -929,6 +929,10 @@ table tr.showHideRow {
 	padding:2px;
 }
 
+.emailMessage {
+	white-space: pre-wrap;
+}
+
 .classesPaginate {
 	display:none;
 }
