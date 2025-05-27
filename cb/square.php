@@ -9,6 +9,7 @@ require_once($_SERVER['DOCUMENT_ROOT'] . "/classes/SquareC.php");
 $raw_post_data = file_get_contents('php://input');
 //$raw_post_data = '{"merchant_id":"4Z3XK4ADTNFB8","type":"order.fulfillment.updated","event_id":"6f79a2ea-47c3-3ec0-8e70-1286981a282b","created_at":"2024-08-05T14:46:34Z","data":{"type":"order_fulfillment_updated","id":"dhrN4uQUF9eo4I1v2nvSPpRdfHXZY","object":{"order_fulfillment_updated":{"created_at":"2024-08-05T14:46:30.424Z","fulfillment_update":[{"fulfillment_uid":"vsj1b8Kz32xMHNkZcPl7gC","new_state":"PROPOSED","old_state":"PROPOSED"}],"location_id":"2N1MFGS350ETN","order_id":"dhrN4uQUF9eo4I1v2nvSPpRdfHXZY","state":"OPEN","updated_at":"2024-08-05T14:46:34.155Z","version":4}}}}';
 writeLog($raw_post_data);
+exit();
 
 $jsonObj = json_decode($raw_post_data);
 global $dbconnection;
