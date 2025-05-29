@@ -947,6 +947,10 @@ table tr.showHideRow {
 	margin-top: -2px;
 }
 
+#enterOrder input, #enterOrder select {
+	height:36px;
+}
+
 @media (max-width: 1023px)  {
 
 	body {

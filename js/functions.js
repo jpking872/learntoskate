@@ -58,6 +58,7 @@ $(document).ready( function () {
 
 	$( ".registrationDate" ).datepicker({ dateFormat: "yy-mm-dd"});
 	$( ".waiverDate" ).datepicker({ dateFormat: "yy-mm-dd"});
+	$( ".orderDate" ).datepicker({ dateFormat: "yy-mm-dd"});
 
 	$(".calendarIcon").click(function () {
 		$("#LTSDate").datepicker("show");
