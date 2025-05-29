@@ -29,7 +29,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     if ($userId != false) {
 
         $orderData = [
-            'order_id' => "",
+            'order_id' => uniqid("lts_"),
             'item' => 1,
             'uid' => $userId,
             'skater_pin' => $pin,
@@ -44,19 +44,26 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         $result = $oSquare->InsertOrder();
 
         $purchaseData = $oSquare->BuildPurchaseData($userId, $product, $quantity);
+        $purchaseData['admin'] = $sessionUser;
+        $purchaseData['date'] = $orderDate;
+        $purchaseData['note'] = "Manual entry";
+
         writeLog(print_r($purchaseData, true));
 
         $oDataModel->SetUser($purchaseData['uid']);
         $result = $oDataModel->AddPurchase($purchaseData);
         if ($result) {
-            //$purchaseId = $oDataModel->GetLastInsertId() ?? -1;
-            //$oSquare->UpdatePurchaseId($orderData['order_id'], $item, $purchaseId);
+            $purchaseId = $oDataModel->GetLastInsertId() ?? -1;
+            $oSquare->UpdatePurchaseId($orderData['order_id'], 1, $purchaseId);
             $errorText = "Added Order";
         } else {
             $errorText = "Failed adding Order";
             writeLog("Add purchase failed");
         }
 
+    } else {
+
+        $errorText = "Unable to find pin";
     }
 
 }
@@ -79,7 +86,7 @@ include_once("header.php");
     <form id="enterOrder" method="post">
         <p>Square name:<br/><input type="text" name="squareName" maxlength="50"></p>
         <p>Square email:<br/><input type="text" name="squareEmail" maxlength="250"></p>
-        <p>Skater Pin:<br/><input type="text" class="pinInput" name="skaterPin" maxlength="5"></p>
+        <p>Skater Pin:<br/><input type="password" class="pinInput" name="skaterPin" maxlength="5"></p>
         <p>Product:<br/>
             <select class="orderDropdown" name="product">
         <?php foreach($aProducts as $key => $value) { ?>

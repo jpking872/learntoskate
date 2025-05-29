@@ -180,14 +180,10 @@ class Square {
         if ($currentProduct['num_sessions'] == "9999") {
             $month = date("n");
             $year = date("Y");
-            $i = 0;
-            while ($this->dataModel->HasUserPass($purchaseData['uid'], $month, $year)) {
-                if (++$i > 3) break;
-                $month++;
-                if ($month == 13) {
-                    $month = 1;
-                    $year++;
-                }
+            $month++;
+            if ($month == 13) {
+                $month = 1;
+                $year++;
             }
             $purchaseData['pass'] = $month . "-" . $year;
         } else {

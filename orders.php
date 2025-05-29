@@ -89,11 +89,7 @@ include_once("header.php");
             </p>
 
         <?php } ?>
-
-    <script type="text/javascript">
-
-    </script>
-
+    <p><a href="/enterOrder.php"><button class="pointButton">Add</button></a></p>
     <?php
 
     include_once("footer.php");
