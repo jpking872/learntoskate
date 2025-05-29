@@ -108,7 +108,7 @@ include_once("header.php");
             </select>
         </p>
         <p>Order Date:<br/><input type="text" class="orderDate" name="orderDate" maxlength="25" value="<?php echo date("Y-m-d") ?>"></p>
-        <p><input type="submit" name="submitOrder" class="noteButton" value="Enter"></p>
+        <p><input type="submit" name="submitOrder" class="orderButton" value="Enter"></p>
     </form>
 
 

@@ -484,6 +484,20 @@ input.pinInput {
 	cursor:pointer;
 }
 
+.orderButton {
+	width: 70px;
+	height: 48px;
+	margin: 5px 0 0 0;
+	padding:0;
+	background-color: var(--black);
+	color:var(--white);
+	border-left:1px solid #888888;
+	border-top:1px solid #888888;
+	border-right:1px solid #111111;
+	border-bottom:1px solid #111111;
+	cursor:pointer;
+}
+
 .registerSubmit {
 	width: 70px;
 	height: 48px;
@@ -949,6 +963,10 @@ table tr.showHideRow {
 
 #enterOrder input, #enterOrder select {
 	height:36px;
+}
+
+#enterOrder input.orderButton {
+	height:48px;
 }
 
 @media (max-width: 1023px)  {

@@ -77,7 +77,8 @@ include_once("header.php");
                 Package: <span class="gold"><?php echo $aProducts[$tmp['product_id']]['title'] ?></span><br/>
                 Status: <span class="gold"><?php echo $tmp['status'] ?></span> |
                 Purchase Id: <span class="gold"><?php echo $tmp['purchase_id'] ?></span> |
-                Time: <span class="gold"><?php echo date($tmp['order_updated']) ?></span>
+                Time: <span class="gold"><?php echo date($tmp['order_updated']) ?></span></p>
+
                 <?php if (!$isValid) { ?>
                 <form class="reconcilePurchase" method="post">
                     Correct PIN: <input type="text" class="pinInput" name="pin">
@@ -86,10 +87,9 @@ include_once("header.php");
                     <input type="submit" value="Reconcile">
                 </form>
                 <?php } ?>
-            </p>
 
         <?php } ?>
-    <p><a href="/enterOrder.php"><button class="pointButton">Add</button></a></p>
+    <p><a href="/enterOrder.php"><button class="orderButton">Add</button></a></p>
     <?php
 
     include_once("footer.php");
