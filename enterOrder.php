@@ -48,6 +48,12 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         $purchaseData['date'] = $orderDate;
         $purchaseData['note'] = "Manual entry";
 
+        //update registration
+        if ($product == 4) {
+            $oSquare->AddRegistration($userId, $orderDate);
+            $purchaseData['note'] = "Registration";
+        }
+
         writeLog(print_r($purchaseData, true));
 
         $oDataModel->SetUser($purchaseData['uid']);

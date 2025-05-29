@@ -193,6 +193,17 @@ class Square {
         return $purchaseData;
     }
 
+    function AddRegistration($uid, $orderDate) {
+
+        $sql = "UPDATE `users` SET `registration` = '" . mysqli_real_escape_string($this->db, $orderDate) .
+            "' WHERE `id` = '" . mysqli_real_escape_string($this->db, $uid) . "' LIMIT 1";
+
+        $result = mysqli_query($this->db, $sql);
+
+        return $result;
+
+    }
+
     function UpdateUserId($orderId, $item, $userId) {
 
         $sql = "UPDATE `orders` SET `uid` = '" . mysqli_real_escape_string($this->db, $userId) .
