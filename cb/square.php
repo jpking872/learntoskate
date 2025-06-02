@@ -46,7 +46,7 @@ switch($jsonObj->type) {
 
         for ($i = 0; $i < count($items); $i++) {
             $quantity = $items[$i]->quantity ?? 0;
-            $skater = substr($items[$i]->modifiers[0]->name, 21) ?? '';
+            $skater = substr($items[$i]->modifiers[0]->name, 12) ?? '';
             $catalogId = $items[$i]->modifiers[1]->catalog_object_id ?? '';
             $freestylePackage = $products[$catalogId] ?? 0;
             $item = $i + 1;

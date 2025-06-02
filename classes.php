@@ -65,7 +65,7 @@ include_once("header.php");
 
     for ($i = 0; $i < count($aActiveClasses); $i++) { ?>
         <div class="activeClass">
-                 <span class="gold"><?php echo $aActiveClasses[$i]['title'] . " " .
+                 <span class="gold"><?php echo $aActiveClasses[$i]['title'] . " | " .
                          date('l F j g:ia', strtotime($aActiveClasses[$i]['start'])) . " - " . date('g:ia', strtotime($aActiveClasses[$i]['end'])) ?>
                      <?php echo ($tmpSize = $oClasses->getClassSize($aActiveClasses[$i]['id'])) > 0 ? " (" . $tmpSize . ")" : "" ?>
                  </span>
