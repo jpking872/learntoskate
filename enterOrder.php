@@ -18,6 +18,7 @@ $errorText = "";
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
     $aPostVars = $_POST;
+    $orderId = $aPostVars['orderId'];
     $name = $aPostVars["squareName"];
     $email = $aPostVars["squareEmail"];
     $pin = $aPostVars["skaterPin"];
@@ -29,7 +30,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     if ($userId != false) {
 
         $orderData = [
-            'order_id' => uniqid("lts_"),
+            'order_id' => $orderId,
             'item' => 1,
             'uid' => $userId,
             'skater_pin' => $pin,
@@ -90,6 +91,7 @@ include_once("header.php");
     <p><span class="errorText"><?php echo $errorText ?></span></p>
 
     <form id="enterOrder" method="post">
+        <p>Square Order #:<br/><input type="text" name="orderId" maxlength="50"></p>
         <p>Square name:<br/><input type="text" name="squareName" maxlength="50"></p>
         <p>Square email:<br/><input type="text" name="squareEmail" maxlength="250"></p>
         <p>Skater Pin:<br/><input type="password" class="pinInput" name="skaterPin" maxlength="5"></p>
@@ -118,6 +120,9 @@ include_once("header.php");
         $(document).ready(function () {
             $("#enterOrder").submit(function (e) {
                 var errorText = "";
+                if ($("input[name='orderId']").val().length < 5 || $("input[name='orderId']").val().length > 50) {
+                    errorText += "Square order id is required.<br/>";
+                }
                 if ($("input[name='squareName']").val().length < 5 || $("input[name='squareName']").val().length > 50) {
                     errorText += "Square name is required.<br/>";
                 }
