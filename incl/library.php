@@ -2,7 +2,7 @@
 
 function writeLog($message)
 {
-    $logFileName = $_SERVER['DOCUMENT_ROOT'] . "../../logs/ltslog.log";
+    $logFileName = $_SERVER['DOCUMENT_ROOT'] . "/../../logs/ltslog.log";
     $logFile = fopen($logFileName, "a+") or die("Unable to open file!");
     $logMessage = gmdate("d-M-Y H:i:s") . " " . $message . "\n";
     fwrite($logFile, $logMessage);

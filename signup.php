@@ -12,6 +12,8 @@ if (!$sessionUser) {
     header("Location: /login.php");
 }
 
+writeLog('in signup');
+
 $oDataModel = new DataModel($sessionUser, $dbconnection);
 $oDataModel->SetUser($sessionUser);
 $userData = $oDataModel->GetUserData();
