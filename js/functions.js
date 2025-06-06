@@ -106,7 +106,6 @@ $(document).ready( function () {
 	$(".editLink").click( function (e) {
 		e.preventDefault();
 		var id = $(this).data("id");
-		console.log(id)
 		EditUser(id);
 	});
 

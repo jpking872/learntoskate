@@ -134,6 +134,10 @@
 
 	} else if ($_POST['type'] == 'getUser') {
 
+        if (!$sessionUser || $sessionRole != 3) {
+            return false;
+        }
+
 		$uid = $_POST['id'];
 		$oData = new DataModel($uid, $dbconnection);
 		$aUser = $oData->GetUserData();
