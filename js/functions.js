@@ -191,8 +191,8 @@ $(document).ready( function () {
 		}
 	})
 
-	$("#pinInput").keyup(function() {
-		CallAjax("/dynamic/ajax.php", {type : "checkAdmin", pin : $(this).val() }, ShowAdminPass);
+	$("#nameInput").keyup(function() {
+		CallAjax("/dynamic/ajax.php", {type : "checkAdmin", pin : $("#pinInput").val(), lname: $("#nameInput").val() }, ShowAdminPass);
 	})
 
 	$(".toggleShow").click(function () {

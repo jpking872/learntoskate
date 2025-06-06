@@ -173,9 +173,10 @@
     } else if ($_POST['type'] == 'checkAdmin') {  
 
     	$pin = $_POST['pin'];
+        $lname = $_POST['lname'];
     	$oData = new DataModel(0, $dbconnection);
 
-    	$result = $oData->IsAdminPIN($pin);
+        $result = $oData->IsAdminPIN($pin, $lname);
 
     	if ($result != false) {
     		echo "1";

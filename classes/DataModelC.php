@@ -547,9 +547,9 @@
 
      }
 
-     function IsAdminPIN($pin) {
+     function IsAdminPIN($pin, $lname) {
 
-          $sql = "SELECT * FROM `users` WHERE `pin` = '" . $pin . "'";
+         $sql = "SELECT * FROM `users` WHERE `pin` = '" . mysqli_real_escape_string($this->con, $pin) . "' AND `lname` = '" .mysqli_real_escape_string($this->con, $lname) . "'";
 
           $result = mysqli_query($this->con, $sql);
 
