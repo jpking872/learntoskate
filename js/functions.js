@@ -324,7 +324,6 @@ $(document).ready( function () {
 
 
 	function alertDelete() {
-		alert("User deleted");
 		window.location.reload();
 	}
 

@@ -427,7 +427,7 @@
 
       function GetAllUsers($filter) {
 
-          $sql = "SELECT *, u.`id` as `userid`, GROUP_CONCAT(p.`month`,'/',p.`year`) as pass FROM `users` u LEFT JOIN passes p ON u.`id` = p.`uid` WHERE u.`role` > 0 GROUP BY u.`id` ORDER BY u.`lname` ASC, u.`fname` ASC";
+          $sql = "SELECT *, u.`id` as `userid`, GROUP_CONCAT(p.`month`,'/',p.`year`) as pass FROM `users` u LEFT JOIN passes p ON u.`id` = p.`uid` WHERE u.`role` > 0 GROUP BY u.`id` ORDER BY u.`slname` ASC, u.`sfname` ASC";
           $result = mysqli_query($this->con, $sql);
 
           $returnUsers = array();
@@ -459,7 +459,7 @@
 
       function DeleteUser() {
 
-         $sql = "DELETE FROM `users` WHERE `id` = '" . $this->userid . "'";
+         $sql = "DELETE FROM `users` WHERE `id` = '" . $this->userid . "' LIMIT 1";
          $result = mysqli_query($this->con, $sql);
 
          return $result;

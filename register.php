@@ -3,6 +3,7 @@
 	include_once("classes/loginC.php");
 	include_once("incl/session.php");
 	include_once("incl/config.php");
+    include_once("incl/library.php");
 	include_once("incl/database.php");
 	include_once("classes/DataModelC.php");
 	include_once("classes/LTS.php");

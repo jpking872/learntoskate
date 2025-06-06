@@ -118,8 +118,8 @@
         </form>
 		<table id="usertable">
 			<tr>
+                <td class="medCell">Skater Name</td>
 				<td class="medCell">Parent Name</td>
-				<td class="medCell">Skater Name</td>
 				<td class="medCell">Email</td>
 				<td class="smallCell">Level</td>
 				<td class="smallCell">Fee</td>
@@ -164,14 +164,16 @@
                 $waiverName = $user['waiver'] ? date("m/d/Y", strtotime($user['waiver'])) : "-";
 
 				echo "<tr" . $fullRowClass . ">
-                        <td class=\"medCell\"><a href=\"/profile.php?userid=" . $user['userid'] . "\" class=\"userLink\" data-uid=\"" . $user['userid'] . "\">" . $user['lname'] . ", " . $user['fname'] . $starCoach . "</a></td>
                         <td class=\"medCell\"><a href=\"/profile.php?userid=" . $user['userid'] . "\" class=\"userLink\" data-uid=\"" . $user['userid'] . "\">" . $skaterName . "</a></td>
+                        <td class=\"medCell\"><a href=\"/profile.php?userid=" . $user['userid'] . "\" class=\"userLink\" data-uid=\"" . $user['userid'] . "\">" . $user['lname'] . ", " . $user['fname'] . $starCoach . "</a></td>
                         <td class=\"medCell\">" . $emailLink . "</td>
-						<td class=\"smallCell\">" . $levelName . "</td>
+						<td class=\"medCell\">" . $levelName . "</td>
 						<td class=\"smallCell\">" . $regName . "</td>
 						<td class=\"smallCell\">" . $waiverName . "</td>
 						<td class=\"smallCell\"><span$rowClass>" . $user['balance'] . "</span></td><td class=\"smallCell\">" . $passCheck . "</td><td class=\"medCell\"><a href=\"#\" class=\"editLink\" data-id=\"" . $user['userid'] . "\">edit</a> 
-						<a href=\"#\" class=\"adjustLink\" data-id=\"" . $user['userid'] . "\" >adj</a></td></tr>";
+						<a href=\"#\" class=\"adjustLink\" data-id=\"" . $user['userid'] . "\" >adj</a> 
+						<a href=\"#\" class=\"deleteLink\" data-id=\"" . $user['userid'] . "\" >del</a>
+						</td></tr>";
 
 				} ?> 
 
