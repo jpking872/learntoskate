@@ -77,7 +77,7 @@ class Square {
 
     function GetRecentOrders() {
 
-        $sql = "SELECT * FROM `orders` WHERE `order_updated` > (DATE_SUB(CURDATE(), INTERVAL 2 DAY)) ORDER BY `order_updated` DESC";
+        $sql = "SELECT * FROM `orders` WHERE `order_updated` > (DATE_SUB(CURDATE(), INTERVAL 5 DAY)) ORDER BY `order_updated` DESC";
         $result = mysqli_query($this->db, $sql);
 
         $aOrders = [];

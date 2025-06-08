@@ -595,7 +595,7 @@
          $sql2 = "UPDATE `class_user` cu LEFT JOIN `classes` c ON cu.`classid` = c.`id` SET cu.`pass` = '1'  
             WHERE `uid` = '" . mysqli_real_escape_string($this->con, $uid) . "' AND DATE(c.`start`) >= '" . $dbDate1 . "' AND DATE(c.`end`) < '" . $dbDate2 . "'";
          $result = mysqli_query($this->con, $sql2);
-
+         
         return $result;
 
      }

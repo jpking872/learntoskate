@@ -34,7 +34,7 @@ function Login($aPostVars) {
 			$_SESSION['name'] = $aRow['fname'] . " " . $aRow['lname'];
 			$_SESSION['role'] = $aRow['role'];
 			if ($aRow['level'] == 0) {
-                return array('status' => false, 'data' => 'In order to sign up for classes on Learn to Skate, you must have paid the registration fee and submitted the waiver.');
+                return array('status' => false, 'data' => 'In order to sign up for classes on Learn to Skate to the Point, you must have paid the registration fee and submitted the waiver.');
             }
 
 			return array('status' => true, 'data' => $aRow);
