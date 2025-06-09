@@ -443,7 +443,8 @@
               } elseif (isset($filter['user'])) {
                   $tmpString = $filter['user'];
 
-                  if (stristr($row['fname'], $tmpString) || stristr($row['lname'], $tmpString) || stristr($row['email'], $tmpString)) {
+                  if (stristr($row['fname'], $tmpString) || stristr($row['lname'], $tmpString) ||
+                      stristr($row['sfname'], $tmpString) || stristr($row['slname'], $tmpString) || stristr($row['email'], $tmpString)) {
                       $returnUsers[] = $row;
 
                   }
