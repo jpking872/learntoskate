@@ -92,9 +92,9 @@ include_once("header.php");
 
     <form id="enterOrder" method="post">
         <p>Square Order # (optional):<br/><input type="text" name="orderId" maxlength="50"></p>
+        <p>Square email:<br/><input type="text" name="squareEmail" maxlength="250"></p>
         <p>Skater name:<br/><input type="text" name="skaterName" maxlength="50"></p>
         <p>Skater Pin:<br/><input type="password" class="pinInput" name="skaterPin" maxlength="5"></p>
-        <p>Square email:<br/><input type="text" name="squareEmail" maxlength="250"></p>
         <p>Product:<br/>
             <select class="orderDropdown" name="product">
         <?php foreach($aProducts as $key => $value) { ?>
