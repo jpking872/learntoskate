@@ -152,7 +152,7 @@ class Square {
         }
 
         $sqladd = substr($sqladd, 0, -2);
-        $sql = "UPDATE `orders` SET " . $sqladd . " WHERE `order_id` = '" . mysqli_real_escape_string($this->db, $orderData['order_id']) . "' AND `item` = '" . $orderData['item'] . "'";
+        $sql = "UPDATE `orders` SET " . $sqladd . " WHERE `order_id` = '" . mysqli_real_escape_string($this->db, $orderData['order_id']) . "' AND `item` = '" . $orderData['item'] . "' LIMIT 1";
 
         $result = mysqli_query($this->db, $sql);
 

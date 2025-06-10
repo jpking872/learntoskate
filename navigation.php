@@ -8,7 +8,7 @@ $isLogin = $_SERVER['REQUEST_URI'] == '/login.php';
 		<li><a href="/profile.php">PROFILE</a></li>
         <li><a href="/today.php">TODAY</a></li>
 		<li><a href="/signup.php">SIGNUP</a></li>
-        <li><a href="https://squareup.com/store/ice-skate-usa">PURCHASE</a></li>
+        <li><a href="https://squareup.com/store/ice-skate-usa" target="_blank">PURCHASE</a></li>
 	<?php } ?>
 
 	<?php if ($sessionRole == 3) { ?>
