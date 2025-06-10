@@ -26,12 +26,12 @@ switch($jsonObj->type) {
         $orderId = $jsonObj->data->id;
         if ($jsonObj->data->object->order_fulfillment_updated->state == "DRAFT") {
             writeLog("draft");
-            return;
+            exit();
         }
         //$orderId = "3k8Oc7b9h8APM0ALePt3VHuT0hdZY";
 
         if ($merchantId != ISUSA_MERCHANT_ID) {
-            return;
+            exit();
         }
 
         $response = SquareAPICall(SQUARE_API_HOST . "/v2/orders/$orderId", "GET", "");
