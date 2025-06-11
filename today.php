@@ -9,7 +9,7 @@
     include_once("classes/ClassesC.php");
 
 	if (!$sessionUser || $sessionRole < 1) {
-		//header("Location: /login.php");
+		header("Location: /login.php");
 	}
 
     $numSkaters = 0;
@@ -43,9 +43,15 @@
     $currentSessionTitle = $strstart . " to " . $strend;
     $classCount = 0;
 
+    //get total number of skaters for session
+    $totalInClass = 0;
+    for($k = 0; $k < count($classes[$i]['classes']); $k++) {
+        $totalInClass += $oLTS->getClassSize($classes[$i]['classes'][$k]['id']);
+    }
+
     ?>
     <div class="ltsHeaderBar">
-        <div class="typeHeader"><?php echo $currentSessionTitle ?></div>
+        <div class="typeHeader"><?php echo $currentSessionTitle . " (" . $totalInClass . ")" ?></div>
     </div>
 
     <div class="ltsTable">

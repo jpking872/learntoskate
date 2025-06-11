@@ -83,7 +83,7 @@ switch($jsonObj->type) {
                 'uid' => $userId,
                 'skater_pin' => $skaterPin,
                 'square_email' => $email,
-                'square_display_name' => $displayName,
+                'square_display_name' => $skaterName,
                 'quantity' => $quantity,
                 'product_id' => $freestylePackage,
                 'status' => $state
