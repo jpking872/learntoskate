@@ -299,6 +299,25 @@ input.deleteReg {
 	color:var(--highlight);
 }
 
+.infoMessage {
+	font-size: 16px;
+	color:var(--highlight);
+}
+
+.whiteText {
+	font-size:16px;
+	color:var(--white);
+}
+
+#login_area ol {
+	font-size: 16px;
+}
+
+#login_area ol a {
+	color:var(--highlight);
+	text-decoration:underline;
+}
+
 #add_class_form, #cancel_class_form, #delete_class_form {
 	display:none;
 }
@@ -401,6 +420,10 @@ table td.medCell {
 
 table td.largeCell {
 	width:175px;
+}
+
+.centerCell {
+	text-align:center;
 }
 
 .loadingDiv {

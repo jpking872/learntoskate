@@ -122,10 +122,10 @@
 				<td class="medCell">Parent Name</td>
 				<td class="medCell">Email</td>
 				<td class="smallCell">Level</td>
-				<td class="smallCell">Fee</td>
-				<td class="smallCell">Waiver</td>
-				<td class="smallCell">Points Balance</td>
-				<td class="smallCell">Pass</td>
+				<td class="smallCell centerCell">Fee</td>
+				<td class="smallCell centerCell">Waiver</td>
+				<td class="smallCell centerCell">Balance</td>
+				<td class="smallCell centerCell">Pass</td>
 				<td class="medCell">Actions</td>
 			</tr>
 
@@ -168,9 +168,9 @@
                         <td class=\"medCell\"><a href=\"/profile.php?userid=" . $user['userid'] . "\" class=\"userLink\" data-uid=\"" . $user['userid'] . "\">" . $user['lname'] . ", " . $user['fname'] . $starCoach . "</a></td>
                         <td class=\"medCell\">" . $emailLink . "</td>
 						<td class=\"medCell\">" . $levelName . "</td>
-						<td class=\"smallCell\">" . $regName . "</td>
-						<td class=\"smallCell\">" . $waiverName . "</td>
-						<td class=\"smallCell\"><span$rowClass>" . $user['balance'] . "</span></td><td class=\"smallCell\">" . $passCheck . "</td><td class=\"medCell\"><a href=\"#\" class=\"editLink\" data-id=\"" . $user['userid'] . "\">edit</a> 
+						<td class=\"smallCell centerCell\">" . $regName . "</td>
+						<td class=\"smallCell centerCell\">" . $waiverName . "</td>
+						<td class=\"smallCell centerCell\"><span$rowClass>" . $user['balance'] . "</span></td><td class=\"smallCell centerCell\">" . $passCheck . "</td><td class=\"medCell\"><a href=\"#\" class=\"editLink\" data-id=\"" . $user['userid'] . "\">edit</a> 
 						<a href=\"#\" class=\"adjustLink\" data-id=\"" . $user['userid'] . "\" >adj</a> 
 						<a href=\"#\" class=\"deleteLink\" data-id=\"" . $user['userid'] . "\" >del</a>
 						</td></tr>";
