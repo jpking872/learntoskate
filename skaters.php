@@ -122,7 +122,7 @@
 				<td class="medCell">Parent Name</td>
 				<td class="medCell">Email</td>
 				<td class="smallCell">Level</td>
-				<td class="smallCell centerCell">Fee</td>
+				<td class="smallCell centerCell">Registration</td>
 				<td class="smallCell centerCell">Waiver</td>
 				<td class="smallCell centerCell">Balance</td>
 				<td class="smallCell centerCell">Pass</td>

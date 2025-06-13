@@ -28,7 +28,8 @@ switch($jsonObj->type) {
             writeLog("draft");
             exit();
         }
-        //$orderId = "3k8Oc7b9h8APM0ALePt3VHuT0habc";
+
+        //$orderId = "3k8Oc7b9h8APM0ALePt3VHuT0pqrs";
 
         if ($merchantId != ISUSA_MERCHANT_ID) {
             exit();
