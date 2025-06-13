@@ -37,15 +37,15 @@ include_once("header.php");
 
     <div id="login_area">
         <p class="infoMessage">Welcome to Learn to Skate to the Point!</p>
-        <p class="infoMessage">Signing up for classes is a three step process.</p>
+        <p class="infoMessage">Here are the steps to register for Learn to Skate classes:</p>
         <ol><li>First, submit the registration form and waiver which can be downloaded <a href="https://docs.google.com/forms/d/e/1FAIpQLScSAP63WMAyCIJ8NqKTAASPaRasvPJwhvM4D7t_cLIXR1zfJA/viewform?usp=header" download target="_blank">here</a>.</li>
             <li>Second, <a href="/register.php">register</a> your skater on this website.  Make a note of your pin because you will need it to log in and sign up for classes.</li>
-            <li>Third, purchase the registration package <a href="https://ice-skate-usa.square.site/" target="_blank">here</a>.  Your account will then be reviewed and activated.</a></li>
+            <li>Third, <a href="https://ice-skate-usa.square.site/" target="_blank">purchase the registration package</a>.  Your account will then be reviewed and activated.</a></li>
+            <li>Finally, <a href="https://ice-skate-usa.square.site/" target="_blank">purchase a skating package</a>. You will be billed in full today for the month of July,
+                but since this system does not go into effect until July 1, your subscription will be paused until August 1. Then you will be billed monthly on the first of the month. </li>
         </ol>
         <p class="infoMessage">Actually you may do these steps in any order, but you won't be able login to the site until you've
-                submitted the waiver and registration fee.  Also, note that if you make a subscription purchase it will recur
-                monthly. Since this new system is not effective until July 1, your subscription will be paid in full today. However your subscription will be paused until August 1
-                and then recur monthly.</p>
+                submitted the waiver and registration fee.</p>
         <p class="loginMessage"><?php echo $errorMessage ?></p>
         <div class="signupLink">Enter your PIN and last name:</div>
         <form id="login_form" method="post" action="">

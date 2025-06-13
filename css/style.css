@@ -1130,4 +1130,8 @@ table tr.showHideRow {
 		margin:5px 0 10px 0;
 	}
 
+	#login_area ol {
+		padding-left:20px;
+	}
+
 }
