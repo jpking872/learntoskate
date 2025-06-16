@@ -33,8 +33,6 @@ include_once("header.php");
         <div class="pageTitle">LOGIN TO LEARN TO SKATE</div>
     </div>
 
-
-
     <div id="login_area">
         <p class="infoMessage">Welcome to Learn to Skate to the Point!</p>
         <p class="infoMessage">Here are the steps to register for Learn to Skate classes:</p>

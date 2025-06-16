@@ -61,7 +61,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && $sessionRole == 3) {
         $message = $postVars['message'];
         $message = str_replace(array("\r\n", "\r", "\n"), "<br />", $message);
         $payload = array("fname" => $userData['fname'], "lname" => $userData['lname'], "sfname" => $userData['sfname'], "slname" => $userData['slname'], "message" => $message);
-        //$result = $oLTS->SendSingleEmail("kingjon90@gmail.com", $payload, "message");
+        //$result = $oLTS->SendSingleEmail($userData['email'], $payload, "message");
         if ($result) {
             $pageStatus = "Email sent.";
         }

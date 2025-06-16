@@ -69,7 +69,6 @@ include_once("header.php");
         ?>
             <p>
                 Order Id: <span class="<?php echo $notEnteredClass ?>"><?php echo $tmp['order_id'] ?> | <?php echo $tmp['item'] ?></span><br/>
-                Skater Id: <span class="gold"><?php echo $tmp['uid'] ?></span> |
                 Skater name: <span class="gold"><?php echo $tmp['square_display_name'] ?></span> |
                 Skater pin: <span class="gold"><a href="/skaters.php?type=pin&query=<?php echo $tmp['skater_pin'] ?>"><?php echo $tmp['skater_pin'] ?></a></span> |
                 Square email: <span class="gold"><?php echo $tmp['square_email'] ?></span><br/>
