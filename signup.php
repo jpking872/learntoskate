@@ -16,6 +16,7 @@ $oDataModel = new DataModel($sessionUser, $dbconnection);
 $oDataModel->SetUser($sessionUser);
 $userData = $oDataModel->GetUserData();
 $oLTS = new LTS($dbconnection);
+$passClassDay = false;
 
 $sError = "";
 
@@ -85,7 +86,7 @@ include_once("header.php");
                     for ($i = 0; $i < count($classList); $i++) {
                         $tmp = $classList[$i];
 
-                        if (strtotime($tmp['start']) < time() + 60 * 15) continue;
+                        if (strtotime($tmp['start']) < strtotime("last Sunday")) continue;
                         $classSize = $oLTS->getClassSize($tmp['id']);
 
                         $isRegisteredThisClass = in_array($tmp['id'], $registeredClasses);

@@ -221,8 +221,7 @@
                             <?php
                             echo "<option value=\"0\">Not approved</option>";
                             foreach ($levels as $level) {
-                                $isSkaterLevel = $user['level'] == $level['id'] ? " assigned" : "";
-                                echo "<option value=\"" . $level['id'] . "\"" .$isSkaterLevel . ">" . $level['level'] . "</option>";
+                                echo "<option value=\"" . $level['id'] . "\">" . $level['level'] . "</option>";
                             } ?>
                         </select>
                     </p>

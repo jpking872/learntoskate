@@ -35,7 +35,7 @@ class LTS extends Classes
 
     public function GetLTSClasses($userData)
     {
-        $sql = "SELECT * FROM `classes` WHERE `active` = 1 AND `start` > NOW() ORDER BY `start` ASC";
+        $sql = "SELECT * FROM `classes` WHERE `active` = 1 ORDER BY `start` ASC";
         $result = mysqli_query($this->db, $sql);
 
         $futureClasses = $this->GetClassesInFuture($userData['id']);
@@ -66,8 +66,10 @@ class LTS extends Classes
 
     private function GetClassesInFuture($uid)
     {
+        $currentTime = date("Y-m-d H:i:s", time());
+
         $sql = "SELECT c.* FROM `classes` c INNER JOIN `class_user` cu ON c.`id` = cu.`classid` 
-                      WHERE cu.`uid` = '" . mysqli_real_escape_string($this->db, $uid) . "' AND c.`start` > NOW() ORDER BY `start` ASC";
+                      WHERE cu.`uid` = '" . mysqli_real_escape_string($this->db, $uid) . "' AND c.`start` > '" . $currentTime . "' ORDER BY c.`start` ASC";
         $result = mysqli_query($this->db, $sql);
         $futureClasses = [];
         while ($row = mysqli_fetch_assoc($result)) {
