@@ -73,7 +73,7 @@ include_once("header.php");
             $("#login_form").submit(function (e) {
                 var errorText = "";
                 if ($("input[name='last']").val().length < 2 || $("input[name='last']").val().length > 50) {
-                    errorText += "Skater last name is required.<br/> ";
+                    errorText += "Last name is required.<br/> ";
                 }
                 if ($(".adminWrapper").is(":visible")) {
                     if ($("input[name='adminPass']").val().length < 8 || $("input[name='adminPass']").val().length > 16) {
