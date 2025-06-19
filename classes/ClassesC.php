@@ -77,6 +77,8 @@ class Classes
 
         $passVal = $hasPass ? 1 : 0;
 
+        writeLog("Add user to class: " . $uid . " " . $cid);
+
         $sql = "INSERT INTO `class_user` (`uid`, `classid`, `pass`) 
             VALUES ('" . mysqli_real_escape_string($this->db, $uid) . "', '" .
             mysqli_real_escape_string($this->db, $cid) . "', '" . mysqli_real_escape_string($this->db, $passVal) . "')";
