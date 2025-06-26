@@ -26,7 +26,7 @@ switch($jsonObj->type) {
         $orderId = $jsonObj->data->id;
         if ($jsonObj->data->object->order_fulfillment_updated->state == "DRAFT") {
             writeLog("draft");
-            exit();
+            //exit();
         }
 
         //$orderId = "3k8Oc7b9h8APM0ALePt3VHuT0pqrs";
@@ -84,7 +84,7 @@ switch($jsonObj->type) {
                 'uid' => $userId,
                 'skater_pin' => $skaterPin,
                 'square_email' => $email,
-                'square_display_name' => $skaterName,
+                'square_display_name' => $displayName,
                 'quantity' => $quantity,
                 'product_id' => $freestylePackage,
                 'status' => $state
