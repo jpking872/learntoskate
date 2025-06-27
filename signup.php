@@ -25,12 +25,22 @@ if ($_POST) {
     if (isset($_POST['class_submit'])) {
 
         $uid = $sessionUser;
-        $oLTS->removeUserFromActiveClasses($uid);
-        if (array_key_exists('classToAdd', $_POST) && is_array($_POST['classToAdd'])) {
-            foreach ($_POST['classToAdd'] as $key => $value) {
-                $oLTS->addUserToClass($uid, $value);
+
+        $verifyBalance = $oLTS->VerifyBalance($uid, count($_POST['classToAdd']));
+
+        if ($verifyBalance) {
+
+            $oLTS->removeUserFromActiveClasses($uid);
+            if (array_key_exists('classToAdd', $_POST) && is_array($_POST['classToAdd'])) {
+                foreach ($_POST['classToAdd'] as $key => $value) {
+                    $oLTS->addUserToClass($uid, $value);
+                }
             }
+
+        } else {
+            $message = "Insufficient Balance.";
         }
+
     }
 
 }
@@ -44,7 +54,7 @@ include_once("header.php");
     </div>
     <div class="mainContent">
 
-        <?php echo empty($message) || $message == "" ? "" : "<p class=\"message\">$message</p>"; ?>
+        <?php echo empty($message) || $message == "" ? "" : "<p class=\"signupMessage\">$message</p>"; ?>
 
         <div class="classDiv">
             <form action="" method="post" id="class_form">
@@ -83,6 +93,8 @@ include_once("header.php");
                         $registeredClasses[] = $signupClasses[$i]['id'];
                     }
 
+                    $hasOnePass = false;
+
                     for ($i = 0; $i < count($classList); $i++) {
                         $tmp = $classList[$i];
 
@@ -97,6 +109,11 @@ include_once("header.php");
                         $classDate = $tmp['start'];
                         $passClassDay = $oDataModel->HasUserPass($sessionUser, date("n", strtotime($classDate)), date("Y", strtotime($classDate)));
 
+                        if ($passClassDay) {
+                            $hasOnePass = true;
+                        }
+                        $isPassDay = $passClassDay ? " <span class=\"green\">&#9830</span>" : "";
+
                         if (($classSize >= $tmp['size'] && !$isRegisteredThisClass) || ($balance <= 0 && !$passClassDay && !$isRegisteredThisClass) || (!$isRegisteredThisClass && (time() > strtotime($tmp['end']))) ) {
                             echo "<li><div class=\"sessionFull\"><span style=\"color:#FFFFFF\">&#10006</span></div>";
                             echo "<div class=\"classTitle" . $isBoxGold . "\">" . $tmp['title'] . ": " .
@@ -104,11 +121,11 @@ include_once("header.php");
                         } else if ($isRegisteredThisClass && (time() > strtotime($tmp['start']))) {
                             echo "<li><div class=\"sessionCheck\"><span style=\"color:#FFFFFF\">&#10003</span></div>";
                             echo "<div class=\"classTitle gold\">" . $tmp['title'] . ": " .
-                                date('l F j g:ia', strtotime($tmp['start'])) . " - " . date('g:ia', strtotime($tmp['end'])) . " (" . $classSize . ")</div></li>";
+                                date('l F j g:ia', strtotime($tmp['start'])) . " - " . date('g:ia', strtotime($tmp['end'])) . " (" . $classSize . ")" . $isPassDay . "</div></li>";
                         } else {
                             echo "<li><input type=\"checkbox\" name=\"classToAdd[]\"" . $isBoxChecked . " value=\"" . $tmp['id']
                                 . "\"><div class=\"classTitle" . $isBoxGold . "\">" . $tmp['title'] . ": " .
-                                date('l F j g:ia', strtotime($tmp['start'])) . " - " . date('g:ia', strtotime($tmp['end'])) . " (" . $classSize . ")</div></li>";
+                                date('l F j g:ia', strtotime($tmp['start'])) . " - " . date('g:ia', strtotime($tmp['end'])) . " (" . $classSize . ")" . $isPassDay . "</div></li>";
                         }
 
                     }
@@ -154,7 +171,7 @@ include_once("header.php");
         let totalChecked, balance;
         let startPoints = <?php echo $balance; ?>;
         let startChecked = $("input[name='classToAdd[]']:checked").length;
-        let hasPass = <?php echo $passClassDay ? 1 : 0 ?>;
+        let hasPass = <?php echo $hasOnePass ? 1 : 0 ?>;
 
         $("input[name='classToAdd[]']").click(function(e) {
             if (!hasPass) {

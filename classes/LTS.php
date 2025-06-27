@@ -105,6 +105,30 @@ class LTS extends Classes
 
     }
 
+    public function VerifyBalance($uid, $numToAdd) {
+
+        $numActive = $this->GetNumberActiveClasses($uid);
+        $oData = new DataModel($uid, $this->db);
+        $beforeBalance = $oData->GetUserBalance();
+
+        $afterBalance = $beforeBalance + $numActive - $numToAdd;
+
+        return $afterBalance >= 0;
+    }
+
+    private function GetNumberActiveClasses($uid) {
+
+        $currentTime = date("Y-m-d H:i:s", time());
+
+        $sql = "SELECT * FROM `class_user` cu INNER JOIN `classes` c ON cu.`classid` = c.`id` WHERE cu.`uid` = '" .
+            mysqli_real_escape_string($this->db, $uid) . "' AND c.`active` = 1 AND `start` > '$currentTime'";
+
+        $result = mysqli_query($this->db, $sql);
+
+        return mysqli_num_rows($result);
+
+    }
+
     public function SendSingleEmail($emailTo, $payload, $template)
     {
         $templateModel = [];

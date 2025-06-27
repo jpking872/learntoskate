@@ -95,8 +95,6 @@ class Classes
         $sql = "DELETE cu FROM `class_user` cu INNER JOIN `classes` c ON cu.`classid` = c.`id` WHERE cu.`uid` = '" .
                     mysqli_real_escape_string($this->db, $uid) . "' AND c.`active` = 1 AND `start` > '$currentTime'";
 
-        writeLog($sql);
-
         $result = mysqli_query($this->db, $sql);
         return $result;
 
