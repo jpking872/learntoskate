@@ -111,7 +111,7 @@ class LTS extends Classes
         $oData = new DataModel($uid, $this->db);
         $beforeBalance = $oData->GetUserBalance();
 
-        writeLog($uid, $beforeBalance, $numActive, $numToAdd);
+        writeLog($uid . " " . $beforeBalance . " " . $numActive . " " . $numToAdd);
 
         $afterBalance = $beforeBalance + $numActive - $numToAdd;
 

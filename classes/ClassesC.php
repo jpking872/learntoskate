@@ -29,7 +29,9 @@ class Classes
     public function getClassesByUid($uid)
     {
 
-        $sql = "SELECT c.*, cu.`pass` FROM `classes` c INNER JOIN `class_user` cu ON c.`id` = cu.`classid` WHERE cu.`uid` = '" . mysqli_real_escape_string($this->db, $uid) . "' ORDER BY `start` DESC";
+        $sql = "SELECT c.*, cu.`pass` FROM `classes` c INNER JOIN `class_user` cu ON c.`id` = cu.`classid` 
+                      WHERE cu.`uid` = '" . mysqli_real_escape_string($this->db, $uid) . "' ORDER BY `start` DESC";
+
         $result = mysqli_query($this->db, $sql);
 
         $classesArray = [];
