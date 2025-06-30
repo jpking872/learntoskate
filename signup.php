@@ -25,8 +25,9 @@ if ($_POST) {
     if (isset($_POST['class_submit'])) {
 
         $uid = $sessionUser;
+        $aClassesToSignup = $_POST['classToAdd'] ?? [];
 
-        $verifyBalance = $oLTS->VerifyBalance($uid, count($_POST['classToAdd']));
+        $verifyBalance = $oLTS->VerifyBalance($uid, $aClassesToSignup);
 
         if ($verifyBalance) {
 

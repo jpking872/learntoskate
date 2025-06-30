@@ -105,7 +105,15 @@ class LTS extends Classes
 
     }
 
-    public function VerifyBalance($uid, $numToAdd) {
+    public function VerifyBalance($uid, $classArray) {
+
+        $numToAdd = 0;
+
+        for($i = 0; $i < count($classArray); $i++) {
+            if (!$this->HasPassThisClass($uid, $classArray[$i])) {
+                $numToAdd++;
+            }
+        }
 
         $numActive = $this->GetNumberActiveClasses($uid);
         $oData = new DataModel($uid, $this->db);
@@ -118,12 +126,27 @@ class LTS extends Classes
         return $afterBalance >= 0;
     }
 
+    private function HasPassThisClass($uid, $cid) {
+
+        $sql = "SELECT * FROM `classes` WHERE `id` = '" . $cid . "'";
+        $result = mysqli_query($this->db, $sql);
+        if ($row = mysqli_fetch_assoc($result)) {
+            $classMonth = date("n", strtotime($row['start']));
+            $classYear = date("Y", strtotime($row['start']));
+        }
+
+        $passClassDay = $this->dataModel->HasUserPass($uid, $classMonth, $classYear);
+
+        return $passClassDay;
+
+    }
+
     private function GetNumberActiveClasses($uid) {
 
         $currentTime = date("Y-m-d H:i:s", time());
 
         $sql = "SELECT * FROM `class_user` cu INNER JOIN `classes` c ON cu.`classid` = c.`id` WHERE cu.`uid` = '" .
-            mysqli_real_escape_string($this->db, $uid) . "' AND c.`active` = 1 AND `start` > '$currentTime'";
+            mysqli_real_escape_string($this->db, $uid) . "' AND c.`active` = 1 AND cu.`pass` = 0 AND `start` > '$currentTime'";
 
         $result = mysqli_query($this->db, $sql);
 
