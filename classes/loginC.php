@@ -18,7 +18,7 @@ function Login($aPostVars) {
 
 	} else {
 
-		$sql = "SELECT * FROM `users` WHERE `pin` = '" . $pin . "' AND `lname` = '" . mysqli_real_escape_string($dbconnection, $lastName) . "'";
+		$sql = "SELECT * FROM `users` WHERE `pin` = '" . $pin . "' AND `slname` = '" . mysqli_real_escape_string($dbconnection, $lastName) . "'";
 
 		$result = mysqli_query($dbconnection, $sql);
 

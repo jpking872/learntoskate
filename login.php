@@ -49,7 +49,7 @@ include_once("header.php");
         <form id="login_form" method="post" action="">
             <p>
                 PIN:<br/><input type="password" id="pinInput" name="pin" size="6" maxlength="5"><br/>
-                Parent last name:<br/><input type="text" id="nameInput" name="last" size="15" maxlength="25"><br/>
+                Skater last name:<br/><input type="text" id="nameInput" name="last" size="15" maxlength="25"><br/>
             </p>
             <div class="adminWrapper">
                 Enter Admin Password:<br/>

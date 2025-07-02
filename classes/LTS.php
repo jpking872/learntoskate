@@ -35,7 +35,7 @@ class LTS extends Classes
 
     public function GetLTSClasses($userData)
     {
-        $currentTime = date("Y-m-d H:i:s", time());
+        $currentTime = date("Y-m-d H:i:s", strtotime("today"));
 
         $sql = "SELECT * FROM `classes` WHERE `active` = 1 AND `start` > '" . $currentTime . "' ORDER BY `start` ASC";
         $result = mysqli_query($this->db, $sql);
