@@ -60,8 +60,9 @@ include_once("header.php");
         <div class="classDiv">
             <form action="" method="post" id="class_form">
                 <?php
-
-                $skaterName = $userData['sfname'] == $userData['fname'] && $userData['slname'] == $userData['lname'] ? "" : " (" . $userData['sfname'] . " " . $userData['slname'] . ")";
+                $parentName = ($userData['sfname'] == $userData['fname'] && $userData['slname'] ==
+                $userData['lname']) || (stristr($userData['fname'], "n/a") && stristr($userData['lname'], "n/a"))
+                    ? "" : " (" . $userData['fname'] . " " . $userData['lname'] . ")";
                 $aLevels = $oLTS->GetLevels();
                 $level = "Not Approved";
                 for($i = 0; $i < count($aLevels); $i++) {
@@ -72,7 +73,7 @@ include_once("header.php");
                 ?>
 
                 <h2>
-                    <span class="skaterName"><?php echo $userData['fname'] . " " . $userData['lname'] . $skaterName ?></span><br/>
+                    <span class="skaterName"><?php echo $userData['sfname'] . " " . $userData['slname'] . $parentName ?></span><br/>
                     <span class="skaterName"><?php echo $level ?></span>
                 </h2>
                 <ul>

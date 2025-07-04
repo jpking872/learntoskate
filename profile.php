@@ -68,10 +68,9 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && $sessionRole == 3) {
     }
 }
 
-writeLog($pageStatus);
-
-$skaterName = $aResult['userinfo']['sfname'] == $aResult['userinfo']['fname'] && $aResult['userinfo']['slname'] == $aResult['userinfo']['lname'] ? "" : " (" . $aResult['userinfo']['fname'] . " " . $aResult['userinfo']['lname'] . ")";
-
+$parentName = ($aResult['userinfo']['sfname'] == $aResult['userinfo']['fname'] && $aResult['userinfo']['slname'] ==
+    $aResult['userinfo']['lname']) || (stristr($aResult['userinfo']['fname'], "n/a") && stristr($aResult['userinfo']['lname'], "n/a"))
+    ? "" : " (" . $aResult['userinfo']['fname'] . " " . $aResult['userinfo']['lname'] . ")";
 ?>
     <div style="clear:both"></div>
     <div class="infoBar">
@@ -82,7 +81,7 @@ $skaterName = $aResult['userinfo']['sfname'] == $aResult['userinfo']['fname'] &&
     <div class="historyDiv">
         <?php echo strlen($pageStatus) > 0 ? "<p class=\"pageStatus\">" . $pageStatus . "</p>" : "" ?>
         <h2>
-            <span class="skaterName"><?php echo $aResult['userinfo']['sfname'] . " " . $aResult['userinfo']['slname'] . $skaterName ?></span><br/>
+            <span class="skaterName"><?php echo $aResult['userinfo']['sfname'] . " " . $aResult['userinfo']['slname'] . $parentName ?></span><br/>
             <span class="skaterName"><?php echo $level ?></span>
         </h2>
         <div class="classesDiv">

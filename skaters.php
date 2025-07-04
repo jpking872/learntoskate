@@ -208,10 +208,10 @@
 				<input type="hidden" name="oldpin" value="">
 				<input type="hidden" name="userid" value="0">
 				<div class="editLeft">
-					<p>Parent First Name:<br><input type="text" name="fname"></p>
-					<p>Parent Last Name:<br><input type="text" name="lname"></p>
                     <p>Skater First Name:<br><input type="text" name="sfname"></p>
                     <p>Skater Last Name:<br><input type="text" name="slname"></p>
+					<p>Parent First Name:<br><input type="text" name="fname"></p>
+					<p>Parent Last Name:<br><input type="text" name="lname"></p>
 					<p>PIN:<br><input type="text" name="pin"></p>
 					<p>Email:<br><input type="text" name="email"></p>
 				</div>
