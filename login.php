@@ -39,7 +39,8 @@ include_once("header.php");
         <ol><li>First, submit the registration form and waiver which can be downloaded <a href="https://docs.google.com/forms/d/e/1FAIpQLScSAP63WMAyCIJ8NqKTAASPaRasvPJwhvM4D7t_cLIXR1zfJA/viewform?usp=header" download target="_blank">here</a>.</li>
             <li>Second, <a href="/register.php">register</a> your skater on this website.  Make a note of your pin because you will need it to log in and sign up for classes.</li>
             <li>Third, <a href="https://ice-skate-usa.square.site/" target="_blank">purchase the registration package</a>. This gives you access to Learn to Skate classes at Memorial City and a one year USFSA Learn to Skate membership.</li>
-            <li>Finally, <a href="https://ice-skate-usa.square.site/" target="_blank">purchase a skating plan</a>. If you subscribe after July 1, you will be billed monthly on the date that you subscribe.</li>
+            <li>Finally, <a href="https://ice-skate-usa.square.site/" target="_blank">purchase a skating plan</a>. If you subscribe after July 1, you will be billed monthly on the date that you subscribe.
+                On that date, the points for your plan will automatically be added to your learntoskatetothepoint.com account.</li>
         </ol>
         <p class="infoMessage">Actually you may do these steps in any order, but you won't be able to login to the site until you've
                 completed the steps and your account is approved.</p>
