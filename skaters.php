@@ -133,16 +133,18 @@
 			<?php foreach ($aUserArray as $user) {
                 $oddRow = $rowCount++ % 2;
                 $fullRowClass = $oddRow ? " class=\"skaterOddRow\" " : "";
-				//check for a current pass
-				$aUserPass = explode(",", $user['pass']);
-				$currMonthYear = date("n") . "/" . date("Y");
 
-				$passCheck = "";
-				for($i = 0; $i < count($aUserPass); $i++) {
-					if ($aUserPass[$i] == $currMonthYear) {
-						$passCheck = "&#10004";
-					}
-				}
+                //check for a current pass
+                $passCheck = "";
+                if (isset($user['pass'])) {
+                    $aUserPass = explode(",", $user['pass']);
+                    $currMonthYear = date("n") . "/" . date("Y");
+                    for($i = 0; $i < count($aUserPass); $i++) {
+                        if ($aUserPass[$i] == $currMonthYear) {
+                            $passCheck = "&#10004";
+                        }
+                    }
+                }
 
 				$aRoles = array("inactive", "skater", "coach", "admin");
                 $isCoach = $user['role'] == 2;

@@ -3,6 +3,7 @@
 	Class DataModel {
 
 		private $userid;
+        private $con;
 
 		function __construct($uid = 0, $con = null) {
        		
