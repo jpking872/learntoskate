@@ -44,6 +44,8 @@ switch($jsonObj->type) {
         $email = $jsonOrder->order->fulfillments[0]->shipment_details->recipient->email_address ?? '';
         $displayName = $jsonOrder->order->fulfillments[0]->shipment_details->recipient->display_name ?? '';
         $state = $jsonOrder->order->state ?? 'none';
+        $status = $jsonOrder->order->tenders[0]->card_details->status ?? "none";
+        writeLog("Status: " . $status);
 
         $items = $jsonOrder->order->line_items;
 
@@ -77,7 +79,7 @@ switch($jsonObj->type) {
         writeLog("merchant id: " . $merchantId . " state: " . $state . " order id: " . $orderId . " email_address: " . $email . " skater: " . $skaterPin . " - " . $skaterName . " quantity: " . $quantity . " package: " . $catalogId . "-" . $freestylePackage);
         writeLog(print_r($jsonOrder, true));
 
-        if ($freestylePackage > 0 && $state != "DRAFT") {
+        if ($freestylePackage > 0 && $state != "DRAFT" && $status == "CAPTURED") {
             $orderData = [
                 'order_id' => $orderId,
                 'item' => $item,
