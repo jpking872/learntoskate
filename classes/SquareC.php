@@ -47,17 +47,52 @@ class Square {
 
     }
 
-    function GetUserIdFromPin($skaterPin) {
+    function GetUserIdFromNameAndPin($skaterName, $skaterPin) {
 
+        writeLog("checking name: $skaterName and pin: $skaterPin");
+
+        $nameArray = explode(" ", $skaterName);
+        $skaterFirst = $nameArray[0];
+        $skaterLast = "";
+        for ($i = 1; $i < count($nameArray); $i++) {
+            $skaterLast .= $nameArray[$i] . " ";
+        }
+        rtrim($skaterLast);
         $skaterPin = trim($skaterPin);
+
+        $sql = "SELECT * FROM `users` WHERE `sfname` = '" . mysqli_real_escape_string($this->db, $skaterFirst) . "'
+            AND `slname` = '" . mysqli_real_escape_string($this->db, $skaterLast) . "' ORDER BY `id` DESC LIMIT 1";
+        $result = mysqli_query($this->db, $sql);
+
+        $numReturned = mysqli_num_rows($result);
+
+        if ($numReturned === 1) {
+            $skater = mysqli_fetch_assoc($result);
+            writeLog("name match: " . $skaterName);
+            return ['id' => $skater['id'], 'pin' => $skater['pin']];
+        }
 
         $sql = "SELECT * FROM `users` WHERE `pin` = '" . mysqli_real_escape_string($this->db, $skaterPin) . "' ORDER BY `id` DESC LIMIT 1";
         $result = mysqli_query($this->db, $sql);
 
         if ($row = mysqli_fetch_array($result)) {
-            $userId = $row['id'];
-            return $userId;
+            writeLog("pin match: " . $skaterPin);
+            $skaterFirstNames = explode(" ", $row['sfname']);
+            $skaterLastNames = explode(" ", $row['slname']);
+            $parentFirstNames = explode(" ", $row['fname']);
+            $parentLastNames = explode(" ", $row['lname']);
+            $allNames = array_merge($skaterFirstNames, $skaterLastNames, $parentFirstNames, $parentLastNames);
+
+            for ($j = 0; $j < count($allNames); $j++) {
+                if (strlen($allNames[$j]) >= 3 && $allNames[$j] != strtolower("n/a")) {
+                    if (stristr($skaterName, $allNames[$j])) {
+                        writeLog("pin confirmed: " . $skaterName);
+                        return ['id' => $row['id'], 'pin' => $row['pin']];
+                    }
+                }
+            }
         }
+        writeLog("No match");
         return false;
 
     }

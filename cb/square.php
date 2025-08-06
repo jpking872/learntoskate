@@ -74,10 +74,13 @@ switch($jsonObj->type) {
                 continue;
             }*/
 
-        $userId = $oSquare->GetUserIdFromPin($skaterPin);
-        if ($userId == false) {
+        $userData = $oSquare->GetUserIdFromNameAndPin($skaterName, $skaterPin);
+        if ($userData == false) {
             writeLog("Invalid pin");
             $userId = -1;
+        } else {
+            $userId = $userData['id'];
+            $skaterPin = $userData['pin'];
         }
 
         writeLog("merchant id: " . $merchantId . " state: " . $state . " order id: " . $orderId . " email_address: " . $email . " skater: " . $skaterPin . " - " . $skaterName . " quantity: " . $quantity . " package: " . $catalogId . "-" . $freestylePackage);
