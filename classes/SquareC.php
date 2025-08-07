@@ -47,6 +47,21 @@ class Square {
 
     }
 
+    function GetUserIdFromPin($skaterPin) {
+
+        $skaterPin = trim($skaterPin);
+
+        $sql = "SELECT * FROM `users` WHERE `pin` = '" . mysqli_real_escape_string($this->db, $skaterPin) . "' ORDER BY `id` DESC LIMIT 1";
+        $result = mysqli_query($this->db, $sql);
+
+        if ($row = mysqli_fetch_array($result)) {
+            $userId = $row['id'];
+            return $userId;
+        }
+        return false;
+
+    }
+
     function GetUserIdFromNameAndPin($skaterName, $skaterPin) {
 
         writeLog("checking name: $skaterName and pin: $skaterPin");
@@ -84,7 +99,7 @@ class Square {
             $allNames = array_merge($skaterFirstNames, $skaterLastNames, $parentFirstNames, $parentLastNames);
 
             for ($j = 0; $j < count($allNames); $j++) {
-                if (strlen($allNames[$j]) >= 3 && $allNames[$j] != strtolower("n/a")) {
+                if (strlen($allNames[$j]) >= 2 && $allNames[$j] != strtolower("n/a")) {
                     if (stristr($skaterName, $allNames[$j])) {
                         writeLog("pin confirmed: " . $skaterName);
                         return ['id' => $row['id'], 'pin' => $row['pin']];
