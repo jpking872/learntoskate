@@ -156,7 +156,7 @@ class Classes
             if ($row['pass'] == 1 && 0) {
                 $skatersArray[] = "<span class=\"green\">" . $skaterName . "</span>";
             } else {
-                $skatersArray[] = $skaterName;
+                $skatersArray[] = ucfirst($skaterName);
             }
         }
         return implode(", ", $skatersArray);

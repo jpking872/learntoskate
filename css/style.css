@@ -956,6 +956,7 @@ table tr.showHideRow {
 	background-color: var(--dark);
 	display:table-cell;
 	height:100%;
+	line-height:1.15;
 }
 
 #LTSDate {
