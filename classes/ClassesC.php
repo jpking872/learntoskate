@@ -14,7 +14,7 @@ class Classes
 
     public function getClasses()
     {
-        $sql = "SELECT * FROM `classes` WHERE `active` = 1 ORDER BY `start` ASC";
+        $sql = "SELECT c.* FROM `classes` c LEFT JOIN `levels` l ON c.`level` = l.`id` WHERE c.`active` = 1 ORDER BY c.`start` ASC, l.`priority` ASC";
         $result = mysqli_query($this->db, $sql);
 
         $classesArray = [];
@@ -156,7 +156,7 @@ class Classes
             if ($row['pass'] == 1 && 0) {
                 $skatersArray[] = "<span class=\"green\">" . $skaterName . "</span>";
             } else {
-                $skatersArray[] = ucfirst($skaterName);
+                $skatersArray[] = ucwords(strtolower($skaterName));
             }
         }
         return implode(", ", $skatersArray);

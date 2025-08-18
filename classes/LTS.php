@@ -20,7 +20,7 @@ class LTS extends Classes
         $result = mysqli_query($this->db, $sql);
         $sessionClasses = [];
         while ($row = mysqli_fetch_assoc($result)) {
-            $sql2 = "SELECT * FROM `classes` WHERE `start` = '" . $row['start'] . "' ORDER BY `id`";
+            $sql2 = "SELECT c.* FROM `classes` c LEFT JOIN `levels` l ON c.`level` = l.`id` WHERE `start` = '" . $row['start'] . "' ORDER BY l.`priority` ASC";
             $result2 = mysqli_query($this->db, $sql2);
             $tmpClasses = [];
             while ($row2 = mysqli_fetch_assoc($result2)) {
