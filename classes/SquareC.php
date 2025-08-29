@@ -99,7 +99,7 @@ class Square {
             $allNames = array_merge($skaterFirstNames, $skaterLastNames, $parentFirstNames, $parentLastNames);
 
             for ($j = 0; $j < count($allNames); $j++) {
-                if (strlen($allNames[$j]) >= 2 && $allNames[$j] != strtolower("n/a")) {
+                if (strlen($allNames[$j]) >= 2 && strtolower($allNames[$j]) != "n/a") {
                     if (stristr($skaterName, $allNames[$j])) {
                         writeLog("pin confirmed: " . $skaterName);
                         return ['id' => $row['id'], 'pin' => $row['pin']];
@@ -220,8 +220,6 @@ class Square {
         $purchaseData['points'] = $currentProduct['num_sessions'] * $quantity;
         if ($currentProduct['num_sessions'] == 9999) {
             $purchaseData['points'] = 0;
-        } else {
-            $purchaseData['points'] = $currentProduct['num_sessions'] * $quantity;
         }
         $purchaseData['price'] = $currentProduct['price'] * $quantity;
         $purchaseData['date'] = date("Y-m-d");
