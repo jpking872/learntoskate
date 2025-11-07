@@ -45,8 +45,12 @@ switch($jsonObj->type) {
         $displayName = $jsonOrder->order->fulfillments[0]->shipment_details->recipient->display_name ?? '';
         $state = $jsonOrder->order->state ?? 'none';
         $status = $jsonOrder->order->tenders[0]->card_details->status ?? null;
-        if (!$status) {
-            $status = $jsonOrder->order->tenders[0]->buy_now_pay_later_details->status ?? "none";
+        $paymentType = $jsonOrder->order->tenders[0]->type ?? null;
+        if (!$status && $paymentType == "BUY_NOW_PAY_LATER") {
+            $status = $jsonOrder->order->tenders[0]->buy_now_pay_later_details->status ?? null;
+        }
+        if (!$status && $paymentType == "WALLET") {
+            $status = intval($jsonOrder->order->tenders[0]->amount_money->amount) > 0 ? "WALLET" : null;
         }
 
         writeLog("Status: " . $status);
@@ -86,7 +90,7 @@ switch($jsonObj->type) {
         writeLog("merchant id: " . $merchantId . " state: " . $state . " order id: " . $orderId . " email_address: " . $email . " skater: " . $skaterPin . " - " . $skaterName . " quantity: " . $quantity . " package: " . $catalogId . "-" . $freestylePackage);
         writeLog(print_r($jsonOrder, true));
 
-        if ($freestylePackage > 0 && $state != "DRAFT" && ($status == "CAPTURED" || $status == "AUTHORIZED")) {
+        if ($freestylePackage > 0 && $state != "DRAFT" && ($status == "CAPTURED" || $status == "AUTHORIZED" || $status == "WALLET")) {
             $orderData = [
                 'order_id' => $orderId,
                 'item' => $item,
