@@ -64,7 +64,7 @@ include_once("header.php");
                 New skater?<br/><a class="userLink" href="/register.php">Create an account</a>
             </p>
             <p class="signupLink">
-                Questions?<br/><a class="userLink" href="mailto:skatetothepoint@gmail.com">skatetothepoint@gmail.com</a>
+                Questions?<br/><a class="userLink" href="mailto:admin@skatetothepoint.com">admin@skatetothepoint.com</a>
             </p>
         </form>
     </div>
