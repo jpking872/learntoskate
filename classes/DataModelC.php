@@ -461,10 +461,12 @@
 
       function DeleteUser() {
 
-         $sql = "DELETE FROM `users` WHERE `id` = '" . $this->userid . "' LIMIT 1";
-         $result = mysqli_query($this->con, $sql);
+         /*$sql = "DELETE FROM `users` WHERE `id` = '" . $this->userid . "' LIMIT 1";
+         $result = mysqli_query($this->con, $sql);*/
 
-         return $result;
+          return true;
+
+         //return $result;
          
       }
       

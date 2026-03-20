@@ -174,7 +174,6 @@
 						<td class=\"smallCell centerCell\">" . $waiverName . "</td>
 						<td class=\"smallCell centerCell\"><span$rowClass>" . $user['balance'] . "</span></td><td class=\"smallCell centerCell\">" . $passCheck . "</td><td class=\"medCell\"><a href=\"#\" class=\"editLink\" data-id=\"" . $user['userid'] . "\">edit</a> 
 						<a href=\"#\" class=\"adjustLink\" data-id=\"" . $user['userid'] . "\" >adj</a> 
-						<a href=\"#\" class=\"deleteLink\" data-id=\"" . $user['userid'] . "\" >del</a>
 						</td></tr>";
 
 				} ?> 

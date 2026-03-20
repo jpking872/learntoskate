@@ -319,7 +319,7 @@ $(document).ready( function () {
 		$("#usertable, #searchForm").hide();
 		$(".loadingDiv").show();
 
-		CallAjax("/dynamic/ajax.php", {type: "deleteUser", id: uid}, alertDelete);
+		//CallAjax("/dynamic/ajax.php", {type: "deleteUser", id: uid}, alertDelete);
 	}
 
 
