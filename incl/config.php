@@ -1,6 +1,6 @@
 <?php
 
-    require_once(dirname(__DIR__, 2) . "/env-lts.php");
+    require_once(dirname(__DIR__, 3) . "/env-lts.php");
 
 	$siteroot = "";
 	date_default_timezone_set("America/Chicago");
