@@ -60,7 +60,9 @@ switch($jsonObj->type) {
         for ($i = 0; $i < count($items); $i++) {
             $quantity = $items[$i]->quantity ?? 0;
 
-            if ($items[$i]->catalog_object_id == "PTJOHSBOYFGHTKQ4GTS32RC7" || $items[$i]->catalog_object_id == "F35KK4MEYSEEY3YE45GEXWAL") {
+            $singlePurchaseIds = array("PTJOHSBOYFGHTKQ4GTS32RC7", "F35KK4MEYSEEY3YE45GEXWAL", "MI3EHW3SDGNI2X7LEJ7WU27K", "II4ME72EWGWWLUKARODX76BI", "C7WVO6YYIVZRWQUHUHA4UBWC");
+
+            if (in_array($items[$i]->catalog_object_id, $singlePurchaseIds)) {
                 $catalogId = $items[$i]->catalog_object_id ?? '';
                 $skaterName = substr($items[$i]->modifiers[0]->name, 13) ?? '';
                 $skaterPin = substr($items[$i]->modifiers[1]->name, 12) ?? '';

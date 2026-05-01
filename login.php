@@ -35,13 +35,13 @@ include_once("header.php");
 
     <div id="login_area">
         <p class="infoMessage">Welcome to Learn to Skate to the Point!</p>
+        <p class="infoMessage">Ice Skate Memorial City will close on July 31, 2026.</p>
         <p class="infoMessage"><a href="https://youtube.com/shorts/6p9IAsChOWQ?feature=shared" target="_blank">&raquo;&raquo;&raquo; Watch this video to learn how to sign up! &laquo;&laquo;&laquo;</a></p>
         <p class="infoMessage">Here are the steps to register for Learn to Skate classes:</p>
         <ol><li>First, submit the registration form and waiver which can be downloaded <a href="https://docs.google.com/forms/d/e/1FAIpQLScSAP63WMAyCIJ8NqKTAASPaRasvPJwhvM4D7t_cLIXR1zfJA/viewform?usp=header" download target="_blank">here</a>.</li>
             <li>Second, <a href="/register.php">register</a> your skater on this website.  Make a note of your pin because you will need it to log in and sign up for classes.</li>
-            <li>Third, <a href="https://ice-skate-usa.square.site/" target="_blank">purchase the registration package</a>. This gives you access to Learn to Skate classes at Memorial City and a one year USFSA Learn to Skate membership.</li>
-            <li>Finally, <a href="https://ice-skate-usa.square.site/" target="_blank">purchase a skating plan</a>. If you subscribe after July 1, you will be billed monthly on the date that you subscribe.
-                The points for your plan will automatically be added to your learntoskatetothepoint.com account.</li>
+            <li>Finally, purchase a skating plan. Previously this was done online, but due to the rink closure, all purchases
+            must be made in person at the rink.</li>
         </ol>
         <p class="infoMessage">Actually you may do these steps in any order, but you won't be able to login to the site until you've
                 completed the steps and your account is approved.</p>
