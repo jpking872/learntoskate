@@ -29,8 +29,10 @@
         <span class="gold">Total Orders:</span> <?php echo $oMetrics->getTableCount("orders") ?><br/>
         <span class="gold">Total Classes:</span> <?php echo $oMetrics->getTableCount("classes") ?><br/>
         <span class="gold">Total Classes Registered:</span> <?php echo $oMetrics->getTableCount("class_user") ?><br/>
+        <span class="gold">Total Classes Past:</span> <?php echo $oMetrics->getPastClasses() ?><br/>
         <span class="gold">Total Passes:</span> <?php echo $oMetrics->getTableCount("passes") ?><br/>
         <span class="gold">Total Users:</span> <?php echo $oMetrics->getTableCount("users") ?><br/>
+        <span class="gold">Total Balance:</span> <?php echo $oMetrics->activeSkaterPointBalance() ?><br/>
     </p>
 
 <?php
