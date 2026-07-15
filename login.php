@@ -34,17 +34,8 @@ include_once("header.php");
     </div>
 
     <div id="login_area">
-        <p class="infoMessage">Welcome to Learn to Skate to the Point!</p>
-        <!--p class="infoMessage">Ice Skate Memorial City will close on July 31, 2026.</p-->
-        <p class="infoMessage"><a href="https://youtube.com/shorts/6p9IAsChOWQ?feature=shared" target="_blank">&raquo;&raquo;&raquo; Watch this video to learn how to sign up! &laquo;&laquo;&laquo;</a></p>
-        <p class="infoMessage">Here are the steps to register for Learn to Skate classes:</p>
-        <ol><li>First, submit the registration form and waiver which can be downloaded <a href="https://docs.google.com/forms/d/e/1FAIpQLScSAP63WMAyCIJ8NqKTAASPaRasvPJwhvM4D7t_cLIXR1zfJA/viewform?usp=header" download target="_blank">here</a>.</li>
-            <li>Second, <a href="/register.php">register</a> your skater on this website.  Make a note of your pin because you will need it to log in and sign up for classes.</li>
-            <li>Finally, purchase a skating plan. Previously this was done online, but due to the rink closure, all purchases
-            must be made in person at the rink.</li>
-        </ol>
-        <p class="infoMessage">Actually you may do these steps in any order, but you won't be able to login to the site until you've
-                completed the steps and your account is approved.</p>
+        <div class="signupLink gold">Ice Skate Memorial City will remain open until December 14, 2026.</div>
+        <div class="signupLink gold"><a href="Ice Rink Media Alert Fall Season.docx" class="userLink" download>Download the press release</a></div>
         <p class="loginMessage"><?php echo $errorMessage ?></p>
         <div class="signupLink">Enter your PIN and last name:</div>
         <form id="login_form" method="post" action="">
