@@ -34,8 +34,13 @@ include_once("header.php");
     </div>
 
     <div id="login_area">
-        <div class="signupLink gold">Ice Skate Memorial City will remain open until December 14, 2026.</div>
-        <div class="signupLink gold"><a href="Ice Rink Media Alert Fall Season.docx" class="userLink" download>Download the press release</a></div>
+        <div class="signupLink gold">Ice Skate Memorial City will remain open until December 14, 2026.<br/><a href="Ice Rink Media Alert Fall Season.docx" class="userLink" download>Download the press release</a></div>
+        <div class="signupLink gold">Purchases made after July 17, 2026 will not be refunded.</div>
+        <p class="signupLink gold">Here are the steps to sign up for Learn to Skate classes:</p>
+        <ol class="signupLink"><li>Submit the registration form and waiver which can be downloaded <a href="https://docs.google.com/forms/d/e/1FAIpQLScSAP63WMAyCIJ8NqKTAASPaRasvPJwhvM4D7t_cLIXR1zfJA/viewform?usp=header" download target="_blank">here</a>.</li>
+            <li><a href="/register.php">Register</a> your skater on this website.  Make a note of your pin because you will need it to log in and sign up for classes.</li>
+            <li>Purchase a skating plan. The points will be added to your account you be able to login once it is approved.</li>
+        </ol>
         <p class="loginMessage"><?php echo $errorMessage ?></p>
         <div class="signupLink">Enter your PIN and last name:</div>
         <form id="login_form" method="post" action="">
