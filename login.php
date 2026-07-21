@@ -39,7 +39,7 @@ include_once("header.php");
         <p class="signupLink gold">Here are the steps to sign up for Learn to Skate classes:</p>
         <ol class="signupLink"><li>Submit the registration form and waiver which can be downloaded <a href="https://docs.google.com/forms/d/e/1FAIpQLScSAP63WMAyCIJ8NqKTAASPaRasvPJwhvM4D7t_cLIXR1zfJA/viewform?usp=header" download target="_blank">here</a>.</li>
             <li><a href="/register.php">Register</a> your skater on this website.  Make a note of your pin because you will need it to log in and sign up for classes.</li>
-            <li>Purchase a skating plan. The points will be added to your account you be able to login once it is approved.</li>
+            <li>Purchase a skating plan. The points will be added to your account and you will be able to login once it is approved.</li>
         </ol>
         <p class="loginMessage"><?php echo $errorMessage ?></p>
         <div class="signupLink">Enter your PIN and last name:</div>

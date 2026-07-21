@@ -26,16 +26,22 @@ function Login($aPostVars) {
 
 			$aRow = mysqli_fetch_array($result);
 
+            if ($aRow['level'] == 0) {
+                return array('status' => false, 'data' => 'In order to sign up for classes on Learn to Skate to the Point, you must have paid the registration fee and submitted the waiver.');
+            }
+
 			if ($aRow['role'] == 3 && md5($adminpass) != $aRow['password']) {
+                LogLogIn($aRow['id'], 'FAIL', '');
 				return array('status' => false, 'data' => 'Invalid password.');
 			}
 
+            if ($aRow['role'] == 3) {
+                LogLogIn($aRow['id'], 'SUCCESS', '');
+            }
+            
 			$_SESSION['id'] = $aRow['id'];
 			$_SESSION['name'] = $aRow['fname'] . " " . $aRow['lname'];
 			$_SESSION['role'] = $aRow['role'];
-			if ($aRow['level'] == 0) {
-                return array('status' => false, 'data' => 'In order to sign up for classes on Learn to Skate to the Point, you must have paid the registration fee and submitted the waiver.');
-            }
 
 			return array('status' => true, 'data' => $aRow);
 
@@ -43,6 +49,21 @@ function Login($aPostVars) {
 
 		return array('status' => false, 'data' => 'Invalid login.');
 	}
+
+}
+
+function LogLogIn($uid, $result, $notes) {
+
+    global $dbconnection;
+
+    $userid    = mysqli_real_escape_string($dbconnection, $uid);
+    $source_ip = mysqli_real_escape_string($dbconnection, $_SERVER['REMOTE_ADDR']);
+    $res    = mysqli_real_escape_string($dbconnection, $result);
+    $note    = mysqli_real_escape_string($dbconnection, $notes);
+
+    $sql = "INSERT INTO login_log (uid, source_ip, result, notes) VALUES ('$userid', '$source_ip', '$res', '$note')";
+
+    mysqli_query($dbconnection, $sql);
 
 }
 
