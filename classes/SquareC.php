@@ -228,11 +228,14 @@ class Square {
         if ($currentProduct['num_sessions'] == "9999") {
             $month = date("n");
             $year = date("Y");
+            $day = date("j");
 
-            $month++;
-            if ($month == 13) {
-                $month = 1;
-                $year++;
+            if ($day > 10) {
+                $month++;
+                if ($month == 13) {
+                    $month = 1;
+                    $year++;
+                }
             }
 
             $purchaseData['pass'] = $month . "-" . $year;
