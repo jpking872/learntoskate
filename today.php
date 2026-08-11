@@ -34,7 +34,7 @@
                 <p>No classes today</p>
             <?php } ?>
 		</div>
-    <div class="main">
+    <div class="main today">
 
 <?php for ($i = 0; $i < count($classes); $i++) {
     $tmpSession = $classes[$i]['session'];
