@@ -186,6 +186,7 @@
 				<input type="hidden" name="userid" value="0">
 				<input type="hidden" name="actiontype" value="adjust">
 				<p>Skater: <span class="adjustName">Skater Name</span></p>
+                <p>Parent: <span class="adjustParentName">Parent Name</span></p>
 				<p>Price:<br/><input name="price" type="text"></p>
 				<p>Points:<br/><input name="points" type="text"></p>
 				<p>Pass:<br/><select name="pass" id="pass"><option value="0">None</option>

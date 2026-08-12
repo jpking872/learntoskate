@@ -358,7 +358,11 @@ $(document).ready( function () {
 	function AdjustUser(uid) {
 		$("#adjustUser").dialog("open");
 		$("input[name='userid']").val(uid);
-		CallAjax("/dynamic/ajax.php", {type: "getUser", id: uid}, function(data) { var userdata = JSON.parse(data); $(".adjustName").html(userdata.fname + " " + userdata.lname) } );
+		CallAjax("/dynamic/ajax.php", {type: "getUser", id: uid}, function(data) {
+			var userdata = JSON.parse(data);
+			$(".adjustName").html(userdata.sfname + " " + userdata.slname)
+			$(".adjustParentName").html(userdata.fname + " " + userdata.lname)
+		});
 	}
 
 	function EmailUser(uid) {
