@@ -34,7 +34,8 @@ include_once("header.php");
     </div>
 
     <div id="login_area">
-        <p class="signupLink gold">Dear Ice Skate Memorial City Customers,<div>
+        <p class="messageHeader gold">IMPORTANT CUSTOMER NOTICE</p>
+        <p class="signupLink gold">Dear Ice Skate Memorial City Customers,</p>
         <p class="signupLink">Ice Skate Memorial City will officially close on <span class="gold">December 14, 2026.</span></p>
         <p class="signupLink">Please keep track of your remaining points and purchase only what you anticipate using before our closing date.</p>
         <ul class="signupLink">
@@ -42,7 +43,7 @@ include_once("header.php");
             <li><span class="gold">Points purchased more than one year ago have expired</span> and are not eligible for refunds.</li>
             <li>All remaining points and credits must be used by <span class="gold"">December 14, 2026.</span></li>
         </ul>
-        <p class="signupLink gold">December Specials:</p>
+        <p class="signupLink gold">DECEMBER SPECIALS:</p>
         <p class="signupLink"><span class="gold">During the month of December, we will be offering discounted purchases</span> to our customers.
             Please take advantage of these special offers while keeping our December 14 closing date in mind.</p>
         <p class="signupLink gold">Management appreciates your cooperation and understanding as we prepare for the closure of Ice Skate Memorial City.</p>

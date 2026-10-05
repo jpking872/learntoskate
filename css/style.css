@@ -130,6 +130,10 @@ div.smallNav {
 	padding:5px 50px;
 }
 
+.messageHeader {
+	font-size: 24px;
+}
+
 .gold {
 	color: var(--highlight);
 }
