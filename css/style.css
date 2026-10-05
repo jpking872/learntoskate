@@ -131,7 +131,7 @@ div.smallNav {
 }
 
 .messageHeader {
-	font-size: 24px;
+	font-size: 20px;
 }
 
 .gold {
@@ -324,7 +324,7 @@ input.deleteReg {
 }
 
 #login_area ol {
-	font-size: 18px;
+	font-size: 16px;
 }
 
 #login_area ol a {
@@ -565,7 +565,7 @@ input.registerPin {
 
 .signupLink {
 	margin-top:20px;
-	font-size:18px;
+	font-size:16px;
 }
 
 .signupLink a {
