@@ -47,6 +47,13 @@ include_once("header.php");
         <p class="signupLink"><span class="gold">During the month of December, we will be offering discounted purchases</span> to our customers.
             Please take advantage of these special offers while keeping our December 14 closing date in mind.</p>
         <p class="signupLink gold">Management appreciates your cooperation and understanding as we prepare for the closure of Ice Skate Memorial City.</p>
+
+        <p class="signupLink gold">HERE ARE THE STEPS TO SIGN UP FOR LEARN TO SKATE CLASSES:</p>
+        <ol class="signupLink"><li>Submit the registration form and waiver which can be downloaded <a href="https://docs.google.com/forms/d/e/1FAIpQLScSAP63WMAyCIJ8NqKTAASPaRasvPJwhvM4D7t_cLIXR1zfJA/viewform?usp=header" download target="_blank">here</a>.</li>
+            <li><a href="/register.php">Register</a> your skater on this website.  Make a note of your pin because you will need it to log in and sign up for classes.</li>
+            <li>Purchase a skating plan. The points will be added to your account and you will be able to login once it is approved.</li>
+        </ol>
+
         <p class="loginMessage"><?php echo $errorMessage ?></p>
         <div class="signupLink">Enter your PIN and last name:</div>
         <form id="login_form" method="post" action="">
