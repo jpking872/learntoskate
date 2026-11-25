@@ -60,7 +60,7 @@ switch($jsonObj->type) {
         for ($i = 0; $i < count($items); $i++) {
             $quantity = $items[$i]->quantity ?? 0;
 
-            $singlePurchaseIds = array("PTJOHSBOYFGHTKQ4GTS32RC7", "F35KK4MEYSEEY3YE45GEXWAL", "MI3EHW3SDGNI2X7LEJ7WU27K", "II4ME72EWGWWLUKARODX76BI", "C7WVO6YYIVZRWQUHUHA4UBWC");
+            $singlePurchaseIds = array("TPQDKQB5BKDZ2GZKIYHJ5E35", "PTJOHSBOYFGHTKQ4GTS32RC7", "F35KK4MEYSEEY3YE45GEXWAL", "MI3EHW3SDGNI2X7LEJ7WU27K", "II4ME72EWGWWLUKARODX76BI", "C7WVO6YYIVZRWQUHUHA4UBWC");
 
             if (in_array($items[$i]->catalog_object_id, $singlePurchaseIds)) {
                 $catalogId = $items[$i]->catalog_object_id ?? '';
